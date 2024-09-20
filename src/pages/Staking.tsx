@@ -151,7 +151,7 @@ function Staking() {
                             <input
                                 type="text"
                                 pattern="[0-9.]*"
-                                className="bg-blue-100 border-2 border-gray-400 text-black outline-none rounded-lg text-right p-2"
+                                className="text-black outline-none rounded text-right p-2"
                                 value={inputValue1}
                                 onChange={(e) => handleInputChange(e, setInputValue1)}
                                 onBlur={() => validatePrime(inputValue1, setInputValue1)}
