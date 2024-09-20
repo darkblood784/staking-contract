@@ -20,7 +20,7 @@ function Navbar() {
 
     return (
         <div className="px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 font dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300">
-            <a href="https:whalestrategy.net/">
+            <a href="https://staking.whalestrategy.net/">
                 <img src="/logo.png" className="w-16 h-16" alt="Logo" />
             </a>
             <div className="flex items-center">
