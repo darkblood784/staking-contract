@@ -19,39 +19,32 @@ import ChildComponent3 from '../components/child3';
 
 function Staking() {
     const { t } = useTranslation();
-    const [usdtduration, setUsdtDuration] = useState("");
-    const [btcduration, setBtcDuration] = useState("");
-    const [ethduration, setEthDuration] = useState("");
+    const percentages = ['25%', '50%', '75%', 'ALL IN'];
+
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
     const [inputValue3, setInputValue3] = useState('');
-    const percentages = ['25%', '50%', '75%', 'ALL IN'];
+
+    const [usdtduration, setUsdtDuration] = useState("");
+    const [btcduration, setBtcDuration] = useState("");
+    const [ethduration, setEthDuration] = useState("");
+
     const [selectedPercentage1, setSelectedPercentage1] = useState("");
     const [selectedPercentage2, setSelectedPercentage2] = useState("");
     const [selectedPercentage3, setSelectedPercentage3] = useState("");
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
-        const value = e.target.value;
-        const validValue = value.replace(/[^0-9.]/g, '');
-        const parts = validValue.split('.');
-        if (parts.length > 2) {
-            setter(parts.slice(0, 2).join('.'));
-        } else {
-            setter(validValue);
-        }
+    const handleInputChange = (e, setter) => {
+        const value = e.target.value.replace(/[^0-9.]/g, '');
+        setter(value);
     };
 
-    const handleSelect1 = (percentage: string) => setSelectedPercentage1(percentage);
-    const handleSelect2 = (percentage: string) => setSelectedPercentage2(percentage);
-    const handleSelect3 = (percentage: string) => setSelectedPercentage3(percentage);
-
-    useEffect(() => {
-        // Simulate image loading animation
-    }, [selectedPercentage1, selectedPercentage2, selectedPercentage3]);
+    const handleSelect = (percentage, setter) => {
+        setter(percentage);
+    };
 
     return (
         <div className="flex flex-col w-full items-center text-white">
-            {/* Banner Section */}
+            {/* Header */}
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
@@ -61,7 +54,6 @@ function Staking() {
                 </div>
             </div>
 
-            {/* Trading Plan Header */}
             <div className="flex justify-between w-full">
                 <h1 className="flex md:text-[60px] text-[30px] font-bold">{t('trading')}</h1>
                 <p className="md:text-[20px] text-[13px] items-end flex">{t('risk')}</p>
@@ -71,7 +63,7 @@ function Staking() {
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="USDT Background" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
-                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
+                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10 ">
                         <div className="flex items-center">
                             <img src={usdt} alt="USDT" className="w-14 h-14 mr-4" />
                             <p className="text-[35px] md:text-[30px] font-bold flex">USDT</p>
@@ -93,11 +85,10 @@ function Staking() {
                     </div>
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
                         <div className="flex justify-between">
-                            <p className="text-[25px] md">{t('stake')}</p>
+                            <p className="text-[25px] md:mr-2">{t('stake')}</p>
                             <input
                                 type="text"
-                                pattern="[0-9.]*"
-                                className="input-box"
+                                className="input-box ml-4"
                                 value={inputValue1}
                                 onChange={(e) => handleInputChange(e, setInputValue1)}
                                 placeholder="Enter amount to stake"
@@ -109,30 +100,20 @@ function Staking() {
                         <ChildComponent1
                             percentages={percentages}
                             selectedPercentage={selectedPercentage1}
-                            handleSelect={handleSelect1}
-                            showImage={true}
+                            handleSelect={(percentage) => handleSelect(percentage, setSelectedPercentage1)}
                         />
-                    </div>
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
             </div>
 
             {/* BTC Section */}
             <div className="flex flex-wrap w-full relative mt-10">
-                <img src={btcbg} className="absolute w-full h-full" alt="Bitcoin Background" />
+                <img src={btcbg} className="absolute w-full h-full" alt="BTC Background" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
-                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
+                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10 ">
                         <div className="flex items-center">
-                            <img src={btc} alt="Bitcoin" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin
-                                <sup>
-                                    <button title={t('wbtc')}>
-                                        <img src={symbol} className="ml-4" alt="Wrapped Bitcoin Symbol" />
-                                    </button>
-                                </sup>
-                            </p>
+                            <img src={btc} alt="BTC" className="w-14 h-14 mr-4" />
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin</p>
                         </div>
                         <div className="flex mt-5 w-full justify-between text-white">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('day'))}>
@@ -154,8 +135,7 @@ function Staking() {
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
                                 type="text"
-                                pattern="[0-9.]*"
-                                className="input-box"
+                                className="input-box ml-4"
                                 value={inputValue2}
                                 onChange={(e) => handleInputChange(e, setInputValue2)}
                                 placeholder="Enter amount to stake"
@@ -167,30 +147,20 @@ function Staking() {
                         <ChildComponent2
                             percentages={percentages}
                             selectedPercentage={selectedPercentage2}
-                            handleSelect={handleSelect2}
-                            showImage={true}
+                            handleSelect={(percentage) => handleSelect(percentage, setSelectedPercentage2)}
                         />
-                    </div>
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
             </div>
 
             {/* ETH Section */}
             <div className="flex flex-wrap w-full relative mt-10">
-                <img src={ethbg} className="absolute w-full h-full" alt="Ethereum Background" />
+                <img src={ethbg} className="absolute w-full h-full" alt="ETH Background" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
-                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
+                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10 ">
                         <div className="flex items-center">
-                            <img src={eth} alt="Ethereum" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum
-                                <sup>
-                                    <button title={t('weth')}>
-                                        <img src={symbol} className="ml-4" alt="Wrapped Ether Symbol" />
-                                    </button>
-                                </sup>
-                            </p>
+                            <img src={eth} alt="ETH" className="w-14 h-14 mr-4" />
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum</p>
                         </div>
                         <div className="flex mt-5 w-full justify-between text-white">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('day'))}>
@@ -212,8 +182,7 @@ function Staking() {
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
                                 type="text"
-                                pattern="[0-9.]*"
-                                className="input-box"
+                                className="input-box ml-4"
                                 value={inputValue3}
                                 onChange={(e) => handleInputChange(e, setInputValue3)}
                                 placeholder="Enter amount to stake"
@@ -225,23 +194,13 @@ function Staking() {
                         <ChildComponent3
                             percentages={percentages}
                             selectedPercentage={selectedPercentage3}
-                            handleSelect={handleSelect3}
-                            showImage={true}
+                            handleSelect={(percentage) => handleSelect(percentage, setSelectedPercentage3)}
                         />
-                    </div>
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
             </div>
 
-            {/* Final Whale Section */}
-            <div className="flex flex-col my-10 w-full h-auto bg-black">
-                <img src={bg_whale} className="w-full h-auto" alt="Whale Background" />
-                <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">{t('crypto')}</p>
-            </div>
-
-            {/* Social Media Links */}
+            {/* Footer Links */}
             <div className="flex w-full bg-black mt-10 lg:mt-40 justify-between">
                 <a href="https://linktr.ee/WHALESTRATEGY" className="w-[45%] lg:w-[45%]">
                     <img src={linktree} alt="Linktree" className="w-full h-auto cursor-pointer" />
@@ -250,6 +209,7 @@ function Staking() {
                     <img src={discord} alt="Discord" className="w-full h-auto cursor-pointer" />
                 </a>
             </div>
+            <div className="w-full h-40"></div>
         </div>
     );
 }
