@@ -12,87 +12,57 @@ import bg_whale from '../assets/bg-whale.png';
 import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
+import whale25 from '../assets/whale25.png';
+import whale50 from '../assets/whale50.png';
+import whale75 from '../assets/whale75.png';
+import whaleAllIn from '../assets/whaleAllIn.png';
+import { toast } from 'react-toastify'; // Assuming react-toastify for notifications
 
 import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
 function Staking() {
-    const [showImage, setShowImage] = useState(false);
     const { t } = useTranslation();
-    const [amount, setAmount] = useState("");
     const [usdtduration, setUsdtDuration] = useState("");
     const [btcduration, setBtcDuration] = useState("");
     const [ethduration, setEthDuration] = useState("");
     const [inputValue1, setInputValue1] = useState('');
     const [inputValue2, setInputValue2] = useState('');
     const [inputValue3, setInputValue3] = useState('');
-    const [address, setAddress] = useState("");
+    const [selectedPercentage1, setSelectedPercentage1] = useState(0);
+    const [selectedPercentage2, setSelectedPercentage2] = useState(0);
+    const [selectedPercentage3, setSelectedPercentage3] = useState(0);
+    const [whaleImage1, setWhaleImage1] = useState(whale25);
+    const [whaleImage2, setWhaleImage2] = useState(whale25);
+    const [whaleImage3, setWhaleImage3] = useState(whale25);
+    const [connected, setConnected] = useState(false);
 
     const percentages = ['25%', '50%', '75%', 'ALL IN'];
-    const [selectedPercentage1, setSelectedPercentage1] = useState("");
-    const [showImage1, setShowImage1] = useState(false);
-    const [selectedPercentage2, setSelectedPercentage2] = useState("");
-    const [showImage2, setShowImage2] = useState(false);
-    const [selectedPercentage3, setSelectedPercentage3] = useState("");
-    const [showImage3, setShowImage3] = useState(false);
+    const whaleImages = [whale25, whale50, whale75, whaleAllIn];
 
-    const isPrime = (num: number): boolean => {
-        if (num <= 1) return false;
-        if (num <= 3) return true;
-        if (num % 2 === 0 || num % 3 === 0) return false;
-        for (let i = 5; i * i <= num; i += 6) {
-            if (num % i === 0 || num % (i + 2) === 0) return false;
+    useEffect(() => {
+        if (connected) {
+            toast.success("Wallet Connected");
+        } else {
+            toast.error("Wallet Disconnected");
         }
-        return true;
-    };
+    }, [connected]);
 
-    const validatePrime = (value: string, setter: (value: string) => void) => {
-        const num = Number(value);
-        if (num !== Math.floor(num)) { 
-            return; 
-        }
+    const handlePercentageChange = (percentage: number, setSelectedPercentage: (value: number) => void, setWhaleImage: (value: string) => void) => {
+        setSelectedPercentage(percentage);
+        setWhaleImage(whaleImages[percentage]);
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
         const value = e.target.value;
         const validValue = value.replace(/[^0-9.]/g, '');
-        const parts = validValue.split('.');
-        if (parts.length > 2) {
-            setter(parts.slice(0, 2).join('.') + parts.slice(2).join(''));
-        } else {
-            setter(validValue);
-        }
+        setter(validValue);
     };
 
-    useEffect(() => {
-        setShowImage1(false);
-        const timer1 = setTimeout(() => setShowImage1(true), 0.5);
-        return () => clearTimeout(timer1);
-    }, [selectedPercentage1]);
-
-    useEffect(() => {
-        setShowImage2(false);
-        const timer2 = setTimeout(() => setShowImage2(true), 0.5);
-        return () => clearTimeout(timer2);
-    }, [selectedPercentage2]);
-
-    useEffect(() => {
-        setShowImage3(false);
-        const timer3 = setTimeout(() => setShowImage3(true), 0.5);
-        return () => clearTimeout(timer3);
-    }, [selectedPercentage3]);
-
-    const handleSelect1 = (percentage: string) => {
-        setSelectedPercentage1(percentage);
-    };
-
-    const handleSelect2 = (percentage: string) => {
-        setSelectedPercentage2(percentage);
-    };
-
-    const handleSelect3 = (percentage: string) => {
-        setSelectedPercentage3(percentage);
+    const handleSliderChange = (value: number, setSelectedPercentage: (value: number) => void, setWhaleImage: (value: string) => void) => {
+        const index = Math.round(value / 25); // 25%, 50%, 75%, ALL IN (100%)
+        handlePercentageChange(index, setSelectedPercentage, setWhaleImage);
     };
 
     return (
@@ -105,101 +75,87 @@ function Staking() {
                     <p className="mt-4 text-[15px] md:text-[25px]">{t('Join')}</p>
                 </div>
             </div>
-            <h1 className="text-[60px] font-bold">{t('Trading Plan')}</h1>
-            <p>{t('Before staking, fully understand the risks involved')}</p>
             <div className="flex justify-between w-full">
-                <h1 className="md:text-[60px] text-[30px] font-bold">{t('trading')}</h1>
+                <h1 className="flex md:text-[60px] text-[30px] font-bold">{t('trading')}</h1>
                 <p className="md:text-[20px] text-[13px] items-end flex">{t('risk')}</p>
             </div>
+
+            {/* USDT Staking Section */}
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
                             <img src={usdt} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold">USDT</p>
+                            <p className="text-[35px] md:text-[30px] font-bold flex">USDT </p>
                         </div>
                         <div className="flex mt-5 w-full justify-between text-white">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setUsdtDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
-                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">15%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setUsdtDuration(t('month'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
-                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">24%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">24%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setUsdtDuration(t('year'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('year')}</div>
-                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">36%</p>
                             </div>
                         </div>
                     </div>
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
-                        <div className="flex justify-between ">
+                        <div className="flex justify-between">
                             <p className="text-[25px] md">{t('stake')}</p>
-                            <input
-                                type="text"
-                                pattern="[0-9.]*"
-                                className="text-black outline-none rounded text-right p-2"
-                                value={inputValue1}
-                                onChange={(e) => handleInputChange(e, setInputValue1)}
-                                onBlur={() => validatePrime(inputValue1, setInputValue1)}
-                            />
+                            <input type="text" pattern="[0-9.]*" className="text-black outline-none rounded text-right p-2" value={inputValue1} onChange={(e) => handleInputChange(e, setInputValue1)} />
                         </div>
                         <div>
                             <p className="text-[25px] md">{usdtduration ? usdtduration : "0 Days"}</p>
-                            <p></p>
                         </div>
                         <ChildComponent1
                             percentages={percentages}
                             selectedPercentage={selectedPercentage1}
-                            handleSelect={handleSelect1}
-                            showImage={showImage1}
+                            handleSelect={(percentage) => handlePercentageChange(percentage, setSelectedPercentage1, setWhaleImage1)}
+                            whaleImage={whaleImage1}
                         />
-                    </div>
-
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
             </div>
 
-            {/* BTC and ETH Sections */}
+            {/* BTC Staking Section */}
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={btcbg} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
                             <img src={btc} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold">Bitcoin</p>
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin
+                                <sup>
+                                    <button title={t('wbtc')}>
+                                        <img src={symbol} className="ml-4" alt="" />
+                                    </button>
+                                </sup>
+                            </p>
                         </div>
                         <div className="flex mt-5 w-full justify-between text-white">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
-                                <p className="text-[20px] md:text-[30px] my-auto">15%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">15%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('month'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
-                                <p className="text-[20px] md:text-[30px] my-auto">24%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">24%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('year'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('year')}</div>
-                                <p className="text-[20px] md:text-[30px] my-auto">36%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">36%</p>
                             </div>
                         </div>
                     </div>
-
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
-                        <div className="flex justify-between ">
+                        <div className="flex justify-between">
                             <p className="text-[25px] md">{t('stake')}</p>
-                            <input
-                                type="text"
-                                pattern="[0-9.]*"
-                                className="text-black outline-none rounded text-right p-2"
-                                value={inputValue2}
-                                onChange={(e) => handleInputChange(e, setInputValue2)}
-                                onBlur={() => validatePrime(inputValue2, setInputValue2)}
-                            />
+                            <input type="text" pattern="[0-9.]*" className="text-black outline-none rounded text-right p-2" value={inputValue2} onChange={(e) => handleInputChange(e, setInputValue2)} />
                         </div>
                         <div>
                             <p className="text-[25px] md">{btcduration ? btcduration : "0 Days"}</p>
@@ -207,53 +163,47 @@ function Staking() {
                         <ChildComponent2
                             percentages={percentages}
                             selectedPercentage={selectedPercentage2}
-                            handleSelect={handleSelect2}
-                            showImage={showImage2}
+                            handleSelect={(percentage) => handlePercentageChange(percentage, setSelectedPercentage2, setWhaleImage2)}
+                            whaleImage={whaleImage2}
                         />
-                    </div>
-
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
             </div>
 
-            {/* ETH Section */}
+            {/* ETH Staking Section */}
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={ethbg} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
                             <img src={eth} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold">Ethereum</p>
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum
+                                <sup>
+                                    <button title={t('weth')}>
+                                        <img src={symbol} className="ml-4" alt="" />
+                                    </button>
+                                </sup>
+                            </p>
                         </div>
                         <div className="flex mt-5 w-full justify-between text-white">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
-                                <p className="text-[20px] md:text-[30px] my-auto">15%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">15%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('month'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
-                                <p className="text-[20px] md:text-[30px] my-auto">24%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">24%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('year'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('year')}</div>
-                                <p className="text-[20px] md:text-[30px] my-auto">36%</p>
+                                <p className=" text-[20px] md:text-[30px] my-auto">36%</p>
                             </div>
                         </div>
                     </div>
-
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
-                        <div className="flex justify-between ">
+                        <div className="flex justify-between">
                             <p className="text-[25px] md">{t('stake')}</p>
-                            <input
-                                type="text"
-                                pattern="[0-9.]*"
-                                className="text-black outline-none rounded text-right p-2"
-                                value={inputValue3}
-                                onChange={(e) => handleInputChange(e, setInputValue3)}
-                                onBlur={() => validatePrime(inputValue3, setInputValue3)}
-                            />
+                            <input type="text" pattern="[0-9.]*" className="text-black outline-none rounded text-right p-2" value={inputValue3} onChange={(e) => handleInputChange(e, setInputValue3)} />
                         </div>
                         <div>
                             <p className="text-[25px] md">{ethduration ? ethduration : "0 Days"}</p>
@@ -261,18 +211,15 @@ function Staking() {
                         <ChildComponent3
                             percentages={percentages}
                             selectedPercentage={selectedPercentage3}
-                            handleSelect={handleSelect3}
-                            showImage={showImage3}
+                            handleSelect={(percentage) => handlePercentageChange(percentage, setSelectedPercentage3, setWhaleImage3)}
+                            whaleImage={whaleImage3}
                         />
-                    </div>
-
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
             </div>
 
-            <div className="flex flex-col my-10 w-full h-auto bg-black">
+            {/* Footer */}
+            <div className="flex flex-col  my-10 w-full h-auto bg-black">
                 <img src={bg_whale} className="w-full h-auto" alt="" />
                 <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">{t('crypto')}</p>
             </div>
