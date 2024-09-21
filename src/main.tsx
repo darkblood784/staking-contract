@@ -1,3 +1,4 @@
+import './custom.css'; 
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@tronweb3/tronwallet-adapter-react-ui/style.css';

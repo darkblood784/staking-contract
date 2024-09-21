@@ -1,0 +1,110 @@
+/* Input box enhancements */
+.input-box {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: white;
+  outline: none;
+  width: 100%; /* Adjust as per your layout needs */
+  transition: all 0.3s ease-in-out;
+}
+
+.input-box::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Button hover effect for interactive feedback */
+button:hover {
+  transform: scale(1.05);
+  background-color: #1e90ff; /* You can customize the hover color */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Wallet connection button */
+.wallet-btn {
+  background-color: #28a745;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.wallet-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Tooltip placeholder (You can use a more advanced library for actual tooltips) */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above */
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Sticky navbar */
+nav.sticky {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  background-color: #000;
+  z-index: 100;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+nav.sticky.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Change background on scroll */
+}
+
+/* Progress bar (optional for later use) */
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: #1e90ff;
+  height: 10px;
+  transition: width 0.4s ease-in-out;
+}
+
+.progress-bar-small {
+  height: 5px;
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+  .input-box {
+    width: 100%; /* Full width for mobile */
+  }
+
+  button {
+    width: 100%; /* Full width buttons on mobile */
+  }
+}
