@@ -10,7 +10,7 @@ import usdt from '../assets/usdt.png';
 import btc from '../assets/btc.png';
 import eth from '../assets/eth.png';
 import bg_whale from '../assets/bg-whale.png';
-import whaleSlider from '../assets/whale.png';  // Whale image for slider
+import whaleSlider from '../assets/whale/whales_1.png';  // Whale image for slider
 import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
