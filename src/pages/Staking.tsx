@@ -31,9 +31,14 @@ function Staking() {
     const [inputValue3, setInputValue3] = useState('');
 
     // States for percentages and whale drag positioning
-    const [selectedPercentage1, setSelectedPercentage1] = useState(25);  // Starting at 25%
+    const [selectedPercentage1, setSelectedPercentage1] = useState(25);  // USDT Starting at 25%
+    const [selectedPercentage2, setSelectedPercentage2] = useState(25);  // BTC Starting at 25%
+    const [selectedPercentage3, setSelectedPercentage3] = useState(25);  // ETH Starting at 25%
+
     const [usdtduration, setUsdtDuration] = useState("");
-    
+    const [btcduration, setBtcDuration] = useState("");
+    const [ethduration, setEthDuration] = useState("");
+
     // Simulated wallet connection event
     useEffect(() => {
         if (walletConnected) {
@@ -55,9 +60,19 @@ function Staking() {
     };
 
     // Whale slider logic
-    const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSliderChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(e.target.value);
         setSelectedPercentage1(value);
+    };
+
+    const handleSliderChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(e.target.value);
+        setSelectedPercentage2(value);
+    };
+
+    const handleSliderChange3 = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(e.target.value);
+        setSelectedPercentage3(value);
     };
 
     return (
@@ -108,7 +123,7 @@ function Staking() {
                         </div>
                     </div>
 
-                    {/* Whale Slider */}
+                    {/* Whale Slider for USDT */}
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
                         <div className="flex justify-between">
                             <p className="text-[25px]">{t('stake')}</p>
@@ -128,7 +143,7 @@ function Staking() {
                                 min="0"
                                 max="100"
                                 value={selectedPercentage1}
-                                onChange={handleSliderChange}
+                                onChange={handleSliderChange1}
                                 className="w-full appearance-none bg-gray-300 rounded h-2"
                             />
                             <img
@@ -142,10 +157,130 @@ function Staking() {
                 </div>
             </div>
 
-            {/* Footer Section */}
-            <div className="flex flex-col  my-10 w-full h-auto bg-black">
+            {/* BTC Section */}
+            <div className="flex flex-wrap w-full relative mt-10">
+                <img src={btcbg} className="absolute w-full h-full" alt="" />
+                <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
+                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
+                        <div className="flex items-center">
+                            <img src={btc} alt="" className="w-14 h-14 mr-4" />
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin</p>
+                        </div>
+                        <div className="flex mt-5 w-full justify-between text-white">
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('day'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl">{t('day')}</div>
+                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('month'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl">{t('month')}</div>
+                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">24%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setBtcDuration(t('year'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl">{t('year')}</div>
+                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Whale Slider for BTC */}
+                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                        <div className="flex justify-between">
+                            <p className="text-[25px]">{t('stake')}</p>
+                            <input
+                                type="text"
+                                pattern="[0-9.]*"
+                                className="text-white bg-transparent border border-white outline-none rounded text-right p-2"
+                                value={inputValue2}
+                                placeholder={t("Enter amount to stake")}
+                                onChange={(e) => handleInputChange(e, setInputValue2)}
+                            />
+                        </div>
+                        <p className="text-[25px]">{btcduration ? btcduration : "0 Days"}</p>
+                        <div className="relative mt-4">
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={selectedPercentage2}
+                                onChange={handleSliderChange2}
+                                className="w-full appearance-none bg-gray-300 rounded h-2"
+                            />
+                            <img
+                                src={whaleSlider}
+                                alt="Whale"
+                                className="absolute left-0 top-[-40px] h-[50px] transition-all"
+                                style={{ left: `${selectedPercentage2}%`, transform: `translateX(-50%)` }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* ETH Section */}
+            <div className="flex flex-wrap w-full relative mt-10">
+                <img src={ethbg} className="absolute w-full h-full" alt="" />
+                <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
+                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
+                        <div className="flex items-center">
+                            <img src={eth} alt="" className="w-14 h-14 mr-4" />
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum</p>
+                        </div>
+                        <div className="flex mt-5 w-full justify-between text-white">
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('day'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl">{t('day')}</div>
+                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('month'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl">{t('month')}</div>
+                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">24%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={() => setEthDuration(t('year'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl">{t('year')}</div>
+                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Whale Slider for ETH */}
+                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                        <div className="flex justify-between">
+                            <p className="text-[25px]">{t('stake')}</p>
+                            <input
+                                type="text"
+                                pattern="[0-9.]*"
+                                className="text-white bg-transparent border border-white outline-none rounded text-right p-2"
+                                value={inputValue3}
+                                placeholder={t("Enter amount to stake")}
+                                onChange={(e) => handleInputChange(e, setInputValue3)}
+                            />
+                        </div>
+                        <p className="text-[25px]">{ethduration ? ethduration : "0 Days"}</p>
+                        <div className="relative mt-4">
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={selectedPercentage3}
+                                onChange={handleSliderChange3}
+                                className="w-full appearance-none bg-gray-300 rounded h-2"
+                            />
+                            <img
+                                src={whaleSlider}
+                                alt="Whale"
+                                className="absolute left-0 top-[-40px] h-[50px] transition-all"
+                                style={{ left: `${selectedPercentage3}%`, transform: `translateX(-50%)` }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <div className="flex flex-col my-10 w-full h-auto bg-black">
                 <img src={bg_whale} className="w-full h-auto" alt="" />
-                <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">{t('crypto')}</p>
+                <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">
+                    {t('crypto')}
+                </p>
             </div>
             <div className="flex w-full bg-black mt-10 lg:mt-40 justify-between">
                 <a href="https://linktr.ee/WHALESTRATEGY" className="w-[45%] lg:w-[45%]">
