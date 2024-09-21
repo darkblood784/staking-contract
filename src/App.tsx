@@ -12,6 +12,7 @@ import { LedgerAdapter } from '@tronweb3/tronwallet-adapter-ledger';
 
 import Navbar from './pages/Navbar';
 import Staking from './pages/Staking';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export function App() {
