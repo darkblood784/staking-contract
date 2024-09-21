@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+
 import banner from '../assets/banner.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
 import btcbg from '../assets/bitcoinplanbackground.png';
@@ -11,21 +12,26 @@ import bg_whale from '../assets/bg-whale.png';
 import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
+
 import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
 function Staking() {
     const { t } = useTranslation();
-    const [inputValue1, setInputValue1] = useState('');
-    const [inputValue2, setInputValue2] = useState('');
-    const [inputValue3, setInputValue3] = useState('');
+    const [amount, setAmount] = useState("");
     const [usdtduration, setUsdtDuration] = useState("");
     const [btcduration, setBtcDuration] = useState("");
     const [ethduration, setEthDuration] = useState("");
-    const [progressUSDT, setProgressUSDT] = useState(0);
-    const [progressBTC, setProgressBTC] = useState(0);
-    const [progressETH, setProgressETH] = useState(0);
+    const [inputValue1, setInputValue1] = useState('');
+    const [inputValue2, setInputValue2] = useState('');
+    const [inputValue3, setInputValue3] = useState('');
+    const [selectedPercentage1, setSelectedPercentage1] = useState("");
+    const [selectedPercentage2, setSelectedPercentage2] = useState("");
+    const [selectedPercentage3, setSelectedPercentage3] = useState("");
+    const [showImage1, setShowImage1] = useState(false);
+    const [showImage2, setShowImage2] = useState(false);
+    const [showImage3, setShowImage3] = useState(false);
     const percentages = ['25%', '50%', '75%', 'ALL IN'];
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
@@ -34,14 +40,39 @@ function Staking() {
         setter(validValue);
     };
 
-    // Wallet connection feedback (for UI)
-    const [walletConnected, setWalletConnected] = useState(false);
-    const handleWalletConnect = () => {
-        setWalletConnected(true);
+    const handleSelect1 = (percentage: string) => {
+        setSelectedPercentage1(percentage);
     };
+
+    const handleSelect2 = (percentage: string) => {
+        setSelectedPercentage2(percentage);
+    };
+
+    const handleSelect3 = (percentage: string) => {
+        setSelectedPercentage3(percentage);
+    };
+
+    useEffect(() => {
+        setShowImage1(false);
+        const timer1 = setTimeout(() => setShowImage1(true), 0.5);
+        return () => clearTimeout(timer1);
+    }, [selectedPercentage1]);
+
+    useEffect(() => {
+        setShowImage2(false);
+        const timer2 = setTimeout(() => setShowImage2(true), 0.5);
+        return () => clearTimeout(timer2);
+    }, [selectedPercentage2]);
+
+    useEffect(() => {
+        setShowImage3(false);
+        const timer3 = setTimeout(() => setShowImage3(true), 0.5);
+        return () => clearTimeout(timer3);
+    }, [selectedPercentage3]);
 
     return (
         <div className="flex flex-col w-full items-center text-white">
+            {/* Banner Section */}
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
@@ -51,101 +82,175 @@ function Staking() {
                 </div>
             </div>
 
+            <div className="flex justify-between w-full">
+                <h1 className="flex md:text-[60px] text-[30px] font-bold">{t('trading')}</h1>
+                <p className="md:text-[20px] text-[13px] items-end flex">{t('risk')}</p>
+            </div>
+
+            {/* USDT Staking Section */}
             <div className="flex flex-wrap w-full relative mt-10">
-                {/* USDT Staking Section */}
-                <img src={usdtbackground} className="absolute w-full h-full" alt="" />
+                <img src={usdtbackground} className="absolute w-full h-full" alt="USDT Background" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
-                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10 ">
+                    <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
-                            <img src={usdt} alt="" className="w-14 h-14 mr-4" />
+                            <img src={usdt} alt="USDT Icon" className="w-14 h-14 mr-4" />
                             <p className="text-[35px] md:text-[30px] font-bold flex">USDT</p>
                         </div>
-                        <div className="tooltip">
-                            <div className="progress-bar">
-                                <div className="progress-bar-filled" style={{ width: `${progressUSDT}%` }}></div>
+                        <div className="flex mt-5 w-full justify-between text-white">
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setUsdtDuration(t('day'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
                             </div>
-                            <span className="tooltiptext">{t('Progress of staking USDT')}</span>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setUsdtDuration(t('month'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">24%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setUsdtDuration(t('year'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('year')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
+                            </div>
                         </div>
                     </div>
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
-                        <div className="flex justify-between ">
-                            <p className="text-[25px]">{t('stake')}</p>
+                        <div className="flex justify-between">
+                            <p className="text-[25px] md">{t('stake')}</p>
                             <input
                                 type="text"
+                                pattern="[0-9.]*"
                                 className="input-box"
                                 placeholder="Enter amount to stake"
                                 value={inputValue1}
                                 onChange={(e) => handleInputChange(e, setInputValue1)}
                             />
                         </div>
-                        <ChildComponent1 percentages={percentages} />
+                        <ChildComponent1
+                            percentages={percentages}
+                            selectedPercentage={selectedPercentage1}
+                            handleSelect={handleSelect1}
+                            showImage={showImage1}
+                        />
                     </div>
                 </div>
             </div>
 
             {/* BTC Staking Section */}
             <div className="flex flex-wrap w-full relative mt-10">
-                <img src={btcbg} className="absolute w-full h-full" alt="" />
+                <img src={btcbg} className="absolute w-full h-full" alt="BTC Background" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
-                            <img src={btc} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin</p>
+                            <img src={btc} alt="BTC Icon" className="w-14 h-14 mr-4" />
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin
+                                <sup>
+                                    <button title={t('wbtc')}>
+                                        <img src={symbol} className="ml-4" alt="Symbol" />
+                                    </button>
+                                </sup>
+                            </p>
                         </div>
-                        <div className="tooltip">
-                            <div className="progress-bar">
-                                <div className="progress-bar-filled" style={{ width: `${progressBTC}%` }}></div>
+                        <div className="flex mt-5 w-full justify-between text-white">
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setBtcDuration(t('day'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
                             </div>
-                            <span className="tooltiptext">{t('Progress of staking BTC')}</span>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setBtcDuration(t('month'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">24%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setBtcDuration(t('year'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('year')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
+                            </div>
                         </div>
                     </div>
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
                         <div className="flex justify-between">
-                            <p className="text-[25px]">{t('stake')}</p>
+                            <p className="text-[25px] md">{t('stake')}</p>
                             <input
                                 type="text"
+                                pattern="[0-9.]*"
                                 className="input-box"
                                 placeholder="Enter amount to stake"
                                 value={inputValue2}
                                 onChange={(e) => handleInputChange(e, setInputValue2)}
                             />
                         </div>
-                        <ChildComponent2 percentages={percentages} />
+                        <ChildComponent2
+                            percentages={percentages}
+                            selectedPercentage={selectedPercentage2}
+                            handleSelect={handleSelect2}
+                            showImage={showImage2}
+                        />
                     </div>
                 </div>
             </div>
 
             {/* ETH Staking Section */}
             <div className="flex flex-wrap w-full relative mt-10">
-                <img src={ethbg} className="absolute w-full h-full" alt="" />
+                <img src={ethbg} className="absolute w-full h-full" alt="ETH Background" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
-                            <img src={eth} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum</p>
+                            <img src={eth} alt="ETH Icon" className="w-14 h-14 mr-4" />
+                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum
+                                <sup>
+                                    <button title={t('weth')}>
+                                        <img src={symbol} className="ml-4" alt="Symbol" />
+                                    </button>
+                                </sup>
+                            </p>
                         </div>
-                        <div className="tooltip">
-                            <div className="progress-bar">
-                                <div className="progress-bar-filled" style={{ width: `${progressETH}%` }}></div>
+                        <div className="flex mt-5 w-full justify-between text-white">
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setEthDuration(t('day'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
                             </div>
-                            <span className="tooltiptext">{t('Progress of staking ETH')}</span>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setEthDuration(t('month'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">24%</p>
+                            </div>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] text-center cursor-pointer" onClick={() => setEthDuration(t('year'))}>
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('year')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
+                            </div>
                         </div>
                     </div>
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
-                        <div className="flex justify-between ">
-                            <p className="text-[25px]">{t('stake')}</p>
+                        <div className="flex justify-between">
+                            <p className="text-[25px] md">{t('stake')}</p>
                             <input
                                 type="text"
+                                pattern="[0-9.]*"
                                 className="input-box"
                                 placeholder="Enter amount to stake"
                                 value={inputValue3}
                                 onChange={(e) => handleInputChange(e, setInputValue3)}
                             />
                         </div>
-                        <ChildComponent3 percentages={percentages} />
+                        <ChildComponent3
+                            percentages={percentages}
+                            selectedPercentage={selectedPercentage3}
+                            handleSelect={handleSelect3}
+                            showImage={showImage3}
+                        />
                     </div>
                 </div>
             </div>
+
+            {/* Footer Section */}
+            <div className="flex flex-col my-10 w-full h-auto bg-black">
+                <img src={bg_whale} className="w-full h-auto" alt="Whale Background" />
+                <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">{t('crypto')}</p>
+            </div>
+            <div className="flex w-full bg-black mt-10 lg:mt-40 justify-between">
+                <a href="https://linktr.ee/WHALESTRATEGY" className="w-[45%] lg:w-[45%]">
+                    <img src={linktree} alt="Linktree" className="w-full h-auto cursor-pointer" />
+                </a>
+                <a href="https://discord.gg/xpkF6U9KJY" className="w-[45%] lg:w-[45%]">
+                    <img src={discord} alt="Discord" className="w-full h-auto cursor-pointer" />
+                </a>
+            </div>
+            <div className="w-full h-40"></div>
         </div>
     );
 }
