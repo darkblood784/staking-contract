@@ -12,16 +12,23 @@ import bg_whale from '../assets/bg-whale.png';
 import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
-
+import WhaleSlider from '../components/WhaleSlider';
 import whaleTail from '../assets/whale/Tail.png';  // Whale images
 import whaleBody from '../assets/whale/Body.png';
 import whaleHead0_25 from '../assets/whale/0_25.png';
 import whaleHead25_75 from '../assets/whale/25_75.png';
 import whaleHead75_100 from '../assets/whale/75_100.png';
+import React from 'react';
 
-// Whale Slider Component
-const WhaleSlider = ({ selectedPercentage, handleSelect }) => {
-    const [sliderValue, setSliderValue] = useState(0); // Whale slider value
+// Define the types for the props
+interface WhaleSliderProps {
+  selectedPercentage: string;
+  handleSelect: (percentage: string) => void;
+}
+
+// Whale Slider Component with TypeScript
+const WhaleSlider: React.FC<WhaleSliderProps> = ({ selectedPercentage, handleSelect }) => {
+    const [sliderValue, setSliderValue] = useState<number>(0); // Whale slider value
 
     const whaleHeadImages = {
         "0-25": whaleHead0_25,
@@ -84,6 +91,9 @@ const WhaleSlider = ({ selectedPercentage, handleSelect }) => {
         </div>
     );
 };
+
+export default WhaleSlider;
+
 
 // Main Staking Component
 function Staking() {
