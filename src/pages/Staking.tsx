@@ -268,7 +268,6 @@ function Staking() {
                                 <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">36%</p>
                             </div>
 
-
                         </div>
 
                     </div>
