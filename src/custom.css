@@ -108,3 +108,81 @@
       transform: rotate(360deg);
   }
 }
+
+
+/* custom.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1d;
+  color: white;
+}
+
+.slider-container {
+  position: relative;
+  width: 500px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.whale-tail {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  height: 79.5px;
+}
+
+.whale-body {
+  position: absolute;
+  left: 70px; /* Ensure body starts after tail */
+  bottom: 0;
+  height: 50px;
+  background-image: url('/assets/whale/Body.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  width: 0; /* Set initial width */
+}
+
+.whale-head {
+  position: absolute;
+  bottom: 0;
+  top: 45px;
+  width: 70px;
+  height: 64px;
+}
+
+.slider-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 400px;
+  height: 5px;
+  background: transparent;
+  outline: none;
+  position: absolute;
+  left: 70px; /* Start after the tail */
+  bottom: 20px;
+}
+
+.slider-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.buttons-container button {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.buttons-container button:hover {
+  background-color: #555;
+}

@@ -17,6 +17,42 @@ import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
+import whaleTail from '../assets/whale/Tail.png';  // Whale images
+import whaleBody from '../assets/whale/Body.png';
+import whaleHead0_25 from '../assets/whale/0_25.png';
+import whaleHead25_75 from '../assets/whale/25_75.png';
+import whaleHead75_100 from '../assets/whale/75_100.png';
+
+// Import custom CSS
+import '..custom.css';  // <-- Add this to import the custom CSS
+
+// New state for whale slider
+const Staking: React.FC = () => {
+    const { t } = useTranslation();
+    const [sliderValue, setSliderValue] = useState(0); // Whale slider value
+
+    const whaleHeadImages = {
+        "0-25": whaleHead0_25,
+        "25-75": whaleHead25_75,
+        "75-100": whaleHead75_100
+    };
+
+    const getWhaleHeadImage = () => {
+        if (sliderValue <= 25) return whaleHeadImages["0-25"];
+        if (sliderValue <= 75) return whaleHeadImages["25-75"];
+        return whaleHeadImages["75-100"];
+    };
+
+    // Handle slider change
+    const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSliderValue(parseInt(e.target.value));
+    };
+
+    // Your other state variables and logic (keep unchanged)
+    const [inputValue1, setInputValue1] = useState('');
+    const [selectedPercentage1, setSelectedPercentage1] = useState("");
+    const percentages = ['25%', '50%', '75%', 'ALL IN'];
+    const handleSelect1 = (percentage: string) => setSliderValue(parseInt(percentage));
 
 
 function Staking() {
@@ -103,6 +139,54 @@ function Staking() {
 
     return (
         <div className="flex flex-col w-full  items-center text-white">
+            {/* Whale Slider Section */}
+            <div className="whale-slider w-full md:w-[50%] lg:pl-10 pt-16 pb-5">
+                <p className="text-[25px] md">{t('stake')}</p>
+                {/* Whale Slider */}
+                <div className="slider-container relative w-full h-24">
+                    <img src={whaleTail} alt="Whale Tail" className="whale-tail" />
+                    <div
+
+                        className="whale-body"
+                        style={{
+                            width: `${sliderValue * 3}px`,
+                        }}
+                    ></div>
+                    <img
+                        src={getWhaleHeadImage()}
+                        alt="Whale Head"
+                        className="whale-head"
+                        style={{
+                            left: `${70 + sliderValue * 3}px`
+                        }}
+                    />
+                    <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={sliderValue}
+                        onChange={handleSliderChange}
+                        className="slider-range"
+                    />
+                </div>
+
+                <div className="text-center mt-2">
+                    <p>{sliderValue}%</p>
+                </div>
+
+                {/* Percentage Selection Buttons */}
+                <div className="buttons-container mt-5 flex justify-between">
+                    {percentages.map((percentage) => (
+                        <button
+                            key={percentage}
+                            className="bg-gray-700 px-4 py-2 rounded-full"
+                            onClick={() => handleSelect1(percentage)}
+                        >
+                            {percentage}
+                        </button>
+                    ))}
+                </div>
+            </div>
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
