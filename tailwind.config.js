@@ -26,4 +26,15 @@ export default {
   },
   plugins: [],
 }
+@font-face {
+  font-family: 'Minecraft';
+  src: url('public/fonts/Minecraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+body {
+  font-family: 'Minecraft', sans-serif;
+  background-color: #1a1a1d;
+  color: white;
+}
