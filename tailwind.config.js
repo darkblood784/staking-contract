@@ -26,3 +26,6 @@ export default {
   },
   plugins: [],
 }
+body {
+  font-family: 'Minecraft', sans-serif;
+}
