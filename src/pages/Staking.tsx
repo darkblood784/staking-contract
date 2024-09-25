@@ -102,25 +102,25 @@ function Staking() {
 
 
     return (
-        <div className="flex flex-col w-full  items-center text-white text-shadow-custom">
+        <div className="flex flex-col w-full  items-center text-white">
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
-                    <h1 className="minecraft-font font-bold shadow-lg ">
+                    <h1 className="minecraft-font font-bold text-shadow-customh ">
                         {t('swim')}
                     </h1>
-                    <h1 className="minecraft-font font-bold shadow-lg">
+                    <h1 className="minecraft-font font-bold text-shadow-customh">
                         {t('earn')}
                     </h1>
 
-                    <p className="mt-4 text-[15px] md:text-[25px] minecraft-font shadow-lg">
+                    <p className="mt-4 text-[15px] md:text-[25px] minecraft-font text-shadow-customp">
                         {t('Join')}
                     </p>
                 </div>
             </div>
             <div className="flex justify-between w-full">
-                <h1 className="flex md:text-[60px] text-[30px] minecraft-font font-bold">{t('trading')}</h1>
-                <p className="md:text-[20px] text-[13px] items-end flex minecraft-font">{t('risk')}</p>
+                <h1 className="flex md:text-[60px] text-[30px] minecraft-font font-bold text-shadow-customh">{t('trading')}</h1>
+                <p className="md:text-[20px] text-[13px] items-end flex minecraft-font text-shadow-customp">{t('risk')}</p>
             </div>
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="" />
@@ -128,9 +128,9 @@ function Staking() {
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10 ">
                         <div className="flex items-center">
                             <img src={usdt} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] minecraft-font font-bold flex">USDT </p>
+                            <p className="text-[35px] md:text-[30px] minecraft-font font-bold flex text-shadow-customh">USDT </p>
                         </div>
-                        <div className="flex mt-5 w-full justify-between text-white minecraft-font">
+                        <div className="flex mt-5 w-full justify-between text-white minecraft-font text-shadow-customp">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setUsdtDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
                                 <p className=" minecraft-font text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>

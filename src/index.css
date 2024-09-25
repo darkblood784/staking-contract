@@ -14,6 +14,10 @@
     background-color: #1a1a1d;
     color: white;
   }
-  .text-shadow-custom {
-    text-shadow: 2px 2px 0px rgb(61, 61, 61);
+  .text-shadow-customh {
+    text-shadow: 2px 2px 0px #787777;
+}
+
+.text-shadow-customp {
+    text-shadow: 1px 1px 0px #787777;
 }
