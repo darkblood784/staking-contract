@@ -106,14 +106,14 @@ function Staking() {
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
-                    <h1 className="minecraft-font font-bold  ">
+                    <h1 className="minecraft-font font-bold shadow-lg ">
                         {t('swim')}
                     </h1>
-                    <h1 className="minecraft-font font-bold ">
+                    <h1 className="minecraft-font font-bold shadow-lg">
                         {t('earn')}
                     </h1>
 
-                    <p className="mt-4 text-[15px] md:text-[25px] minecraft-font">
+                    <p className="mt-4 text-[15px] md:text-[25px] minecraft-font shadow-lg">
                         {t('Join')}
                     </p>
                 </div>
