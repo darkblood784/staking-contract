@@ -3,7 +3,10 @@ import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
 import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
 
-import './index.css';
+import '../index.css';
+
+import '../custom.css';
+
 
 function Navbar() {
     const { i18n, t } = useTranslation();
