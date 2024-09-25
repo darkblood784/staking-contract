@@ -145,7 +145,7 @@ function Staking() {
                             </div>
                         </div>
                     </div>
-                    <div className="minecraft-font w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                    <div className="minecraft-font w-full md:w-[30%] lg:pl-10 pt-16 pb-5 text-shadow-customp">
                         <div className="flex justify-between ">
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
@@ -159,7 +159,7 @@ function Staking() {
 
                         </div>
                         <div>
-                            <p className="minecraft-font text-[25px] md">{usdtduration ? usdtduration : "0 Days"}</p>
+                            <p className="minecraft-font text-[25px] md text-shadow-customp">{usdtduration ? usdtduration : "0 Days"}</p>
                             <p></p>
                         </div>
                         <ChildComponent1
@@ -170,7 +170,7 @@ function Staking() {
                         />
                     </div>
 
-                    <div className="minecraft-font w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
+                    <div className="minecraft-font text-shadow-customp w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
                         <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
@@ -182,7 +182,7 @@ function Staking() {
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
                             <img src={btc} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">Bitcoin
+                            <p className="text-[35px] md:text-[30px] font-bold text-shadow-customh flex">Bitcoin
                                 <sup>
                                     <button title={t('wbtc')}>
 
@@ -191,7 +191,7 @@ function Staking() {
                                 </sup>
                             </p>
                         </div>
-                        <div className="flex mt-5 w-full justify-between text-white">
+                        <div className="flex mt-5 w-full justify-between text-white text-shadow-customp">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setBtcDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
                                 <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
@@ -209,7 +209,7 @@ function Staking() {
                         </div>
 
                     </div>
-                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5 text-shadow-customp">
                         <div className="flex justify-between ">
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
@@ -222,7 +222,7 @@ function Staking() {
                             />
                         </div>
                         <div>
-                            <p className="text-[25px] md">{btcduration ? btcduration : "0 Days"}</p>
+                            <p className="text-[25px] text-shadow-customp md">{btcduration ? btcduration : "0 Days"}</p>
                             <p></p>
                         </div>
                         <ChildComponent2
@@ -234,7 +234,7 @@ function Staking() {
                     </div>
 
                     <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
+                        <p className="text-[35px] md:text-[30px] font-bold text-shadow-customp">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
 
@@ -245,7 +245,7 @@ function Staking() {
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
                         <div className="flex items-center">
                             <img src={eth} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">Ethereum
+                            <p className="text-[35px] md:text-[30px] font-bold text-shadow-customh flex">Ethereum
                                 <sup>
                                     <button title={t('weth')}>
 
@@ -254,7 +254,7 @@ function Staking() {
                                 </sup>
                             </p>
                         </div>
-                        <div className="flex mt-5 w-full justify-between text-white">
+                        <div className="flex mt-5 w-full justify-between text-shadow-customp text-white">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setEthDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
                                 <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
@@ -271,7 +271,7 @@ function Staking() {
                         </div>
 
                     </div>
-                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5 text-shadow-customp">
                         <div className="flex justify-between ">
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
@@ -296,14 +296,14 @@ function Staking() {
                     </div>
 
                     <div className="minecraft-font w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
-                        <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
+                        <p className="text-[35px] md:text-[30px] font-bold text-shadow-customp">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
 
             </div>
             <div className="minecraft-font flex flex-col  my-10 w-full h-auto bg-black">
                 <img src={bg_whale} className="w-full h-auto " alt="" />
-                <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">{t('crypto')}</p>
+                <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold text-shadow-customh lg:text-[51px]">{t('crypto')}</p>
             </div>
             <div className="minecraft-font flex w-full bg-black mt-10 lg:mt-40 justify-between">
                 <a href="https://linktr.ee/WHALESTRATEGY" className="w-[45%] lg:w-[45%]">
