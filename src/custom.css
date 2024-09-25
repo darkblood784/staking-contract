@@ -113,7 +113,7 @@
 /* custom.css */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Minecraft', sans-serif;
   background-color: #1a1a1d;
   color: white;
 }
@@ -191,9 +191,4 @@ body {
     src: url('/fonts/Minecraft.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
-
-/* Apply the font globally or to specific elements */
-body {
-    font-family: 'Minecraft', sans-serif;
 }
