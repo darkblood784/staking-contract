@@ -239,7 +239,7 @@ function Staking() {
                 </div>
 
             </div>
-            <div className="flex flex-wrap w-full relative mt-10">
+            <div className="minecraft-font flex flex-wrap w-full relative mt-10">
                 <img src={ethbg} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
@@ -295,17 +295,17 @@ function Staking() {
                         />
                     </div>
 
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
+                    <div className="minecraft-font w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
                         <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
 
             </div>
-            <div className="flex flex-col  my-10 w-full h-auto bg-black">
+            <div className="minecraft-font flex flex-col  my-10 w-full h-auto bg-black">
                 <img src={bg_whale} className="w-full h-auto " alt="" />
                 <p className="lg:pl-20 pl-10 mt-[-90px] lg:mt-[-200px] text-[18px] md:text-[40px] font-bold lg:text-[51px]">{t('crypto')}</p>
             </div>
-            <div className="flex w-full bg-black mt-10 lg:mt-40 justify-between">
+            <div className="minecraft-font flex w-full bg-black mt-10 lg:mt-40 justify-between">
                 <a href="https://linktr.ee/WHALESTRATEGY" className="w-[45%] lg:w-[45%]">
                     <img src={linktree} alt="" className="w-full h-auto cursor-pointer" />
                 </a>
