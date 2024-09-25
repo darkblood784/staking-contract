@@ -145,7 +145,7 @@ function Staking() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                    <div className="minecraft-font w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
                         <div className="flex justify-between ">
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
@@ -159,7 +159,7 @@ function Staking() {
 
                         </div>
                         <div>
-                            <p className="text-[25px] md">{usdtduration ? usdtduration : "0 Days"}</p>
+                            <p className="minecraft-font text-[25px] md">{usdtduration ? usdtduration : "0 Days"}</p>
                             <p></p>
                         </div>
                         <ChildComponent1
@@ -170,13 +170,13 @@ function Staking() {
                         />
                     </div>
 
-                    <div className="w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
+                    <div className="minecraft-font w-full h-20 md:w-1/4 md:h-full opacity-20 bg-black rounded-2xl flex justify-center items-center cursor-pointer">
                         <p className="text-[35px] md:text-[30px] font-bold">{t('take')} <span className="ml-2">&#9660;</span></p>
                     </div>
                 </div>
 
             </div>
-            <div className="flex flex-wrap w-full relative mt-10">
+            <div className="minecraft-font flex flex-wrap w-full relative mt-10">
                 <img src={btcbg} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10">
