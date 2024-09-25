@@ -188,7 +188,7 @@ body {
 }
 @font-face {
     font-family: 'Minecraft';
-    src: url('pub;i/fonts/Minecraft.ttf') format('truetype');
+    src: url('public/fonts/Minecraft.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
