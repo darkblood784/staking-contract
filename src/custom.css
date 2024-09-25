@@ -186,3 +186,11 @@ body {
 .buttons-container button:hover {
   background-color: #555;
 }
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/Minecraft.ttf') format('truetype');
+}
+
+.minecraft-font {
+  font-family: 'Minecraft', sans-serif;
+}
