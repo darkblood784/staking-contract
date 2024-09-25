@@ -26,16 +26,18 @@ function Navbar() {
                 <a href="https://staking.whalestrategy.net/">
                     <img src="/logo.png" className="w-16 h-16 sm:ml-10" alt="Logo" />
                 </a>
-                <button className="ml-4 flex items-center justify-center w-28 h-12 hover:bg-[#373c47] rounded-[4px] p-2 bg-[#0f111a] text-white text-[16px] font-bold">
+                <button className="ml-4 flex items-center justify-center w-28 h-12 rounded-[4px] p-2 bg-[#4A90E2] text-white text-[16px] font-bold hover:bg-[#1A6FD8]">
                     My Stakes
                 </button>
             </div>
 
             {/* Right side with Connect Wallet and Language Selector */}
             <div className="flex items-center">
-                <WalletActionButton className='w-28 md:w-32 flex justify-center' />
+                {/* Applying Minecraft Font to WalletActionButton */}
+                <WalletActionButton className="w-28 md:w-32 flex justify-center bg-[#4A90E2] text-white text-[16px] font-bold hover:bg-[#1A6FD8] minecraft-font" />
+                
                 <div className="relative">
-                    <button onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-center w-24 md:w-32 h-12 hover:bg-[#373c47] rounded-[4px] p-2 bg-[#0f111a] text-white text-[16px] font-bold ml-4">
+                    <button onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-center w-24 md:w-32 h-12 rounded-[4px] p-2 bg-[#4A90E2] text-white text-[16px] font-bold ml-4 hover:bg-[#1A6FD8] minecraft-font">
                         {selectedLanguage.img && (
                             <img src={selectedLanguage.img} alt="" className="w-6 h-auto mr-2 mt-[4px]" />
                         )}
@@ -54,7 +56,7 @@ function Navbar() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Navbar;
