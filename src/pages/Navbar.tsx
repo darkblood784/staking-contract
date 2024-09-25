@@ -6,6 +6,7 @@ import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
 function Navbar() {
     const { i18n, t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+
     // Initialize state for selected language label and image
     const [selectedLanguage, setSelectedLanguage] = useState({
         label: t('English'),  // Default language label
@@ -19,10 +20,18 @@ function Navbar() {
     }
 
     return (
-        <div className="px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 font dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300">
-            <a href="https://staking.whalestrategy.net/">
-                <img src="/logo.png" className="w-16 h-16 sm:ml-10" alt="Logo" />
-            </a>
+        <div className="px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300 minecraft-font">
+            {/* Left side with Logo and "My Stakes" button */}
+            <div className="flex items-center">
+                <a href="https://staking.whalestrategy.net/">
+                    <img src="/logo.png" className="w-16 h-16 sm:ml-10" alt="Logo" />
+                </a>
+                <button className="ml-4 flex items-center justify-center w-28 h-12 hover:bg-[#373c47] rounded-[4px] p-2 bg-[#0f111a] text-white text-[16px] font-bold">
+                    My Stakes
+                </button>
+            </div>
+
+            {/* Right side with Connect Wallet and Language Selector */}
             <div className="flex items-center">
                 <WalletActionButton className='w-28 md:w-32 flex justify-center' />
                 <div className="relative">
