@@ -109,18 +109,18 @@ function Staking() {
                     <h1 className="font-bold  ">
                         {t('swim')}
                     </h1>
-                    <h1 className="font-bold ">
+                    <h1 className="minecraft-font font-bold ">
                         {t('earn')}
                     </h1>
 
-                    <p className="mt-4 text-[15px] md:text-[25px]">
+                    <p className="mt-4 text-[15px] md:text-[25px] minecraft-font">
                         {t('Join')}
                     </p>
                 </div>
             </div>
             <div className="flex justify-between w-full">
-                <h1 className="flex md:text-[60px] text-[30px] font-bold">{t('trading')}</h1>
-                <p className="md:text-[20px] text-[13px] items-end flex">{t('risk')}</p>
+                <h1 className="flex md:text-[60px] text-[30px] minecraft-font font-bold">{t('trading')}</h1>
+                <p className="md:text-[20px] text-[13px] items-end flex minecraft-font">{t('risk')}</p>
             </div>
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="" />

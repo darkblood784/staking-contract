@@ -33,11 +33,6 @@ function Navbar() {
                 </a>
             </div>
 
-            <div className="minecraft-font">
-                <p>Your Text Here</p>
-            </div>
-
-
             {/* Right side with Connect Wallet and Language Selector */}
             <div className="flex items-center">
                 <WalletActionButton className="w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300 minecraft-font" />
