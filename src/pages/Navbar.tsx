@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
 import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
 
+import './index.css';
+
 function Navbar() {
     const { i18n, t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +29,11 @@ function Navbar() {
                     <img src="/logo.png" className="w-16 h-16 sm:ml-10" alt="Logo" />
                 </a>
             </div>
+
+            <div className="minecraft-font">
+                <p>Your Text Here</p>
+            </div>
+
 
             {/* Right side with Connect Wallet and Language Selector */}
             <div className="flex items-center">
