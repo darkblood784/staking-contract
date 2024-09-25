@@ -106,7 +106,7 @@ function Staking() {
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
-                    <h1 className="font-bold  ">
+                    <h1 className="minecraft-font font-bold  ">
                         {t('swim')}
                     </h1>
                     <h1 className="minecraft-font font-bold ">
@@ -128,12 +128,12 @@ function Staking() {
                     <div className="my-auto pt-5 md:pt-0 ml-2 w-full md:w-[35%] lg:ml-10 ">
                         <div className="flex items-center">
                             <img src={usdt} alt="" className="w-14 h-14 mr-4" />
-                            <p className="text-[35px] md:text-[30px] font-bold flex">USDT </p>
+                            <p className="text-[35px] md:text-[30px] minecraft-font font-bold flex">USDT </p>
                         </div>
-                        <div className="flex mt-5 w-full justify-between text-white">
+                        <div className="flex mt-5 w-full justify-between text-white minecraft-font">
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setUsdtDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
-                                <p className=" text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
+                                <p className=" minecraft-font text-[20px] md:text-[30px] my-auto hover:opacity-40 active:opacity-50">15%</p>
                             </div>
                             <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setUsdtDuration(t('month'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
