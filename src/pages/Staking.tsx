@@ -134,22 +134,17 @@ function Staking() {
                             <p className="text-[35px] md:text-[30px] font-bold flex text-shadow-customh">USDT </p>
                         </div>
                         <div className="flex mt-5 w-full justify-between text-white text-shadow-customp">
-
-
-                            <div className="group rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50" onClick={(e) => setUsdtDuration(t('day'))}>
-                                <div className="bg-white text-black group-hover:bg-gray-500 group-hover:text-white transition-all duration-300 text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">
-                                    <span className="text-black group-hover:text-white">{t('day')}</span> {/* Ensure text turns white */}</div>
-                                    <p className="text-[20px] md:text-[30px] my-auto text-white group-hover:text-white">15%</p> {/* Text outside hover */}
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50">
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">{t('day')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto">15%</p>
                             </div>
-                            <div className="group rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50" onClick={(e) => setUsdtDuration(t('month'))}>
-                                <div className="bg-white text-black group-hover:bg-gray-500 group-hover:text-white transition-all duration-300 text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">
-                                    <span className="text-black group-hover:text-white">{t('month')}</span></div>
-                                    <p className="text-[20px] md:text-[30px] my-auto text-white group-hover:text-white">24%</p>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50">
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">{t('month')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto">24%</p>
                             </div>
-                            <div className="group rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50" onClick={(e) => setUsdtDuration(t('year'))}>
-                                <div className="bg-white text-black group-hover:bg-gray-500 group-hover:text-white transition-all duration-300 text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">
-                                    <span className="text-black group-hover:text-white">{t('year')}</span></div>
-                                    <p className="text-[20px] md:text-[30px] my-auto text-white group-hover:text-white">36%</p>\
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50">
+                                <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full transition-all duration-300 hover:bg-gray-500 hover:text-white">{t('year')}</div>
+                                <p className="text-[20px] md:text-[30px] my-auto">36%</p>
                             </div>
                         </div>
                     </div>
