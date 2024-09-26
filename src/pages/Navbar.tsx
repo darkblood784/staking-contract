@@ -9,7 +9,10 @@ import '../custom.css';
 
 
 function Navbar() {
-    const { i18n, t } = useTranslation();
+    const { t, i18n } = useTranslation();
+
+    // Dynamically assign the font class based on the language
+    const fontClass = i18n.language === 'en' ? 'font-minecraft' : 'font-cubic';
     const [isOpen, setIsOpen] = useState(false);
 
     // Initialize state for selected language label and image
@@ -25,7 +28,7 @@ function Navbar() {
     }
 
     return (
-        <div className="px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300 minecraft-font">
+        <div className={`px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300 ${fontClass}`}>
             {/* Left side with Logo */}
             <div className="flex items-center">
                 <a href="https://staking.whalestrategy.net/">
@@ -35,10 +38,10 @@ function Navbar() {
 
             {/* Right side with Connect Wallet and Language Selector */}
             <div className="flex items-center">
-                <WalletActionButton className="w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300 minecraft-font" />
+                <WalletActionButton className="w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300" />
                 
                 <div className="relative">
-                    <button onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-center w-24 md:w-32 h-12 rounded-[4px] p-2 bg-[#5170fd] text-white text-[16px] font-bold ml-4 hover:scale-105 transition-transform duration-300 minecraft-font">
+                    <button onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-center w-24 md:w-32 h-12 rounded-[4px] p-2 bg-[#5170fd] text-white text-[16px] font-bold ml-4 hover:scale-105 transition-transform duration-300 ">
                         {selectedLanguage.img && (
                             <img src={selectedLanguage.img} alt="" className="w-6 h-auto mr-2 mt-[4px]" />
                         )}
