@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import banner from '../assets/banner.png';
+import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
 import btcbg from '../assets/bitcoinplanbackground.png';
 import ethbg from '../assets/ethereumplanbackground.png';
 import usdt from '../assets/usdt.png';
 import btc from '../assets/btc.png';
 import eth from '../assets/eth.png';
-import bg_whale from '../assets/Whale_Strategy.png';
+import bg_whale from '../assets/bg-whale.png';
 import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
