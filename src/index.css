@@ -46,15 +46,16 @@ body {
     border: 2px solid #1d3dff;
     text-transform: uppercase;
     text-shadow: 2px 2px 0px #1d3dff;
-    box-shadow: 1px 1px 0px #1d3dff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 0px #1d3dff;
 }
 
 .custom-btn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 1px 1px 0px #1d3dff;
+    box-shadow: 2px 2px 0px #1d3dff;
 }
 
 .custom-btn:active {
     transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #1d3dff;
+    box-shadow: 2px 2px 0px #1d3dff;
 }
