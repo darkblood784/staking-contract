@@ -107,9 +107,12 @@ function Staking() {
 
     return (
         <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
-            <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-between px-6">
+            <div className="relative flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] justify-between px-6">
+                {/* Background Whale Image */}
+                <img src={banner} alt="Whale" className="absolute w-full h-full object-cover" />
+
                 {/* Left side: Banner and Text */}
-                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
+  <             div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
                     <h1 className="font-bold text-shadow-customh">
                         {t('swim')}
                     </h1>
@@ -129,8 +132,8 @@ function Staking() {
                     </div>
                 </div>
 
-                {/* Right side: Staking Box */}
-                <div className="relative z-10 bg-black border border-white text-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
+                {/* Right side: Staking Box on Top of the Background */}
+                <div className="relative z-10 flex flex-col w-full md:w-1/3 p-6 bg-black bg-opacity-80 text-white rounded-lg shadow-lg">
                     <div className="mb-4">
                         <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
                         <p className="text-3xl font-bold">91,883</p>
@@ -147,6 +150,7 @@ function Staking() {
                     </div>
                 </div>
             </div>
+
 
             <div className="flex justify-between w-full">
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
