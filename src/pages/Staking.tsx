@@ -133,16 +133,16 @@ function Staking() {
                             <img src={usdt} alt="" className="w-14 h-14 mr-4" />
                             <p className="text-[35px] md:text-[30px] font-bold flex text-shadow-customh">USDT </p>
                         </div>
-                        <div className="flex mt-5 w-full justify-between text-white text-shadow-customp hover:opacity-40 active:opacity-50">
-                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setUsdtDuration(t('day'))}>
+                        <div className="flex mt-5 w-full justify-between text-white text-shadow-customp">
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50" onClick={(e) => setUsdtDuration(t('day'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('day')}</div>
                                 <p className=" text-[20px] md:text-[30px] my-auto">15%</p>
                             </div>
-                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setUsdtDuration(t('month'))}>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50" onClick={(e) => setUsdtDuration(t('month'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full">{t('month')}</div>
                                 <p className=" text-[20px] md:text-[30px] my-auto">24%</p>
                             </div>
-                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer" onClick={(e) => setUsdtDuration(t('year'))}>
+                            <div className="rounded-3xl border-gray-300 border w-[31%] h-auto text-center cursor-pointer hover:opacity-40 active:opacity-50" onClick={(e) => setUsdtDuration(t('year'))}>
                                 <div className="bg-white text-black text-[15px] md:text-[17px] py-2 rounded-3xl md:rounded-full ">{t('year')}</div>
                                 <p className=" text-[20px] md:text-[30px] my-auto">36%</p>
                             </div>
