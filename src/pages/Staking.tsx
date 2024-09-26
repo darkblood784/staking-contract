@@ -126,22 +126,22 @@ function Staking() {
                 </div>
 
                 {/* Right side: Staking Box on Top of the Background */}
-                <div className="relative z-10 w-full md:w-1/3 flex justify-center items-center">
+                <div className="relative z-10 w-full md:w-1/3 max-w-[500px] mx-auto">
                     {/* The image should take up a responsive width */}
-                    <img src={Hover_image} alt="Whale Box" className="max-w-full h-auto object-cover max-h-[800px] md:max-h-[600px]" />
+                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px]" />
                     
                     {/* Layering the text on top of the image */}
-                    <div className="absolute top-0 left-0 w-full h-full p-6 text-white flex flex-col justify-between">
+                    <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-ful">
                         <div className="mb-4">
-                            <h2 className="font-bold text-lg md:text-xl lg:text-2xl">{t('Total Staked')}</h2>
-                            <p className="text-2xl md:text-3xl lg:text-4xl font-bold">91,883</p>
+                            <h2 className="font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
+                            <p className="text-xl md:text-2xl lg:text-3xl font-bold">91,883</p>
                             <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2 text-sm md:text-base">$289.38m</p>
                             <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
                         </div>
                         <hr className="my-4 border-gray-500" />
                         <div className="mb-4">
-                            <h2 className="font-bold text-lg text-yellow-500 md:text-xl lg:text-2xl">{t('Estimated Rewards')}</h2>
-                            <p className="text-2xl md:text-3xl lg:text-4xl font-bold">31% APR</p>
+                            <h2 className="font-bold text-md sm:text-lg lg:text-xl text-yellow-500">{t('Estimated Rewards')}</h2>
+                            <p className="text-xl sm:text-2xl lg:text-3xl font-bold">31% APR</p>
                         </div>
                     </div>
                 </div>
