@@ -142,6 +142,7 @@ function Staking() {
                     <p className="text-3xl font-bold">31% APR</p>
                 </div>
             </div>
+        </div>
 
             <div className="flex justify-between w-full">
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
