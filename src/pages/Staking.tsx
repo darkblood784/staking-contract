@@ -112,7 +112,7 @@ function Staking() {
                 <img src={banner} alt="Whale" className="absolute w-full h-auto max-h-screen object-cover" />
 
                 {/* Left side: Banner and Text */}
-  <             div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
+                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
                     <h1 className="font-bold text-shadow-customh">
                         {t('swim')}
                     </h1>
@@ -134,13 +134,10 @@ function Staking() {
 
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3">
-                    <img 
-                        src="../assets/Hover_image.png"  /* Replace with correct whale image path */
-                        alt="Whale Box" 
-                        className="w-full h-auto object-cover"
-                    />
+                    <img src="../assets/Hover_image.png" alt="Whale Box" className="w-full h-auto object-cover"/>
                 {/* Layering the text on top of the image */}
                 <div className="absolute top-0 left-0 p-6 text-white">
+                    
                     <div className="mb-4">
                         <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
                         <p className="text-3xl font-bold">91,883</p>
