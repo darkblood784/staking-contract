@@ -105,14 +105,14 @@ function Staking() {
 
 
     return (
-        <div className="flex flex-col w-full  items-center text-white ${fontClass}">
+        <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
             <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
                 <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
                 <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
                     <h1 className="font-bold text-shadow-customh ">
                         {t('swim')}
                     </h1>
-                    <h1 className="t font-bold text-shadow-customh">
+                    <h1 className="font-bold text-shadow-customh">
                         {t('earn')}
                     </h1>
 
