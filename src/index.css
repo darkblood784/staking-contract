@@ -49,3 +49,12 @@ body {
     box-shadow: 1px 1px 0px #1d3dff;
 }
 
+.custom-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 1px 1px 0px #1d3dff;
+}
+
+.custom-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #1d3dff;
+}
