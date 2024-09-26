@@ -21,6 +21,19 @@ function Navbar() {
         img: '/src/assets/language/en.svg'  // Default image path
     });
 
+    // Set the correct language and flag on component mount
+    useEffect(() => {
+        const currentLang = i18n.language || 'en';
+        const selectedLang = LANGUAGES.find(({ code }) => code === currentLang);
+
+        if (selectedLang) {
+            setSelectedLanguage({
+                label: selectedLang.label,
+                img: selectedLang.lang, // Path to the correct flag
+            });
+        }
+    }, [i18n.language]);
+
     const onChangeLang = (code: string, label: string, img: string) => {
         i18n.changeLanguage(code);
         setSelectedLanguage({ label, img });  // Update the label and image
