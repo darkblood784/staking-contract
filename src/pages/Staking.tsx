@@ -132,39 +132,20 @@ function Staking() {
                     </div>
                 </div>
 
-                {/* Right side: Your Custom Box */}
-                <div className="right-[9%] w-[32%] absolute top-0 m-auto rounded-lg bg-black-900 shadow-xs">
-                    <div>
-                        <div className="flex items-center justify-center sm:flex-col">
-                            <img 
-                                className="w-[6px] h-[6px] sm:w-full" 
-                                src="https://dhws-production.s3.ap-south-1.amazonaws.com/66f38220132e0c00239f21e6/66f382c2328f860018cb8039/66f5375ac5b9ec001423fb68/appSource/images/img_pinterest.svg" 
-                                alt="Pinterest Image" 
-                                loading="lazy" 
-                            />
-                            <div className="h-[4.01px] flex-1 self-start bg-white-a700 sm:self-stretch sm:px-5"></div>
-                            <img 
-                                className="w-[6px] h-[6px] object-cover sm:w-full" 
-                                src="https://dhws-production.s3.ap-south-1.amazonaws.com/66f38220132e0c00239f21e6/66f382c2328f860018cb8039/66f5375ac5b9ec001423fb68/appSource/images/img_group_63_black_900_6x6.png" 
-                                alt="Moon Image" 
-                                loading="lazy" 
-                            />
-                        </div>
-
-                        <div className="ml-[30px] mr-4 mt-4 flex items-center justify-center gap-3.5 md:mx-0 sm:flex-col">
-                            <p className="lg:text-[17px] text-shadow-ts9 text-[21.03px] tracking-[3.16px] self-end font-minecraft1 font-medium text-white-a700 sm:self-auto sm:px-5">
-                                <span>Total Sta</span><span className="text-[16.03px]">k</span><span>ed</span>
-                            </p>
-                            <div className="w-[38%] h-[28px] relative content-end lg:h-auto md:h-auto sm:w-full sm:px-5">
-                                <div className="rounded-[12px] border-[1.34px] w-[76%] absolute bottom-0 left-0 right-0 top-0 m-auto flex h-max justify-center border-solid border-white-a700 bg-white-a700">
-                                    <div className="flex w-full flex-col gap-3 md:flex-row">
-                                        <div className="flex flex-1 items-center justify-between gap-5">
-                                            <img className="w-[6px] h-[6px]" src="https://dhws-production.s3.ap-south-1.amazonaws.com/66f38220132e0c00239f21e6/66f382c2328f860018cb8039/66f5375ac5b9ec001423fb68/appSource/images/img_pinterest.svg" alt="Pinterest" loading="lazy" />
-                                        </div>
-                                        <p className="lg:text-[13px] text-shadow-ts13 text-[16.04px] mx-auto mb-1 font-medium text-black-900">$289.38m</p>
-                                    </div>
-                                </div>
-                            </div>
+                {/* Right side: Staking Box on Top of the Background */}
+                <div className="relative z-10 flex flex-col w-full md:w-1/3 p-6 bg-black bg-opacity-80 text-white rounded-lg shadow-lg">
+                    <div className="mb-4">
+                        <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
+                        <p className="text-3xl font-bold">91,883</p>
+                        <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
+                        <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
+                    </div>
+                    <hr className="my-4 border-gray-500" />
+                    <div className="mb-4">
+                        <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
+                        <p className="text-3xl font-bold">31% APR</p>
+                        <div className="w-16 h-16">
+                            <img src="../assets/buttons/pixelicious.png" alt="Whalebox" className="w-full h-auto" />
                         </div>
                     </div>
                 </div>
