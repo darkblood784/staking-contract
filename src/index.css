@@ -59,3 +59,14 @@ body {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0px #1d3dff;
 }
+
+@media (max-width: 768px) {
+    .custom-btn {
+        width: 100%; /* Button full width on smaller screens */
+        font-size: 1rem; /* Adjust font size */
+    }
+    .whale-box {
+        width: 90%;
+        margin: 0 auto; /* Center the box */
+    }
+}

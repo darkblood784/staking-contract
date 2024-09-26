@@ -121,10 +121,28 @@ function Staking() {
                         {t('Join')}
                     </p>
                     {/* Get Started Button */}
-                    <div className="bg-[#5170fd] hover:bg-[#405ec7] text-white font-bold py-2 px-4 rounded-full text-[18px] md:text-[22px] transition-all duration-300 no-underline">
+                    <div className="mt-6">
                         <a href="#choose-plan" className="custom-btn no-underline">
                             {t('Get_started')}
                         </a>
+                    </div>
+
+                    {/* Right side: Staking Box */}
+                    <div className="w-full md:w-1/3 p-6 bg-black text-white rounded-lg shadow-lg relative">
+                        <div className="mb-4">
+                            <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
+                            <p className="text-3xl font-bold">91,883</p>
+                            <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
+                            <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
+                        </div>
+                        <hr className="my-4 border-gray-500" />
+                        <div className="mb-4">
+                            <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
+                            <p className="text-3xl font-bold">31% APR</p>
+                            <div className="w-16 h-16">
+                                <img src="../assets/buttons/pixelicious.png" alt="Whale" className="w-full h-auto" />
+                            </div>
+                        </div>
                     </div>
 
                 </div>
