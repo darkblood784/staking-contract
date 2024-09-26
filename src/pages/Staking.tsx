@@ -122,10 +122,11 @@ function Staking() {
                     </p>
                     {/* Get Started Button */}
                     <div className="mt-6">
-                        <a href="#" className="custom-btn">
-                            {t('GET STARTED')}
+                        <a href="#choose-plan" className="custom-btn">
+                            {t('Get_started')}
                         </a>
                     </div>
+
                 </div>
             </div>
             <div className="flex justify-between w-full">
