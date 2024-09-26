@@ -12,6 +12,7 @@ import bg_whale from '../assets/bg-whale.png';
 import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
+import getStartedButton from '../assets/buttons/Get_Started.png';
 
 import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
@@ -119,6 +120,12 @@ function Staking() {
                     <p className="mt-4 text-[15px] md:text-[25px] text-shadow-customp">
                         {t('Join')}
                     </p>
+                    {/* Get Started Button */}
+                    <div className="mt-6">
+                        <a href="#" className="hover:scale-105 transition-transform">
+                            <img src={getStartedButton} alt="Get Started Button" className="w-[200px] md:w-[250px]" />
+                        </a>
+                    </div>
                 </div>
             </div>
             <div className="flex justify-between w-full">
