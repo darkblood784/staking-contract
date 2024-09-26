@@ -107,10 +107,10 @@ function Staking() {
 
     return (
         <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
-            <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-center">
-                <img src={banner} alt="Whale" className="absolute w-full h-[100%] my-[20px] md:h-[auto]" />
-                <div className="relative z-10 flex flex-col justify-center items-start w-full h-full px-4 mb-[-40px]">
-                    <h1 className="font-bold text-shadow-customh ">
+            <div className="flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] relative justify-between px-6">
+                {/* Left side: Banner and Text */}
+                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
+                    <h1 className="font-bold text-shadow-customh">
                         {t('swim')}
                     </h1>
                     <h1 className="font-bold text-shadow-customh">
@@ -120,33 +120,37 @@ function Staking() {
                     <p className="mt-4 text-[15px] md:text-[25px] text-shadow-customp">
                         {t('Join')}
                     </p>
+
                     {/* Get Started Button */}
                     <div className="mt-6">
                         <a href="#choose-plan" className="custom-btn no-underline">
                             {t('Get_started')}
                         </a>
                     </div>
+                </div>
 
-                    {/* Right side: Staking Box */}
-                    <div className="w-full md:w-1/3 p-6 bg-black text-white rounded-lg shadow-lg relative">
-                        <div className="mb-4">
-                            <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
-                            <p className="text-3xl font-bold">91,883</p>
-                            <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
-                            <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
-                        </div>
-                        <hr className="my-4 border-gray-500" />
-                        <div className="mb-4">
-                            <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
-                            <p className="text-3xl font-bold">31% APR</p>
-                            <div className="w-16 h-16">
-                                <img src="../assets/buttons/pixelicious.png" alt="Whale" className="w-full h-auto" />
-                            </div>
+                {/* Right side: Staking Box */}
+                <div className="w-full md:w-1/3 p-6 bg-black text-white rounded-lg shadow-lg">
+                    <div className="mb-4">
+                        <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
+                        <p className="text-3xl font-bold">91,883</p>
+                        <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
+                        <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
+                    </div>
+                    <hr className="my-4 border-gray-500" />
+                    <div className="mb-4">
+                        <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
+                        <p className="text-3xl font-bold">31% APR</p>
+                        <div className="w-16 h-16">
+                            <img src="../assets/buttons/pixelicious.png" alt="Whalebox" className="w-full h-auto" />
                         </div>
                     </div>
-
                 </div>
+
+                {/* Background Whale Image */}
+                <img src={banner} alt="Whale" className="absolute w-full h-[100%] md:h-auto" />
             </div>
+
             <div className="flex justify-between w-full">
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
