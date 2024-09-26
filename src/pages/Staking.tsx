@@ -121,7 +121,7 @@ function Staking() {
                         {t('Join')}
                     </p>
                     {/* Get Started Button */}
-                    <div className="mt-6">
+                    <div className="bg-[#5170fd] hover:bg-[#405ec7] text-white font-bold py-2 px-4 rounded-full text-[18px] md:text-[22px] transition-all duration-300 no-underline">
                         <a href="#choose-plan" className="custom-btn no-underline">
                             {t('Get_started')}
                         </a>
