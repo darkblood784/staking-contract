@@ -2,19 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define Minecraft font */
 @font-face {
     font-family: 'Minecraft';
-    src: url('/fonts/Minecraft.ttf') format('truetype'); /* Ensure path is correct */
+    src: url('/fonts/Minecraft.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
-  
-  body {
+}
+
+/* Define Cubic font */
+@font-face {
+    font-family: 'Cubic';
+    src: url('/fonts/Cubic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply default font as Minecraft */
+body {
     font-family: 'Minecraft', sans-serif;
     background-color: #1a1a1d;
     color: white;
-  }
-  .text-shadow-customh {
+}
+
+/* Custom Text Shadow */
+.text-shadow-customh {
     text-shadow: 2px 2px 0px #787777;
 }
 
