@@ -122,7 +122,7 @@ function Staking() {
                     </p>
                     {/* Get Started Button */}
                     <div className="mt-6">
-                        <a href="#choose-plan" className="custom-btn">
+                        <a href="#choose-plan" className="custom-btn no-underline">
                             {t('Get_started')}
                         </a>
                     </div>
