@@ -126,12 +126,12 @@ function Staking() {
                 </div>
 
                 {/* Right side: Staking Box on Top of the Background */}
-                <div className="relative z-10 w-full md:w-1/3">
+                <div className="relative z-10 w-full md:w-1/3 flex justify-center items-center">
                     {/* The image should take up a responsive width */}
-                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-cover max-w-[350px] mx-auto" />
+                    <img src={Hover_image} alt="Whale Box" className="max-w-full h-auto object-cover max-h-[500px] md:max-h-[350px]" />
                     
                     {/* Layering the text on top of the image */}
-                    <div className="absolute top-0 left-0 p-4 text-white w-full h-full flex flex-col justify-between">
+                    <div className="absolute top-0 left-0 w-full h-full p-6 text-white flex flex-col justify-between">
                         <div className="mb-4">
                             <h2 className="font-bold text-lg md:text-xl lg:text-2xl">{t('Total Staked')}</h2>
                             <p className="text-2xl md:text-3xl lg:text-4xl font-bold">91,883</p>
