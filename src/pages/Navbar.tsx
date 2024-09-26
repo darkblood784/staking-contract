@@ -18,7 +18,7 @@ function Navbar() {
     // Initialize state for selected language label and image
     const [selectedLanguage, setSelectedLanguage] = useState({
         label: t('English'),  // Default language label
-        img: ''  // Default image path
+        img: '/src/assets/language/en.png'  // Default image path
     });
 
     const onChangeLang = (code: string, label: string, img: string) => {
@@ -38,7 +38,7 @@ function Navbar() {
 
             {/* Right side with Connect Wallet and Language Selector */}
             <div className="flex items-center">
-                <WalletActionButton className="w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300" />
+                <WalletActionButton className={`w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300 ${fontClass}`} />
                 
                 <div className="relative">
                     <button onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-center w-24 md:w-32 h-12 rounded-[4px] p-2 bg-[#5170fd] text-white text-[16px] font-bold ml-4 hover:scale-105 transition-transform duration-300 ">
