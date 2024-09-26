@@ -12,7 +12,7 @@ function Navbar() {
     const { t, i18n } = useTranslation();
 
     // Dynamically assign the font class based on the language
-    const fontClass = i18n.language === 'en' ? 'font-minecraft' : 'font-cubic';
+    const fontClass = i18n.language === 'en' ? 'font-cubic' : 'font-cubic';
     const [isOpen, setIsOpen] = useState(false);
 
     // Initialize state for selected language label and image
