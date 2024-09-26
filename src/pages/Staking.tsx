@@ -126,7 +126,7 @@ function Staking() {
 
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3">
-                    <img src="../assets/Hover_image.png" alt="Whale Box" className="w-full h-auto object-cover"/>
+                    <img src="../assets/buttons/Hover_image.png" alt="Whale Box" className="w-full h-auto object-cover"/>
             
                     {/* Layering the text on top of the image */}
                     <div className="absolute top-0 left-0 p-6 text-white">
