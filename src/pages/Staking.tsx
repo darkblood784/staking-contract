@@ -149,7 +149,7 @@ function Staking() {
                         </div>
                     </div>
                     <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5 text-shadow-customp">
-                        <div className="flex justify-between ">
+                        <div className="flex justify-between text-shadow-customp">
                             <p className="text-[25px] md">{t('stake')}</p>
                             <input
                                 type="text"
