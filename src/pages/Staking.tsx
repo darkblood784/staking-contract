@@ -128,7 +128,7 @@ function Staking() {
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3 flex justify-center items-center">
                     {/* The image should take up a responsive width */}
-                    <img src={Hover_image} alt="Whale Box" className="max-w-full h-auto object-cover max-h-[500px] md:max-h-[350px]" />
+                    <img src={Hover_image} alt="Whale Box" className="max-w-full h-auto object-cover max-h-[800px] md:max-h-[600px]" />
                     
                     {/* Layering the text on top of the image */}
                     <div className="absolute top-0 left-0 w-full h-full p-6 text-white flex flex-col justify-between">
