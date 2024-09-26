@@ -13,6 +13,7 @@ import linktree from '../assets/social/linktree.png';
 import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
 import getStartedButton from '../assets/buttons/Get_Started.png';
+import Hover_image from '../assets/buttons/Hover_image.png';
 
 import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
@@ -126,7 +127,7 @@ function Staking() {
 
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3">
-                    <img src="../assets/buttons/Hover_image.png" alt="Whale Box" className="w-full h-auto object-cover"/>
+                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-cover"/>
             
                     {/* Layering the text on top of the image */}
                     <div className="absolute top-0 left-0 p-6 text-white">
