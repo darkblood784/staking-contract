@@ -144,8 +144,12 @@ function Staking() {
                     <div className="mb-4">
                         <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
                         <p className="text-3xl font-bold">31% APR</p>
-                        <div className="w-16 h-16">
-                            <img src="../assets/buttons/pixelicious.png" alt="Whalebox" className="w-full h-auto" />
+                        <div className="w-full h-full">
+                            <img 
+                                src="../assets/Hover_image.png"  /* Replace with correct image path */
+                                alt="Whalebox" 
+                                className="w-full h-auto object-cover"  /* Whale image inside the box */
+                            />
                         </div>
                     </div>
                 </div>
