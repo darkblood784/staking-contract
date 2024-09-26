@@ -18,7 +18,7 @@ function Navbar() {
     // Initialize state for selected language label and image
     const [selectedLanguage, setSelectedLanguage] = useState({
         label: t('English'),  // Default language label
-        img: '/src/assets/language/en.png'  // Default image path
+        img: '/src/assets/language/en.svg'  // Default image path
     });
 
     const onChangeLang = (code: string, label: string, img: string) => {
