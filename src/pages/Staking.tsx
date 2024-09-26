@@ -127,20 +127,21 @@ function Staking() {
 
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3">
-                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-cover"/>
-            
+                    {/* The image should take up a responsive width */}
+                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-cover max-w-[350px] mx-auto" />
+                    
                     {/* Layering the text on top of the image */}
-                    <div className="absolute top-0 left-0 p-6 text-white">
+                    <div className="absolute top-0 left-0 p-4 text-white w-full h-full flex flex-col justify-between">
                         <div className="mb-4">
-                            <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
-                            <p className="text-3xl font-bold">91,883</p>
-                            <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
+                            <h2 className="font-bold text-lg md:text-xl lg:text-2xl">{t('Total Staked')}</h2>
+                            <p className="text-2xl md:text-3xl lg:text-4xl font-bold">91,883</p>
+                            <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2 text-sm md:text-base">$289.38m</p>
                             <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
                         </div>
                         <hr className="my-4 border-gray-500" />
                         <div className="mb-4">
-                            <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
-                            <p className="text-3xl font-bold">31% APR</p>
+                            <h2 className="font-bold text-lg text-yellow-500 md:text-xl lg:text-2xl">{t('Estimated Rewards')}</h2>
+                            <p className="text-2xl md:text-3xl lg:text-4xl font-bold">31% APR</p>
                         </div>
                     </div>
                 </div>
