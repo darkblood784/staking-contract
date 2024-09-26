@@ -122,8 +122,8 @@ function Staking() {
                     </p>
                     {/* Get Started Button */}
                     <div className="mt-6">
-                        <a href="#" className="hover:scale-105 transition-transform">
-                            <img src={getStartedButton} alt="Get Started Button" className="w-[200px] md:w-[250px]" />
+                        <a href="#" className="custom-btn">
+                            {t('GET STARTED')}
                         </a>
                     </div>
                 </div>
