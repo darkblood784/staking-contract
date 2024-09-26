@@ -24,7 +24,7 @@ function Staking() {
     const { t, i18n } = useTranslation();
 
     // Dynamically assign the font class based on the language
-    const fontClass = i18n.language === 'en' ? 'minecraft-font' : 'cubic-font';
+    const fontClass = i18n.language === 'en' ? 'font-minecraft' : 'font-cubic';
     const [amount, setAmount] = useState("");
     const [usdtduration, setUsdtDuration] = useState("");
     const [btcduration, setBtcDuration] = useState("");
