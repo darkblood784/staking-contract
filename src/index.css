@@ -51,10 +51,8 @@ body {
 
 .custom-btn:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0px #1d3dff;
 }
 
 .custom-btn:active {
     transform: translate(2px, 2px);
-    box-shadow: 3px 3px 0px #1d3dff;
 }
