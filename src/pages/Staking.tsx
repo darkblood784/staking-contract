@@ -118,31 +118,31 @@ function Staking() {
 
                     <p className="mt-4 text-[15px] md:text-[25px] text-shadow-customp">{t('Join')}</p>
 
-                {/* Get Started Button */}
-                <div className="mt-6">
-                    <a href="#choose-plan" className="custom-btn no-underline">{t('Get_started')}</a>
+                    {/* Get Started Button */}
+                    <div className="mt-6">
+                        <a href="#choose-plan" className="custom-btn no-underline">{t('Get_started')}</a>
+                    </div>
                 </div>
-            </div>
 
-            {/* Right side: Staking Box on Top of the Background */}
-            <div className="relative z-10 w-full md:w-1/3">
-            <img src="../assets/Hover_image.png" alt="Whale Box" className="w-full h-auto object-cover"/>
+                {/* Right side: Staking Box on Top of the Background */}
+                <div className="relative z-10 w-full md:w-1/3">
+                <img src="../assets/Hover_image.png" alt="Whale Box" className="w-full h-auto object-cover"/>
             
-            {/* Layering the text on top of the image */}
-            <div className="absolute top-0 left-0 p-6 text-white">
-                <div className="mb-4">
-                    <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
-                    <p className="text-3xl font-bold">91,883</p>
-                    <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
-                    <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
-                </div>
-                <hr className="my-4 border-gray-500" />
-                <div className="mb-4">
-                    <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
-                    <p className="text-3xl font-bold">31% APR</p>
+                {/* Layering the text on top of the image */}
+                <div className="absolute top-0 left-0 p-6 text-white">
+                    <div className="mb-4">
+                        <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
+                        <p className="text-3xl font-bold">91,883</p>
+                        <p className="absolute top-2 right-4 bg-gray-700 text-white rounded px-2">$289.38m</p>
+                        <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
+                    </div>
+                    <hr className="my-4 border-gray-500" />
+                    <div className="mb-4">
+                        <h2 className="font-bold text-lg text-yellow-500">{t('Estimated Rewards')}</h2>
+                        <p className="text-3xl font-bold">31% APR</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
             <div className="flex justify-between w-full">
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
