@@ -130,7 +130,7 @@ function Staking() {
                 </div>
 
                 {/* Right side: Staking Box */}
-                <div className="w-full md:w-1/3 p-6 bg-black text-white rounded-lg shadow-lg">
+                <div className="relative z-10 bg-black border border-white text-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
                     <div className="mb-4">
                         <h2 className="font-bold text-lg">{t('Total Staked')}</h2>
                         <p className="text-3xl font-bold">91,883</p>
@@ -146,9 +146,6 @@ function Staking() {
                         </div>
                     </div>
                 </div>
-
-                {/* Background Whale Image */}
-                <img src={banner} alt="Whale" className="absolute w-full h-[100%] md:h-auto" />
             </div>
 
             <div className="flex justify-between w-full">
