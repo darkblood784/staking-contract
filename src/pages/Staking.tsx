@@ -113,7 +113,7 @@ function Staking() {
                 <img src={banner} alt="Whale" className="absolute w-full h-auto max-h-screen object-cover top-[300px] bottom-0 left-[-100px]"/>
 
                 {/* Left side: Banner and Text */}
-                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
+                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px] top-[300px]">
                     <h1 className="font-bold text-shadow-customh">{t('swim')}</h1>
                     <h1 className="font-bold text-shadow-customh">{t('earn')}</h1>
 
