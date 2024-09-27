@@ -152,6 +152,7 @@ function Staking() {
                                 <p className="text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
                                 <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
                             </div>
+
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
                         </div>
                         <div className="mb-4 mt-[3vw]">
