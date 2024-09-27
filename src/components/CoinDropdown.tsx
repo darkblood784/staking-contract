@@ -1,5 +1,9 @@
 import React from 'react';
 
+import usdtIcon from '../assets/usdt.png';
+import btcIcon from '../assets/btc.png';
+import ethIcon from '../assets/eth.png';
+
 type Coin = 'ETH' | 'USDT' | 'BTC';
 
 interface CoinDropdownProps {
@@ -11,9 +15,9 @@ interface CoinDropdownProps {
 const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCoin }) => {
     // Define coins with name and icon properties
     const coins = [
-        { name: 'USDT', icon: require('../assets/usdt.png') },
-        { name: 'BTC', icon: require('../assets/btc.png') },
-        { name: 'ETH', icon: require('../assets/eth.png') },
+        { name: 'USDT', icon: usdtIcon },
+        { name: 'BTC', icon: btcIcon },
+        { name: 'ETH', icon: ethIcon },
     ];
 
     return (
