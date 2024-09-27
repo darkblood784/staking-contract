@@ -31,6 +31,7 @@ function Staking() {
 
     // Manage selected coin (ETH, USDT, BTC)
     const [selectedCoin, setSelectedCoin] = useState<Coin>('ETH');
+    const [isOpen, setIsOpen] = useState(false); // Move isOpen state here
 
     // Coin-specific staking values
     const stakingData: Record<Coin, { amount: string }> = {
