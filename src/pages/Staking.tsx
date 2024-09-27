@@ -139,6 +139,7 @@ function Staking() {
                             <div className="font-cubic flex items-center mt-[70px] text-lg md:text-xl lg:text-2xl font-bold right-[-140px]">
                                 <span className="mr-1">ETH</span>
                                 
+                                
                             </div>
                             <p className="font-cubic mt-[90px] text-lg md:text-xl lg:text-xl font-bold absolute top-[52px] right-[-140px] flex items-center">ETH <span className="text-lg ml-1" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
                             <p className="absolute top-[25px] right-[-150px] bg-white text-black font-bold rounded px-2 text-lg md:text-base">$289.38m</p>
