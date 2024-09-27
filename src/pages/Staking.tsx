@@ -126,36 +126,22 @@ function Staking() {
                 </div>
 
                 {/* Right side: Staking Box on Top of the Background */}
-                <div className="relative z-10 w-full md:w-1/3 max-w-[400px] mx-auto">
-                    {/* The image should take up a responsive width */}
-                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[30vh] sm:max-h-[40vh] md:max-h-[50vh] lg:max-h-[60vh]" />
-                    
+                <div className="relative z-10 w-full md:w-1/3 max-w-[500px] mx-auto">
+                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px]" />
                     {/* Layering the text on top of the image */}
-                    <div className="absolute inset-0 p-[2vw] text-white w-full flex flex-col justify-between">
-                        {/* Total Staked Section */}
-                        <div className="mb-[2vh]">
-                            <h2 className="font-bold text-[2.5vw]">{t('Total Staked')}</h2>
-                            <p className="text-[4vw] font-bold">91,883</p>
-
-                            {/* ETH Dropdown */}
-                            <div className="flex justify-between items-center mt-[1vh]">
-                                <p className="font-cubic text-[2vw] font-bold">ETH</p>
-                                <span className="text-[2vw] font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span>
-                            </div>
-
-                            {/* Dollar amount */}
-                            <p className="bg-white text-black font-bold rounded px-[1vw] py-[0.5vw] text-[1.5vw] absolute top-[2vw] right-[2vw]">$289.38m</p>
-                        </div>
-
-                        {/* Estimated Rewards Section */}
-                        <div className="mb-[2vh]">
-                            <h2 className="font-bold text-[2.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
-                            <p className="text-[4vw] font-bold">31%</p>
-                            <p className="text-[2.5vw] font-bold">APR</p>
-                        </div>
+                    <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
+                        <div className="mb-4">
+                        <h2 className="top-3 font-bold text-[2vw]">{t('Total Staked')}</h2>
+                        <p className="mt-[5vw] text-[3vw] font-bold">91,883</p>
+                        <p className="font-cubic mt-[5vw] text-[2vw] font-bold absolute top-[3vw] right-[5vw] flex items-center">ETH <span className="text-[2vw] ml-1 font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
+                        <p className="absolute top-[3vw] right-[6vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
+                    </div>
+                    <div className="mb-4 mt-[5vw]">
+                        <h2 className="font-bold text-[1.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
+                        <p className="text-[3vw] font-bold">31%</p>
+                        <p className="text-[1.5vw] font-bold">APR</p>
                     </div>
                 </div>
-
             </div>
 
             <div className="flex justify-between w-full">
