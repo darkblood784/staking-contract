@@ -137,7 +137,7 @@ function Staking() {
                             <p className="mt-[90px] text-xl md:text-2xl lg:text-3xl font-bold top-[800px]">91,883</p>
                             {/* Adjusted ETH section */}
                             <div className="flex items-center mt-[60px] text-lg md:text-xl lg:text-2xl font-bold">
-                                <span className="mr-1">ETH</span>
+                                <span className="mr-1 font-cubic">ETH</span>
                                 <span className="text-lg md:text-xl" style={{ color: '#5170fd' }}>&#x25BC;</span>
                             </div>
                             <p className="mt-[90px] text-lg md:text-xl lg:text-xl font-bold absolute top-[52px] right-[-140px] flex items-center">ETH <span className="text-lg ml-1">&#x25BC;</span></p>
