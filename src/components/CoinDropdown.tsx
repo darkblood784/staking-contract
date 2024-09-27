@@ -1,56 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+type Coin = 'ETH' | 'USDT' | 'BTC';
 
 interface CoinDropdownProps {
-  selectedCoin: string;
-  setSelectedCoin: (coin: string) => void;
+    selectedCoin: Coin;
+    setSelectedCoin: (coin: Coin) => void;
 }
 
+// Corrected CoinDropdown Component
 const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCoin }) => {
-  const coins = [
-    { name: 'USDT', icon: '../assets/usdt.png' },
-    { name: 'BTC', icon: '../assets/btc.png' },
-    { name: 'ETH', icon: '../assets/eth.png' },
-  ];
+    // Define coins with name and icon properties
+    const coins = [
+        { name: 'USDT', icon: require('../assets/usdt.png') },
+        { name: 'BTC', icon: require('../assets/btc.png') },
+        { name: 'ETH', icon: require('../assets/eth.png') },
+    ];
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleSelectCoin = (coin: string) => {
-    setSelectedCoin(coin);
-    setIsOpen(false);
-  };
-
-  return (
-    <div className="relative">
-      <div
-        className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <img
-          src={coins.find((coin) => coin.name === selectedCoin)?.icon}
-          alt={selectedCoin}
-          className="w-6 h-6 mr-2"
-        />
-        <span className="font-bold text-lg">{selectedCoin}</span>
-        <span className="ml-2 text-lg" style={{ color: '#5170fd' }}>
-          &#x25BC;
-        </span>
-      </div>
-      {isOpen && (
-        <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-lg w-full">
-          {coins.map((coin) => (
-            <div
-              key={coin.name}
-              className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
-              onClick={() => handleSelectCoin(coin.name)}
+    return (
+        <div className="flex items-center">
+            {/* Coin Icon */}
+            <img
+                src={coins.find(coin => coin.name === selectedCoin)?.icon}
+                alt={selectedCoin}
+                className="w-6 h-6 mr-2"
+            />
+            {/* Coin Dropdown */}
+            <select
+                value={selectedCoin}
+                onChange={(e) => setSelectedCoin(e.target.value as Coin)} // Cast value as 'Coin'
+                className="font-cubic text-[2vw] ml-1"
             >
-              <img src={coin.icon} alt={coin.name} className="w-6 h-6 mr-2" />
-              <span>{coin.name}</span>
-            </div>
-          ))}
+                {/* Dynamically render the options */}
+                {coins.map((coin) => (
+                    <option key={coin.name} value={coin.name}>
+                        {coin.name}
+                    </option>
+                ))}
+            </select>
         </div>
-      )}
-    </div>
-  );
+    );
 };
 
 export default CoinDropdown;
