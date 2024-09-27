@@ -26,11 +26,14 @@ function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
-    // Manage selected coin (ETH, USDT, BTC)
-    const [selectedCoin, setSelectedCoin] = useState('ETH');
+    // Define the type for allowed coin values
+    type Coin = 'ETH' | 'USDT' | 'BTC';
 
-    // Coin-specific staking values (Example values, you can replace these with dynamic values)
-    const stakingData = {
+    // Manage selected coin (ETH, USDT, BTC)
+    const [selectedCoin, setSelectedCoin] = useState<Coin>('ETH');
+
+    // Coin-specific staking values
+    const stakingData: Record<Coin, { amount: string }> = {
         ETH: { amount: '91,883' },
         USDT: { amount: '1.2 Million' },
         BTC: { amount: '50,000' },
