@@ -155,7 +155,7 @@ function Staking() {
 
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
                         </div>
-                        <div className="mb-4 mt-[3vw]">
+                        <div className="mb-4 mt-[10vw]">
                             <h2 className="font-bold text-[1.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
                             <p className="text-[3vw] font-bold">31%</p>
                             <p className="text-[1.5vw] font-bold">APR</p>
