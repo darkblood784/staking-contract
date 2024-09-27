@@ -135,8 +135,8 @@ function Staking() {
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
                             <p className="mt-[90px] text-xl md:text-2xl lg:text-3xl font-bold top-[800px]">91,883</p>
-                            <p className="mt-[90px] text-lg absolute top-[52px] right-[-140px] flex items-center">ETH <span className="text-lg ml-1">&#x25BC;</span></p>
-                            <p className="absolute top-[25px] right-[-150px] bg-white text-black rounded px-2 text-lg md:text-base">$289.38m</p>
+                            <p className="mt-[90px] text-lg font-bold absolute top-[52px] right-[-140px] flex items-center">ETH <span className="text-lg ml-1">&#x25BC;</span></p>
+                            <p className="absolute top-[25px] right-[-150px] bg-white text-black font-bold rounded px-2 text-lg md:text-base">$289.38m</p>
                         </div>
                         <div className="mb-4 mt-[75px] right-10">
                             <h2 className="font-bold text-md sm:text-lg lg:text-xl text-yellow-500 ">{t('Estimated Rewards')}</h2>
