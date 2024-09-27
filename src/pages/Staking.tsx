@@ -113,7 +113,7 @@ function Staking() {
                 <img src={banner} alt="Whale" className="absolute w-full h-auto max-h-screen object-cover top-[300px] bottom-0 left-[-100px]"/>
 
                 {/* Left side: Banner and Text */}
-                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px] top-[20px]">
+                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px] top-[-20px]">
                     <h1 className="font-bold text-shadow-customh">{t('swim')}</h1>
                     <h1 className="font-bold text-shadow-customh">{t('earn')}</h1>
 
@@ -135,7 +135,7 @@ function Staking() {
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
                             <p className="text-xl md:text-2xl lg:text-3xl font-bold">91,883</p>
-                            <p className="absolute top-3 right-10 bg-gray-700 text-black rounded px-2 text-sm md:text-base">$289.38m</p>
+                            <p className="absolute top-5 right-[-100] bg-gray-700 text-black rounded px-2 text-sm md:text-base">$289.38m</p>
                             <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
                         </div>
                         <hr className="my-4 border-gray-500" />
