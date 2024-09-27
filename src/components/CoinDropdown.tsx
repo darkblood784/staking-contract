@@ -23,32 +23,23 @@ const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCo
     ];
 
     return (
-        <div className="relative flex items-center">
-            {/* Dropdown with transparent background */}
+        <div className="relative flex items-center space-x-2"> {/* Align items with space between */}
             <select
                 value={selectedCoin}
                 onChange={(e) => setSelectedCoin(e.target.value as Coin)}
-                className="appearance-none bg-transparent font-cubic text-[2vw] flex items-center outline-none pr-8"
+                className="appearance-none bg-transparent font-cubic text-[1.5vw] flex items-center outline-none pr-6"
                 style={{ backgroundColor: 'transparent', color: '#5170fd' }}
             >
                 {coins.map((coin) => (
-                    <option key={coin.name} value={coin.name} className="flex items-center bg-black text-white">
-                        {/* Display coin icon inside dropdown */}
+                    <option key={coin.name} value={coin.name} className="bg-black text-white flex items-center">
                         <img src={coin.icon} alt={coin.name} className="w-4 h-4 mr-2 inline" />
                         {coin.name}
                     </option>
                 ))}
             </select>
 
-            {/* Coin Icon next to dropdown */}
-            <img
-                src={coins.find(coin => coin.name === selectedCoin)?.icon}
-                alt={selectedCoin}
-                className="w-6 h-6 ml-2"
-            />
-
-            {/* Dropdown arrow */}
-            <span className="ml-1" style={{ color: '#5170fd', fontSize: '1.5vw' }}>
+            {/* Smaller dropdown arrow */}
+            <span className="ml-1" style={{ color: '#5170fd', fontSize: '1.2vw' }}>
                 &#x25BC;
             </span>
         </div>

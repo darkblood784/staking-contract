@@ -146,10 +146,10 @@ function Staking() {
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-[1vw]">{t('Total Staked')}</h2>
-                            
+
                             {/* CoinDropdown with improved positioning */}
-                            <div className="absolute top-[3vw] right-[3vw] flex items-center">
-                                <p className="mt-[5vw] text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
+                            <div className="absolute top-[3vw] right-[3vw] flex items-center space-x-4">
+                                <p className="text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
                                 <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
                             </div>
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
