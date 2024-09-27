@@ -34,9 +34,9 @@ function Staking() {
 
     // Coin-specific staking values
     const stakingData: Record<Coin, { amount: string }> = {
-        ETH: { amount: '91,883' },
-        USDT: { amount: '1.2 M' },
-        BTC: { amount: '50,000' },
+        ETH: { amount: '$91,883' },
+        USDT: { amount: '$1.2 M' },
+        BTC: { amount: '$50,000' },
     };
 
     // Dynamically assign the font class based on the language
@@ -150,8 +150,10 @@ function Staking() {
                             {/* CoinDropdown with consistent positioning */}
                             <div className="absolute top-[3vw] mt-[5vw] right-[3vw] flex items-center justify-between w-[80%]">
                                 <p className="text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
-                                <div className="flex items-center">
+                                <div className="flex items-center group">
                                     <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
+                                    <span className={`ml-1 transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-180' : 'rotate-0'}`} 
+                                    style={{ color: '#5170fd', fontSize: '1.5vw' }}>&#x25BC;</span>
                                 </div>
                             </div>
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
