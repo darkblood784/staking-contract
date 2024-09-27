@@ -126,7 +126,7 @@ function Staking() {
                 </div>
 
                 {/* Right side: Staking Box on Top of the Background */}
-                <div className="relative z-10 w-full md:w-1/3 max-w-[500px] mx-auto">
+                <div className="relative z-10 w-full md:w-1/3 max-w-[400px] mx-auto">
                     {/* The image should take up a responsive width */}
                     <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[200px] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px]" />
                     
@@ -134,11 +134,11 @@ function Staking() {
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-ful">
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
-                            <p className="text-xl md:text-2xl lg:text-3xl font-bold">91,883</p>
+                            <p className="text-xl md:text-2xl lg:text-3xl font-bold top-[800px]">91,883</p>
                             <p className="absolute top-[25px] right-[-150px] bg-white text-black rounded px-2 text-sm md:text-base">$289.38m</p>
-                            <p className="text-sm mt-2">ETH <span className="text-sm right-[-150px]">&#x25BC;</span></p>
+                            <p className="absolute top-[2px] right-0 flex items-center">ETH <span className="text-sm ml-1">&#x25BC;</span></p>
                         </div>
-                        <div className="mb-4 top-[800px]">
+                        <div className="mb-4 mt-8">
                             <h2 className="font-bold text-md sm:text-lg lg:text-xl text-yellow-500 ">{t('Estimated Rewards')}</h2>
                             <p className="text-xl sm:text-3xl lg:text-3xl font-bold">31%</p>
                             <p className="text-xl sm:text-2xl lg:text-2xl font-bold">APR</p>
