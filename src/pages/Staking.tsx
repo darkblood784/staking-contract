@@ -148,7 +148,7 @@ function Staking() {
                             <h2 className="top-3 font-bold text-[1vw]">{t('Total Staked')}</h2>
 
                             {/* CoinDropdown with consistent positioning */}
-                            <div className="absolute top-[3vw] mt-[5vw] right-[3vw] flex items-center justify-between w-[100%]">
+                            <div className="absolute top-[3vw] mt-[5vw] right-[3vw] flex items-center justify-between w-[80%]">
                                 <p className="text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
                                 <div className="flex items-center">
                                     <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
