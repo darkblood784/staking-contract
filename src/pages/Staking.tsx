@@ -128,15 +128,15 @@ function Staking() {
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3 max-w-[500px] mx-auto">
                     {/* The image should take up a responsive width */}
-                    <img src={Hover_image} alt="Whale Box" className="w-[400px] h-[600px] object-contain max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px]" />
+                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[200px] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px]" />
                     
                     {/* Layering the text on top of the image */}
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-ful">
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
                             <p className="text-xl md:text-2xl lg:text-3xl font-bold">91,883</p>
-                            <p className="absolute top-[15px] right-[-100px] bg-white text-black rounded px-2 text-sm md:text-base">$289.38m</p>
-                            <p className="text-sm mt-2">ETH <span className="text-sm">&#x25BC;</span></p>
+                            <p className="absolute top-[25px] right-[-150px] bg-white text-black rounded px-2 text-sm md:text-base">$289.38m</p>
+                            <p className="text-sm mt-2 right-[-160px]">ETH <span className="text-sm">&#x25BC;</span></p>
                         </div>
                         <div className="mb-4 top-[400px]">
                             <h2 className="font-bold text-md sm:text-lg lg:text-xl text-yellow-500 ">{t('Estimated Rewards')}</h2>
