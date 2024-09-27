@@ -73,3 +73,28 @@ body {
         margin: 0 auto; /* Center the box */
     }
 }
+
+@media (max-width: 768px) {
+    .whale-image {
+      top: 10vh;
+      left: -15vw;
+      max-height: 60vh;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .whale-image {
+      top: 15vh;
+      left: -5vw;
+      max-height: 80vh;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .whale-image {
+      top: 20vh;
+      left: -10vw;
+      max-height: 100vh;
+    }
+  }
+  
