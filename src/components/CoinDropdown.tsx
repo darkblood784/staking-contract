@@ -29,7 +29,7 @@ const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCo
             {/* Trigger to open/close the dropdown */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center font-cubic text-[1.2vw] bg-transparent border-none outline-none"
+                className="flex items-center font-cubic text-[1.2vw] bg-transparent border-none outline-none hover:text-[#5170fd] transition-colors duration-200" // Hover effect on the dropdown button
             >
                 <img
                     src={coins.find(coin => coin.name === selectedCoin)?.icon}
@@ -48,7 +48,7 @@ const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCo
                     {coins.map((coin) => (
                         <div
                             key={coin.name}
-                            className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-700 text-[1vw]" // Adjust the font size here
+                            className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-700 text-[1vw] transition-colors duration-200" // Adjust the font size here
                             onClick={() => handleCoinSelect(coin.name as Coin)}
                         >
                             <img src={coin.icon} alt={coin.name} className="w-4 h-4 mr-2" />
