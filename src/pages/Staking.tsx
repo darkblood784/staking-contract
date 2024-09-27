@@ -128,23 +128,34 @@ function Staking() {
                 {/* Right side: Staking Box on Top of the Background */}
                 <div className="relative z-10 w-full md:w-1/3 max-w-[400px] mx-auto">
                     {/* The image should take up a responsive width */}
-                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[200px] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px]" />
+                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[30vh] sm:max-h-[40vh] md:max-h-[50vh] lg:max-h-[60vh]" />
                     
                     {/* Layering the text on top of the image */}
-                    <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-ful">
-                        <div className="mb-4">
-                            <h2 className="top-3 font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
-                            <p className="mt-[90px] text-xl md:text-2xl lg:text-3xl font-bold top-[800px]">91,883</p>
-                            <p className="font-cubic mt-[90px] text-lg md:text-xl lg:text-xl font-bold absolute top-[52px] right-[-140px] flex items-center">ETH <span className="text-lg ml-1 font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
-                            <p className="absolute top-[25px] right-[-150px] bg-white text-black font-bold rounded px-2 text-lg md:text-base">$289.38m</p>
+                    <div className="absolute inset-0 p-[2vw] text-white w-full flex flex-col justify-between">
+                        {/* Total Staked Section */}
+                        <div className="mb-[2vh]">
+                            <h2 className="font-bold text-[2.5vw]">{t('Total Staked')}</h2>
+                            <p className="text-[4vw] font-bold">91,883</p>
+
+                            {/* ETH Dropdown */}
+                            <div className="flex justify-between items-center mt-[1vh]">
+                                <p className="font-cubic text-[2vw] font-bold">ETH</p>
+                                <span className="text-[2vw] font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span>
+                            </div>
+
+                            {/* Dollar amount */}
+                            <p className="bg-white text-black font-bold rounded px-[1vw] py-[0.5vw] text-[1.5vw] absolute top-[2vw] right-[2vw]">$289.38m</p>
                         </div>
-                        <div className="mb-4 mt-[75px] right-10">
-                            <h2 className="font-bold text-md sm:text-lg lg:text-xl text-yellow-500 ">{t('Estimated Rewards')}</h2>
-                            <p className="text-xl sm:text-4xl lg:text-4xl font-bold">31%</p>
-                            <p className="text-xl sm:text-xl lg:text-2xl font-bold">APR</p>
+
+                        {/* Estimated Rewards Section */}
+                        <div className="mb-[2vh]">
+                            <h2 className="font-bold text-[2.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
+                            <p className="text-[4vw] font-bold">31%</p>
+                            <p className="text-[2.5vw] font-bold">APR</p>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div className="flex justify-between w-full">
