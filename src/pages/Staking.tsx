@@ -134,7 +134,7 @@ function Staking() {
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-ful">
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-lg md:text-xl lg:text-xl">{t('Total Staked')}</h2>
-                            <p className="text-xl md:text-2xl lg:text-3xl font-bold top-[800px]">91,883</p>
+                            <p className="mt-[10px] text-xl md:text-2xl lg:text-3xl font-bold top-[800px]">91,883</p>
                             <p className="absolute top-[2px] right-0 flex items-center">ETH <span className="text-sm ml-1">&#x25BC;</span></p>
                             <p className="absolute top-[25px] right-[-150px] bg-white text-black rounded px-2 text-sm md:text-base">$289.38m</p>
                         </div>
