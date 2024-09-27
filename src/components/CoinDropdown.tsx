@@ -29,12 +29,12 @@ const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCo
             {/* Trigger to open/close the dropdown */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center font-cubic text-[1.5vw] bg-transparent border-none outline-none"
+                className="flex items-center font-cubic text-[1.2vw] bg-transparent border-none outline-none"
             >
                 <img
                     src={coins.find(coin => coin.name === selectedCoin)?.icon}
                     alt={selectedCoin}
-                    className="w-5 h-5 mr-2"
+                    className="w-4 h-4 mr-2"
                 />
                 {selectedCoin}
                 <span className="ml-2" style={{ color: '#5170fd', fontSize: '1.2vw' }}>
@@ -44,14 +44,14 @@ const CoinDropdown: React.FC<CoinDropdownProps> = ({ selectedCoin, setSelectedCo
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-black text-white rounded shadow-lg z-10">
+                <div className="absolute right-0 mt-2 w-28 bg-black text-white rounded shadow-lg z-10">
                     {coins.map((coin) => (
                         <div
                             key={coin.name}
-                            className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-700"
+                            className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-700 text-[1vw]" // Adjust the font size here
                             onClick={() => handleCoinSelect(coin.name as Coin)}
                         >
-                            <img src={coin.icon} alt={coin.name} className="w-5 h-5 mr-2" />
+                            <img src={coin.icon} alt={coin.name} className="w-4 h-4 mr-2" />
                             {coin.name}
                         </div>
                     ))}
