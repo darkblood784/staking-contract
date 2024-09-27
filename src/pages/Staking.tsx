@@ -131,15 +131,16 @@ function Staking() {
                     {/* Layering the text on top of the image */}
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
                         <div className="mb-4">
-                        <h2 className="top-3 font-bold text-[2vw]">{t('Total Staked')}</h2>
-                        <p className="mt-[5vw] text-[3vw] font-bold">91,883</p>
-                        <p className="font-cubic mt-[5vw] text-[2vw] font-bold absolute top-[3vw] right-[5vw] flex items-center">ETH <span className="text-[2vw] ml-1 font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
-                        <p className="absolute top-[3vw] right-[6vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
-                    </div>
-                    <div className="mb-4 mt-[5vw]">
-                        <h2 className="font-bold text-[1.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
-                        <p className="text-[3vw] font-bold">31%</p>
-                        <p className="text-[1.5vw] font-bold">APR</p>
+                            <h2 className="top-3 font-bold text-[2vw]">{t('Total Staked')}</h2>
+                            <p className="mt-[5vw] text-[3vw] font-bold">91,883</p>
+                            <p className="font-cubic mt-[5vw] text-[2vw] font-bold absolute top-[3vw] right-[5vw] flex items-center">ETH <span className="text-[2vw] ml-1 font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
+                            <p className="absolute top-[3vw] right-[6vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
+                        </div>
+                        <div className="mb-4 mt-[5vw]">
+                            <h2 className="font-bold text-[1.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
+                            <p className="text-[3vw] font-bold">31%</p>
+                            <p className="text-[1.5vw] font-bold">APR</p>
+                        </div>
                     </div>
                 </div>
             </div>
