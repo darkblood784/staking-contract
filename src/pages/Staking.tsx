@@ -146,14 +146,13 @@ function Staking() {
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-[1vw]">{t('Total Staked')}</h2>
-                            <p className="mt-[5vw] text-[2vw] font-bold">91,883</p>
+
                             {/* Display the selected coin staking amount dynamically */}
                             <p className="mt-[5vw] text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
                             {/* CoinDropdown with improved positioning */}
                             <div className="absolute top-[3vw] right-[3vw] flex items-center">
                                 <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
                             </div>
-                            <p className="font-cubic mt-[5vw] text-[2vw] font-bold absolute top-[3vw] right-[3vw] flex items-center">ETH <span className="text-[2vw] ml-1 font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
                         </div>
                         <div className="mb-4 mt-[3vw]">
