@@ -26,6 +26,19 @@ function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
+    const [showBackground, setShowBackground] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setShowBackground(window.innerWidth >= 768); // Show background on larger screens
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial size check on component mount
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // Define the type for allowed coin values
     type Coin = 'ETH' | 'USDT' | 'BTC';
 
@@ -123,49 +136,46 @@ function Staking() {
 
     return (
         <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
-            <div className="relative flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] justify-between px-6">
-                {/* Background Whale Image */}
-                <img src={banner} alt="Whale" className="absolute w-full h-auto object-cover max-h-[100vh] lg:max-h-[90vh] xl:max-h-[100vh] top-[30vh] left-[-10vw] md:top-[15vh] md:left-[-5vw]"/>
-
-                {/* Left side: Banner and Text */}
-                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px] top-[-20px]">
-                    <h1 className="font-bold text-shadow-customh">{t('swim')}</h1>
-                    <h1 className="font-bold text-shadow-customh">{t('earn')}</h1>
-
-                    <p className="mt-4 text-[15px] md:text-[25px] text-shadow-customp">{t('Join')}</p>
-
-                    {/* Get Started Button */}
-                    <div className="mt-6">
-                        <a href="#choose-plan" className="custom-btn no-underline">{t('Get_started')}</a>
+            <div className="relative h-auto min-h-screen w-full">
+                {/* Background Whale Image visible only on larger screens */}
+                {showBackground && (<img src={banner} alt="Whale Background" className="absolute inset-0 w-full h-full object-cover opacity-40 z-0 whale-background"/>)}
+                <div className="container mx-auto px-4 h-full grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    {/* Left side: Banner and Text */}
+                    <div className="relative flex flex-col justify-center items-start text-center md:text-left w-full md:w-2/3 h-full px-4 mb-8 md:mb-0">
+                        {/** For small screens, show the background here */}
+                        {!showBackground && (<img src={banner} alt="Whale Background for mobile" className="block w-full h-auto mb-4 md:hidden"/>)}
+                        <h1 className="font-bold text-shadow-customh text-[10vw] md:text-[80px]">{t('swim')}</h1>
+                        <h1 className="font-bold text-shadow-customh text-[10vw] md:text-[80px]">{t('earn')}</h1>
+                        <p className="mt-4 text-[5vw] md:text-[25px] text-shadow-customp">{t('Join')}</p>
+                        <div className="mt-6">
+                            <a href="#choose-plan" className="custom-btn no-underline text-[4vw] md:text-[20px]">
+                                {t('Get_started')}
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                {/* Right side: Staking Box on Top of the Background */}
-                <div className="relative z-10 w-full md:w-1/3 max-w-[500px] mx-auto">
-                    <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px]" />
-                    {/* Layering the text on top of the image */}
-                    <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
-                        <div className="mb-4">
-                            <h2 className="top-3 font-bold text-[1vw]">{t('Total Staked')}</h2>
-
-                            {/* CoinDropdown with consistent positioning */}
-                            <div className="absolute top-[3vw] mt-[5vw] right-[3vw] flex items-center justify-between w-[80%]">
-                                <p className="text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
-                                <div className="flex items-center group">
-                                    <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
+                    {/* Right side: Staking Box */}
+                    <div className="relative w-full md:w-1/3">
+                        <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px]"/>
+                        <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
+                            <div className="mb-4">
+                                <h2 className="top-3 font-bold text-[4vw] md:text-[1.5vw]">{t('Total Staked')}</h2>
+                                <div className="flex items-center justify-between w-full">
+                                    <p className="text-[5vw] md:text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
+                                    <div className="flex items-center group">
+                                        <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
+                                    </div>
                                 </div>
+                                <p className="absolute top-[2vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[4vw] md:text-[1.5vw]">$289.38m</p>
                             </div>
-                            <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
-                        </div>
-                        <div className="mb-4 mt-[10vw]">
-                            <h2 className="font-bold text-[1.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
-                            <p className="text-[3vw] font-bold">31%</p>
-                            <p className="text-[1.5vw] font-bold">APR</p>
+                            <div className="mb-4 mt-[5vw]">
+                                <h2 className="font-bold text-[3vw] md:text-[1.5vw] text-yellow-500">{t('Estimated Rewards')}</h2>
+                                <p className="text-[6vw] md:text-[3vw] font-bold">31%</p>
+                                <p className="text-[3vw] md:text-[1.5vw] font-bold">APR</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div className="flex justify-between w-full">

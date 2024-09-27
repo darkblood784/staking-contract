@@ -104,3 +104,25 @@ body {
     color: yellow;
 }
 
+@media (max-width: 767px) {
+    .whale-background {
+      display: none; /* Hide the background whale image on small screens */
+    }
+  
+    /* Add padding and adjust layout for mobile view */
+    .container {
+      flex-direction: column; /* Stacking on top of each other for mobile */
+      text-align: center; /* Center align text for mobile */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .whale-background {
+      display: block; /* Show the background whale on tablets and larger screens */
+    }
+  
+    .container {
+      flex-direction: row; /* Side-by-side layout for desktop and tablet */
+    }
+  }
+  
