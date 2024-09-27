@@ -15,6 +15,7 @@ import symbol from '../assets/symbol.png';
 import getStartedButton from '../assets/buttons/Get_Started.png';
 import Hover_image from '../assets/buttons/Hover_image.png';
 
+import CoinDropdown from '../components/CoinDropdown';
 import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
@@ -24,6 +25,16 @@ import ChildComponent3 from '../components/child3';
 function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
+
+    // Manage selected coin (ETH, USDT, BTC)
+    const [selectedCoin, setSelectedCoin] = useState('ETH');
+
+    // Coin-specific staking values (Example values, you can replace these with dynamic values)
+    const stakingData = {
+        ETH: { amount: '91,883' },
+        USDT: { amount: '1.2 Million' },
+        BTC: { amount: '50,000' },
+    };
 
     // Dynamically assign the font class based on the language
     const fontClass = i18n.language === 'en' ? 'font-cubic' : 'font-cubic';
@@ -110,7 +121,7 @@ function Staking() {
         <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
             <div className="relative flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] justify-between px-6">
                 {/* Background Whale Image */}
-                <img src={banner} alt="Whale" className="absolute w-full h-auto object-cover max-h-[80vh] lg:max-h-[90vh] xl:max-h-[100vh] top-[20vh] left-[-10vw] md:top-[15vh] md:left-[-5vw]"/>
+                <img src={banner} alt="Whale" className="absolute w-full h-auto object-cover max-h-[100vh] lg:max-h-[90vh] xl:max-h-[100vh] top-[30vh] left-[-10vw] md:top-[15vh] md:left-[-5vw]"/>
 
                 {/* Left side: Banner and Text */}
                 <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px] top-[-20px]">
@@ -132,7 +143,13 @@ function Staking() {
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-[1vw]">{t('Total Staked')}</h2>
-                            <p className="mt-[4.5vw] text-[2vw] font-bold">91,883</p>
+                            <p className="mt-[5vw] text-[2vw] font-bold">91,883</p>
+                            {/* Display the selected coin staking amount dynamically */}
+                            <p className="mt-[5vw] text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
+                            {/* Replace ETH text with CoinDropdown */}
+                            <div className="relative mt-[5vw] text-[2vw] font-bold absolute top-[3vw] right-[3vw] flex items-center">
+                                <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
+                            </div>
                             <p className="font-cubic mt-[5vw] text-[2vw] font-bold absolute top-[3vw] right-[3vw] flex items-center">ETH <span className="text-[2vw] ml-1 font-cubic" style={{ color: '#5170fd' }}>&#x25BC;</span></p>
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
                         </div>
