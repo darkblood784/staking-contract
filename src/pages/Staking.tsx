@@ -35,7 +35,7 @@ function Staking() {
     // Coin-specific staking values
     const stakingData: Record<Coin, { amount: string }> = {
         ETH: { amount: '91,883' },
-        USDT: { amount: '1.2 Million' },
+        USDT: { amount: '1.2 M' },
         BTC: { amount: '50,000' },
     };
 
@@ -147,12 +147,13 @@ function Staking() {
                         <div className="mb-4">
                             <h2 className="top-3 font-bold text-[1vw]">{t('Total Staked')}</h2>
 
-                            {/* CoinDropdown with improved positioning */}
-                            <div className="absolute top-[3vw] mt-[5vw] right-[3vw] flex items-center space-x-20">
+                            {/* CoinDropdown with consistent positioning */}
+                            <div className="absolute top-[3vw] mt-[5vw] right-[3vw] flex items-center justify-between w-[100%]">
                                 <p className="text-[2vw] font-bold">{stakingData[selectedCoin].amount}</p>
-                                <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
+                                <div className="flex items-center">
+                                    <CoinDropdown selectedCoin={selectedCoin} setSelectedCoin={setSelectedCoin} />
+                                </div>
                             </div>
-
                             <p className="absolute top-[1vw] right-[2vw] bg-white text-black font-bold rounded px-2 text-[1.5vw]">$289.38m</p>
                         </div>
                         <div className="mb-4 mt-[10vw]">
