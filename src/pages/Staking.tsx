@@ -110,7 +110,7 @@ function Staking() {
         <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
             <div className="relative flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] justify-between px-6">
                 {/* Background Whale Image */}
-                <img src={banner} alt="Whale" className="absolute w-full h-auto max-h-screen object-cover top-[150px]"/>
+                <img src={banner} alt="Whale" className="absolute w-full h-auto max-h-screen object-cover top-[150px] bottom-0"/>
 
                 {/* Left side: Banner and Text */}
                 <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px]">
