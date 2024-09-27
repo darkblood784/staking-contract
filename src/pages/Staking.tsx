@@ -140,7 +140,7 @@ function Staking() {
                         </div>
                         <div className="mb-4 mt-[100px]">
                             <h2 className="right-[35px] font-bold text-md sm:text-lg lg:text-xl text-yellow-500 ">{t('Estimated Rewards')}</h2>
-                            <p className="right-[35px] text-xl sm:text-3xl lg:text-3xl font-bold">31%</p>
+                            <p className="right-[35px] text-xl sm:text-4xl lg:text-4xl font-bold">31%</p>
                             <p className="right-[35px] text-xl sm:text-xl lg:text-2xl font-bold">APR</p>
                         </div>
                     </div>
