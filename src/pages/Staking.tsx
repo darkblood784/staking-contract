@@ -164,18 +164,18 @@ function Staking() {
                         </div>
                     </div>
                 </div>
-                {/* Mobile Specific Styles */}
-                <style jsx>{`
+                <style>{`
                     @media (max-width: 768px) {
                         .staking-box {
                             width: 90vw;
                             margin: 0 auto;
                         }
-                        .text-size-mobile {
-                            font-size: 3vw; /* Ensuring mobile-friendly font size */
-                        }
+                    .text-size-mobile {
+                        font-size: 3vw; /* Ensuring mobile-friendly font size */
                     }
-                `}</style>
+                }
+            `}</style>
+
             </div>
 
             <div className="flex justify-between w-full">
