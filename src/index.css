@@ -63,132 +63,43 @@ body {
     box-shadow: 2px 2px 0px #1d3dff;
 }
 
+/* Mobile (below 768px) adjustments */
 @media (max-width: 768px) {
     .custom-btn {
-        width: 100%; /* Button full width on smaller screens */
-        font-size: 1rem; /* Adjust font size */
+        width: 100%; /* Full width for buttons on mobile */
+        font-size: 1rem;
     }
-    .whale-box {
-        width: 90%;
-        margin: 0 auto; /* Center the box */
+    .left-section, .right-section {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .whale-image {
+        display: none; /* Hide whale background on small screens */
+    }
+    .staking-box {
+        margin-top: 20px; /* Ensure some space between sections */
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet and Desktop adjustments */
+@media (min-width: 768px) {
     .whale-image {
-      top: 10vh;
-      left: -15vw;
-      max-height: 60vh;
+        top: 15vh;
+        left: -5vw;
+        max-height: 80vh;
     }
-  }
-  
-  @media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1024px) {
     .whale-image {
-      top: 15vh;
-      left: -5vw;
-      max-height: 80vh;
+        top: 20vh;
+        left: -10vw;
+        max-height: 100vh;
     }
-  }
-  
-  @media (min-width: 1024px) {
-    .whale-image {
-      top: 20vh;
-      left: -10vw;
-      max-height: 100vh;
-    }
-  }
-  
- 
+}
+
+/* For group hover effects */
 .group:hover .dropdown {
     background-color: rgba(255, 255, 255, 0.1);
     color: yellow;
-}
-
-/* Default layout for larger screens (tablet/desktop) */
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    padding: 20px 0;
-    position: relative;
-    margin-top: 20px;
-}
-
-.left-section, .right-section {
-    z-index: 10;
-    padding: 0 16px;
-}
-
-.left-section {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.right-section {
-    width: 40%;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.banner-image {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    max-height: 100vh;
-    top: 30vh;
-    left: -10vw;
-    object-fit: cover;
-}
-
-@media (max-width: 767px) {
-    /* Stack left and right sections on top of each other for smaller screens */
-    .container {
-        display: block;
-        padding: 0;
-    }
-
-    /* Hide the background image on mobile devices */
-    .banner-image {
-        display: none;
-    }
-
-    /* Adjust left-section for mobile */
-    .left-section {
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-    }
-
-    /* Adjust right-section for mobile */
-    .right-section {
-        width: 100%;
-        max-width: none;
-        margin: 20px auto 0 auto;
-        padding: 20px;
-    }
-
-    /* Adjust font sizes for mobile */
-    .left-section h1 {
-        font-size: 8vw;
-    }
-
-    .left-section p {
-        font-size: 5vw;
-    }
-
-    .right-section h2 {
-        font-size: 4vw;
-    }
-
-    .right-section p {
-        font-size: 6vw;
-    }
-
-    /* Adjust CoinDropdown size */
-    .right-section .coin-dropdown {
-        font-size: 5vw;
-    }
 }
