@@ -78,7 +78,8 @@ body {
         display: none; /* Hide whale background on small screens */
     }
     .staking-box {
-        margin-top: 10px; /* Ensure some space between sections */
+        margin-top: 5px; /* Ensure some space between sections */
+        margin-bottom: 5px;
     }
 }
 
