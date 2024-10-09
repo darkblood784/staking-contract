@@ -106,89 +106,89 @@ body {
 
 /* Default layout for larger screens (tablet/desktop) */
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 20px 0;
-  position: relative;
-  margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px 0;
+    position: relative;
+    margin-top: 20px;
 }
 
 .left-section, .right-section {
-  z-index: 10;
-  padding: 0 16px;
+    z-index: 10;
+    padding: 0 16px;
 }
 
 .left-section {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .right-section {
-  width: 40%;
-  max-width: 500px;
-  margin: 0 auto;
+    width: 40%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .banner-image {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  max-height: 100vh;
-  top: 30vh;
-  left: -10vw;
-  object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    top: 30vh;
+    left: -10vw;
+    object-fit: cover;
 }
 
 @media (max-width: 767px) {
-  /* Stack left and right sections on top of each other for smaller screens */
-  .container {
-      display: block;
-      padding: 0;
-  }
+    /* Stack left and right sections on top of each other for smaller screens */
+    .container {
+        display: block;
+        padding: 0;
+    }
 
-  /* Hide the background image on mobile devices */
-  .banner-image {
-      display: none;
-  }
+    /* Hide the background image on mobile devices */
+    .banner-image {
+        display: none;
+    }
 
-  /* Adjust left-section for mobile */
-  .left-section {
-      width: 100%;
-      padding: 20px;
-      text-align: center;
-  }
+    /* Adjust left-section for mobile */
+    .left-section {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
 
-  /* Adjust right-section for mobile */
-  .right-section {
-      width: 100%;
-      max-width: none;
-      margin: 20px auto 0 auto;
-      padding: 20px;
-  }
+    /* Adjust right-section for mobile */
+    .right-section {
+        width: 100%;
+        max-width: none;
+        margin: 20px auto 0 auto;
+        padding: 20px;
+    }
 
-  /* Adjust font sizes for mobile */
-  .left-section h1 {
-      font-size: 8vw;
-  }
+    /* Adjust font sizes for mobile */
+    .left-section h1 {
+        font-size: 8vw;
+    }
 
-  .left-section p {
-      font-size: 5vw;
-  }
+    .left-section p {
+        font-size: 5vw;
+    }
 
-  .right-section h2 {
-      font-size: 4vw;
-  }
+    .right-section h2 {
+        font-size: 4vw;
+    }
 
-  .right-section p {
-      font-size: 6vw;
-  }
+    .right-section p {
+        font-size: 6vw;
+    }
 
-  /* Adjust CoinDropdown size */
-  .right-section .coin-dropdown {
-      font-size: 5vw;
-  }
+    /* Adjust CoinDropdown size */
+    .right-section .coin-dropdown {
+        font-size: 5vw;
+    }
 }

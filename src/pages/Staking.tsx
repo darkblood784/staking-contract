@@ -124,12 +124,12 @@ function Staking() {
 
     return (
         <div className={`flex flex-col w-full items-center text-white ${fontClass}`}>
-            <div className="container">
+            <div className="relative flex h-screen w-full items-center text-[40px] my-[20px] md:my-0 md:text-[80px] justify-between px-6">
                 {/* Background Whale Image */}
-                <img src={banner} alt="Whale" className="banner-image"/>
+                <img src={banner} alt="Whale" className="absolute w-full h-auto object-cover max-h-[100vh] lg:max-h-[90vh] xl:max-h-[100vh] top-[30vh] left-[-10vw] md:top-[15vh] md:left-[-5vw]"/>
 
                 {/* Left side: Banner and Text */}
-                <div className="left-section">
+                <div className="relative z-10 flex flex-col justify-center items-start w-full md:w-2/3 h-full px-4 mb-[-40px] top-[-20px]">
                     <h1 className="font-bold text-shadow-customh">{t('swim')}</h1>
                     <h1 className="font-bold text-shadow-customh">{t('earn')}</h1>
 
@@ -142,7 +142,7 @@ function Staking() {
                 </div>
 
                 {/* Right side: Staking Box on Top of the Background */}
-                <div className="right-section">
+                <div className="relative z-10 w-full md:w-1/3 max-w-[500px] mx-auto">
                     <img src={Hover_image} alt="Whale Box" className="w-full h-auto object-contain max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px]" />
                     {/* Layering the text on top of the image */}
                     <div className="absolute top-0 left-0 p-4 sm:p-6 text-white w-full">
