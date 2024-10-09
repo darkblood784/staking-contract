@@ -99,52 +99,53 @@ body {
 
 /* Mobile (below 768px) adjustments */
 @media (max-width: 768px) {
-    .custom-btn {
-      width: 100%; /* Button full width on smaller screens */
-      font-size: 1rem; /* Adjust font size */
-      padding: 8px 20px; /* Smaller padding for mobile */
-      box-shadow: 
-          0 0 0 2px #1d3dff, /* Adjust border size for mobile */
-          2px 2px 0 2px #5170fd, 
-          -2px -2px 0 2px #5170fd;
-    }
-
-    .custom-btn::before,
-    .custom-btn::after {
-        width: 6px;
-        height: 6px;
-    }
-
-    .custom-btn::before {
-        top: -4px;
-        left: -4px;
-        box-shadow:
-            0 0 0 1px #1d3dff,
-            2px 0 0 0px #5170fd,
-            0 2px 0 0px #5170fd;
-    }
-
-    .custom-btn::after {
-        bottom: -4px;
-        right: -4px;
-        box-shadow:
-            0 0 0 1px #1d3dff,
-            -2px 0 0 0px #5170fd,
-            0 -2px 0 0px #5170fd;
-    }
-    .left-section, .right-section {
-        width: 100%;
-        top: 10vh;
-        margin: 0 auto;
-    }
-    .whale-image {
-        display: none; /* Hide whale background on small screens */
-    }
-    .staking-box {
-        margin-top: 5px; /* Ensure some space between sections */
-        margin-bottom: 5px;
-    }
+  .custom-btn {
+    width: 100%; /* Button full width on smaller screens */
+    font-size: 1rem; /* Adjust font size */
+    padding: 8px 20px; /* Smaller padding for mobile */
+    box-shadow: 
+        0 0 0 2px #1d3dff, /* Adjust border size for mobile */
+        2px 2px 0 2px #5170fd, 
+        -2px -2px 0 2px #5170fd;
   }
+
+  .custom-btn::before,
+  .custom-btn::after {
+      width: 6px;
+      height: 6px;
+  }
+
+  .custom-btn::before {
+      top: -4px;
+      left: -4px;
+      box-shadow:
+          0 0 0 1px #1d3dff,
+          2px 0 0 0px #5170fd,
+          0 2px 0 0px #5170fd;
+  }
+
+  .custom-btn::after {
+      bottom: -4px;
+      right: -4px;
+      box-shadow:
+          0 0 0 1px #1d3dff,
+          -2px 0 0 0px #5170fd,
+          0 -2px 0 0px #5170fd;
+  }
+  .left-section, .right-section {
+      width: 100%;
+      top: 10vh;
+      margin: 0 auto;
+  }
+  .whale-image {
+      display: none; /* Hide whale background on small screens */
+  }
+  .staking-box {
+      width: 100%;
+      margin-top: 5px; /* Ensure some space between sections */
+      margin-bottom: 5px;
+    }
+}
 
 
 /* Tablet and Desktop adjustments */
