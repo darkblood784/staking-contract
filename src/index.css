@@ -71,13 +71,14 @@ body {
     }
     .left-section, .right-section {
         width: 100%;
+        top: 15vh;
         margin: 0 auto;
     }
     .whale-image {
         display: none; /* Hide whale background on small screens */
     }
     .staking-box {
-        margin-top: 20px; /* Ensure some space between sections */
+        margin-top: 10px; /* Ensure some space between sections */
     }
 }
 
