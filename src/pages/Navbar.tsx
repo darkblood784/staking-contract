@@ -1,17 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui'; // Keep TronLink adapter
+import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
 import Web3 from 'web3';
 
 import '../index.css';
 import '../custom.css';
+
+// Add global declaration for window.ethereum
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
 
 function Navbar() {
   const { t, i18n } = useTranslation();
 
   const fontClass = i18n.language === 'en' ? 'font-cubic' : 'font-cubic';
   const [isOpen, setIsOpen] = useState(false);
-  const [wallets, setWallets] = useState([]); // Wallet list state
+  const [wallets, setWallets] = useState<string[]>([]); // Explicitly set as string array
   const [selectedWallet, setSelectedWallet] = useState('');
   const [account, setAccount] = useState('');
   const [isMetaMaskConnected, setMetaMaskConnected] = useState(false);
@@ -20,9 +27,8 @@ function Navbar() {
     detectWallets();
   }, []);
 
-  // Detect available wallets including MetaMask and TronLink
   const detectWallets = async () => {
-    const detectedWallets = [];
+    const detectedWallets: string[] = [];
 
     // Detect MetaMask
     if (window.ethereum) {
@@ -30,15 +36,14 @@ function Navbar() {
     }
 
     // Detect TronLink (using TronLink Adapter)
-    detectedWallets.push('TronLink'); 
+    detectedWallets.push('TronLink');
 
-    // Add other wallets (e.g., WalletConnect, OKX, etc.) manually if needed
+    // Add other wallets (e.g., WalletConnect, OKX, etc.)
     detectedWallets.push('WalletConnect', 'Ledger', 'TokenPocket', 'Bitget Wallet', 'OKX Wallet');
 
-    setWallets(detectedWallets);
+    setWallets(detectedWallets); // Update state with detected wallets
   };
 
-  // MetaMask connection function
   const connectMetaMask = async () => {
     if (window.ethereum) {
       try {
@@ -53,7 +58,6 @@ function Navbar() {
     }
   };
 
-  // Function to handle wallet selection from the dropdown
   const handleWalletSelect = (wallet: string) => {
     setSelectedWallet(wallet);
 
@@ -96,7 +100,7 @@ function Navbar() {
           )}
         </div>
 
-        {/* Tron Wallet Action Button (Keep if you want Tron wallet separately) */}
+        {/* Tron Wallet Action Button */}
         <WalletActionButton className={`w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300 ${fontClass}`} />
 
         {/* Language Selector */}
