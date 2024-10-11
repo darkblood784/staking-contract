@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+import Web3 from 'web3';
 import type { Adapter, WalletError } from '@tronweb3/tronwallet-abstract-adapter';
 import { WalletDisconnectedError, WalletNotFoundError } from '@tronweb3/tronwallet-abstract-adapter';
 import { WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
@@ -14,23 +15,50 @@ import Navbar from './pages/Navbar';
 import Staking from './pages/Staking';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 export function App() {
+    // MetaMask state management
+    const [metaMaskConnected, setMetaMaskConnected] = useState(false);
+    const [account, setAccount] = useState('');
+    const [isTronWalletConnected, setIsTronWalletConnected] = useState(false);
+
+    // MetaMask connect/disconnect functions
+    const connectMetaMask = async () => {
+        if (window.ethereum) {
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                setAccount(accounts[0]);
+                setMetaMaskConnected(true);
+                setIsTronWalletConnected(false); // Disconnect Tron wallet
+            } catch (error) {
+                console.error('User rejected the connection');
+            }
+        } else {
+            alert('Please install MetaMask!');
+        }
+    };
+
+    const disconnectMetaMask = () => {
+        setMetaMaskConnected(false);
+        setAccount('');
+    };
+
+    // Tron Wallet connect/disconnect logic
     function onError(e: WalletError) {
-        console.log(e);
         if (e instanceof WalletNotFoundError) {
             toast.error(e.message);
         } else if (e instanceof WalletDisconnectedError) {
             toast.error(e.message);
-        } else toast.error(e.message);
+        } else {
+            toast.error(e.message);
+        }
     }
-    const adapters = useMemo(function () {
-        const tronLink1 = new TronLinkAdapter();
-        const walletConnect1 = new WalletConnectAdapter({
+
+    const adapters = useMemo(() => {
+        const tronLink = new TronLinkAdapter();
+        const walletConnect = new WalletConnectAdapter({
             network: 'Nile',
             options: {
                 relayUrl: 'wss://relay.walletconnect.com',
-                // example WC app project ID
                 projectId: '5fc507d8fc7ae913fff0b8071c7df231',
                 metadata: {
                     name: 'Test DApp',
@@ -39,43 +67,36 @@ export function App() {
                     icons: ['https://your-dapp-url.org/mainLogo.svg'],
                 },
             },
-            web3ModalConfig: {
-                themeMode: 'dark',
-                themeVariables: {
-                    '--w3m-z-index': '1000'
-                },
-                // explorerRecommendedWalletIds: 'NONE',
-                enableExplorer: true,
-                explorerRecommendedWalletIds: [
-                    '225affb176778569276e484e1b92637ad061b01e13a048b35a9d280c3b58970f',
-                    '1ae92b26df02f0abca6304df07debccd18262fdf5fe82daa81593582dac9a369',
-                    '4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0'
-                ]
-            }
         });
-        const ledger = new LedgerAdapter({
-            accountNumber: 2,
-        });
+        const ledger = new LedgerAdapter({ accountNumber: 2 });
         const tokenPocket = new TokenPocketAdapter();
         const bitKeep = new BitKeepAdapter();
-        const okxWalletAdapter = new OkxWalletAdapter();
-        return [tronLink1, walletConnect1, ledger, tokenPocket, bitKeep, okxWalletAdapter];
+        const okxWallet = new OkxWalletAdapter();
+
+        return [tronLink, walletConnect, ledger, tokenPocket, bitKeep, okxWallet];
     }, []);
+
     function onConnect() {
-        console.log('onConnect');
+        setIsTronWalletConnected(true);
+        setMetaMaskConnected(false); // Disconnect MetaMask
     }
-    async function onAccountsChanged() {
-        console.log('onAccountsChanged')
+
+    function onDisconnect() {
+        setIsTronWalletConnected(false);
     }
-    async function onAdapterChanged(adapter: Adapter | null) {
-        console.log('onAdapterChanged', adapter)
-    }
+
     return (
-        <WalletProvider onError={onError} onConnect={onConnect} onAccountsChanged={onAccountsChanged} onAdapterChanged={onAdapterChanged} autoConnect={true} adapters={adapters} disableAutoConnectOnLoad={true}>
+        <WalletProvider onError={onError} onConnect={onConnect} autoConnect={true} adapters={adapters}>
             <WalletModalProvider>
                 <div className="flex items-center flex-col bg-[#000000] text-stone-900 dark:text-stone-300 min-h-screen font-inter">
-                    <Navbar />
-                    <div className="px-4 w-full lg:w-3/4 ">
+                    <Navbar
+                        connectMetaMask={connectMetaMask}
+                        metaMaskConnected={metaMaskConnected}
+                        disconnectMetaMask={disconnectMetaMask}
+                        account={account}
+                        isTronWalletConnected={isTronWalletConnected}
+                    />
+                    <div className="px-4 w-full lg:w-3/4">
                         <Staking />
                     </div>
                 </div>
