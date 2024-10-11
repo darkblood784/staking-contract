@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from "react-i18next";
 import { LANGUAGES } from "../constants";
 import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
-
+import Web3 from 'web3';
 import '../index.css';
-
 import '../custom.css';
-
 
 function Navbar() {
     const { t, i18n } = useTranslation();
@@ -21,6 +19,10 @@ function Navbar() {
         img: '/src/assets/language/en.svg'  // Default image path
     });
 
+    // Initialize state for MetaMask wallet
+    const [account, setAccount] = useState('');
+    const [isMetaMaskConnected, setMetaMaskConnected] = useState(false);
+
     // Set the correct language and flag on component mount
     useEffect(() => {
         const currentLang = i18n.language || 'en';
@@ -34,11 +36,27 @@ function Navbar() {
         }
     }, [i18n.language]);
 
+    // Function to change language
     const onChangeLang = (code: string, label: string, img: string) => {
         i18n.changeLanguage(code);
         setSelectedLanguage({ label, img });  // Update the label and image
         setIsOpen(false);
-    }
+    };
+
+    // Function to connect MetaMask wallet
+    const connectMetaMask = async () => {
+        if (window.ethereum) {
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                setAccount(accounts[0]);
+                setMetaMaskConnected(true);
+            } catch (error) {
+                console.error("User rejected the connection");
+            }
+        } else {
+            alert('Please install MetaMask!');
+        }
+    };
 
     return (
         <div className={`px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300 ${fontClass}`}>
@@ -49,10 +67,20 @@ function Navbar() {
                 </a>
             </div>
 
-            {/* Right side with Connect Wallet and Language Selector */}
+            {/* Right side with Wallet Connect buttons and Language Selector */}
             <div className="flex items-center">
+                {/* MetaMask Connect Button */}
+                <button
+                    onClick={connectMetaMask}
+                    className={`w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300 ${fontClass}`}
+                >
+                    {isMetaMaskConnected ? `Connected: ${account.slice(0, 6)}...${account.slice(-4)}` : 'Connect MetaMask'}
+                </button>
+
+                {/* Tron Wallet Action Button */}
                 <WalletActionButton className={`w-28 md:w-32 flex justify-center bg-[#5170fd] text-white text-[16px] font-bold hover:scale-105 transition-transform duration-300 ${fontClass}`} />
-                
+
+                {/* Language Selector */}
                 <div className="relative">
                     <button onClick={() => setIsOpen(!isOpen)} className="flex items-center justify-center w-24 md:w-32 h-12 rounded-[4px] p-2 bg-[#5170fd] text-white text-[16px] font-bold ml-4 hover:scale-105 transition-transform duration-300 ">
                         {selectedLanguage.img && (
