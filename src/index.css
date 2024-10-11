@@ -102,63 +102,71 @@ body {
     color: yellow;
 }
 
-/* Mobile adjustments for the staking box */
+/* Mobile-specific adjustments */
 @media (max-width: 768px) {
+
   .staking-box {
-      width: 100%; /* Adjust width to fit the screen properly */
-      margin: 0 auto; /* Center the box */
-      position: relative; /* Ensure absolute children stay within bounds */
+      width: 100%; /* Adjust width to fit the screen */
+      margin: 0 auto; /* Center the staking box */
+      position: relative;
+      padding: 20px; /* Add padding for better spacing */
   }
 
   /* Image inside the staking box */
   .staking-box img {
       max-height: 150px; /* Reduce image height for small screens */
-      width: 100%; /* Ensure the image fits the staking box width */
-      object-fit: contain; /* Ensure the image scales correctly */
+      width: 100%; /* Ensure the image fits the box width */
+      object-fit: contain; /* Ensure the image scales properly */
   }
 
-  /* Adjust the Total Staked and Estimated Rewards text */
+  /* Adjust Total Staked text */
   .staking-box h2 {
-      font-size: 4vw; /* Adjust font size for small screens */
-      margin-bottom: 0.5vw;
+      font-size: 4vw; /* Responsive font size */
   }
 
   .staking-box p {
-      font-size: 3.5vw; /* Make paragraph text responsive */
+      font-size: 3.5vw; /* Responsive paragraph text */
       margin-bottom: 0.5vw;
   }
 
-  /* CoinDropdown and staking data adjustments */
+  /* Adjust dropdown and staking data */
   .staking-box .coin-dropdown {
-      width: 100%; /* Full width dropdown for mobile */
-      padding: 0.5vw;
-  }
-
-  /* Adjust Estimated Rewards */
-  .staking-box .mt-[5vw] {
-      margin-top: 5vw; /* Reduce top margin */
-  }
-
-  .staking-box .text-[3vw] {
-      font-size: 6vw; /* Adjust font size */
-  }
-
-  /* Ensure APR and Total Staked sections are readable */
-  .staking-box .font-bold {
-      font-size: 4.5vw; /* Responsive font sizes for bold content */
-  }
-
-  /* Coin dropdown adjustments */
-  .coin-dropdown {
-      width: 90%; /* Set width for dropdown on mobile */
+      width: 100%; /* Full-width dropdown */
+      padding: 10px;
       font-size: 3.5vw;
   }
 
-  /* Adjust position of $289.38m */
+  /* Adjust Total Staked and CoinDropdown section */
   .staking-box .absolute {
       top: 2vw;
       right: 2vw;
-      padding: 2vw;
-      font-size: 3.5vw; /* Responsive font size */
+      padding: 5px;
+      font-size: 3.5vw;
+      background-color: white;
+      color: black;
+  }
+
+  /* Ensure the Estimated Rewards text is readable */
+  .staking-box .text-yellow-500 {
+      font-size: 3.5vw;
+  }
+
+  .staking-box .text-[3vw] {
+      font-size: 5vw; /* Adjust Estimated Rewards font size */
+  }
+
+  .staking-box .font-bold {
+      font-size: 4vw; /* Responsive font size */
+  }
+
+  /* Adjust the CoinDropdown */
+  .coin-dropdown {
+      width: 90%;
+      font-size: 3.5vw;
+  }
+
+  /* Reduce the margin between sections */
+  .staking-box .mt-[10vw] {
+      margin-top: 5vw;
   }
 }
