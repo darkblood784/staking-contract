@@ -109,7 +109,7 @@ body {
 /* Mobile adjustments for the staking box */
 @media (max-width: 768px) {
   .staking-box {
-      width: 95%; /* Adjust width to fit the screen properly */
+      width: 100%; /* Adjust width to fit the screen properly */
       margin: 0 auto; /* Center the box */
       position: relative; /* Ensure absolute children stay within bounds */
   }
@@ -139,7 +139,7 @@ body {
   }
 
   /* Adjust Estimated Rewards */
-  .staking-box .mt-[10vw] {
+  .staking-box .mt-[5vw] {
       margin-top: 5vw; /* Reduce top margin */
   }
 
@@ -154,7 +154,7 @@ body {
 
   /* Coin dropdown adjustments */
   .coin-dropdown {
-      width: 70%; /* Set width for dropdown on mobile */
+      width: 90%; /* Set width for dropdown on mobile */
       font-size: 3.5vw;
   }
 
