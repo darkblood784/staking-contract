@@ -108,59 +108,61 @@ body {
 
 /* Mobile adjustments for the staking box */
 @media (max-width: 768px) {
-  /* Full width for the right section (staking box) */
   .staking-box {
-      width: 90%; /* Ensure some space from the screen edge */
-      margin-top: 10px; /* Adjust margin to prevent content overlap */
-      max-width: 100%; /* Allow full width on mobile */
-      position: relative; /* Ensure text and images stay within the container */
+      width: 95%; /* Adjust width to fit the screen properly */
+      margin: 0 auto; /* Center the box */
+      position: relative; /* Ensure absolute children stay within bounds */
   }
 
   /* Image inside the staking box */
   .staking-box img {
-      max-height: 200px; /* Adjust image height for smaller screens */
-      width: 100%; /* Ensure the image is fully responsive */
+      max-height: 150px; /* Reduce image height for small screens */
+      width: 100%; /* Ensure the image fits the staking box width */
+      object-fit: contain; /* Ensure the image scales correctly */
   }
 
-  /* Adjust text sizes and spacing */
+  /* Adjust the Total Staked and Estimated Rewards text */
   .staking-box h2 {
-      font-size: 4vw; /* Increase font size to fit mobile screens */
-      line-height: 1.2;
+      font-size: 4vw; /* Adjust font size for small screens */
+      margin-bottom: 0.5vw;
   }
 
   .staking-box p {
-      font-size: 3vw; /* Responsive font size for text inside staking box */
+      font-size: 3.5vw; /* Make paragraph text responsive */
+      margin-bottom: 0.5vw;
   }
 
   /* CoinDropdown and staking data adjustments */
-  .staking-box .top-[3vw] {
-      top: 8vw; /* Adjust top position of staking data for mobile */
+  .staking-box .coin-dropdown {
+      width: 100%; /* Full width dropdown for mobile */
+      padding: 0.5vw;
   }
 
-  .staking-box .mt-[5vw] {
-      margin-top: 3vw; /* Reduce top margin for better alignment on small screens */
-  }
-
-  .staking-box .text-[1vw], .staking-box .text-[2vw], .staking-box .text-[1.5vw] {
-      font-size: 4vw; /* Responsive font sizes for different text levels */
-  }
-
-  /* Adjust padding and margins for inner text */
-  .staking-box .p-4, .staking-box .p-6 {
-      padding: 2vw; /* Adjust padding for mobile responsiveness */
-  }
-  
-  /* Adjust rewards section */
+  /* Adjust Estimated Rewards */
   .staking-box .mt-[10vw] {
-      margin-top: 5vw; /* Reduce margin to fit better on mobile */
+      margin-top: 5vw; /* Reduce top margin */
   }
 
   .staking-box .text-[3vw] {
-      font-size: 6vw; /* Adjust for mobile readability */
+      font-size: 6vw; /* Adjust font size */
   }
 
-  /* Ensure APR and Total Staked are readable */
+  /* Ensure APR and Total Staked sections are readable */
   .staking-box .font-bold {
-      font-size: 5vw; /* Adjust font size for mobile */
+      font-size: 4.5vw; /* Responsive font sizes for bold content */
+  }
+
+  /* Coin dropdown adjustments */
+  .coin-dropdown {
+      width: 70%; /* Set width for dropdown on mobile */
+      font-size: 3.5vw;
+  }
+
+  /* Adjust position of $289.38m */
+  .staking-box .absolute {
+      top: 2vw;
+      right: 2vw;
+      padding: 2vw;
+      font-size: 3.5vw; /* Responsive font size */
   }
 }
