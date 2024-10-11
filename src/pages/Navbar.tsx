@@ -6,6 +6,12 @@ import Web3 from 'web3';
 import '../index.css';
 import '../custom.css';
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 function Navbar() {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +21,6 @@ function Navbar() {
     img: '/src/assets/language/en.svg',
   });
 
-  // Function to change language
-  const onChangeLang = (code: string, label: string, img: string) => {
-    i18n.changeLanguage(code);
-    setSelectedLanguage({ label, img });
-    setIsOpen(false);
-  };
-
-  // MetaMask Connection
   const [account, setAccount] = useState('');
   const connectMetaMask = async () => {
     if (window.ethereum) {
@@ -37,10 +35,14 @@ function Navbar() {
     }
   };
 
+  const onChangeLang = (code: string, label: string, img: string) => {
+    i18n.changeLanguage(code);
+    setSelectedLanguage({ label, img });
+    setIsOpen(false);
+  };
+
   return (
-    <div
-      className={`px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300 font-cubic`}
-    >
+    <div className="px-2 flex w-full items-center justify-between fixed z-40 top-0 left-0 h-28 md:pr-8 dark:bg-[rgba(255,255,255,0)] backdrop-blur-[30px] shadow-[0_3px_6px_3px_rgba(0,0,0,0.4)] transition-all duration-300 font-cubic">
       {/* Left side with Logo */}
       <div className="flex items-center">
         <a href="https://staking.whalestrategy.net/">
