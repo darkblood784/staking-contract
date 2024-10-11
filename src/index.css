@@ -37,65 +37,31 @@ body {
     text-shadow: 1px 1px 0px #787777;
 }
 
+/* Get Started button */
 .custom-btn {
-  display: inline-block;
-  background-color: #5170fd;
-  color: white;
-  padding: 10px 30px;
-  font-size: 20px;
-  font-family: 'Minecraft', sans-serif;
-  border: 2px solid #1d3dff;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0px #1d3dff;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  z-index: 1;
-  box-shadow: 
-      0 0 0 4px #1d3dff, /* Blue outer border */
-      4px 4px 0 4px #5170fd, /* Shadow effect */
-      -4px -4px 0 4px #5170fd; /* Shadow effect on opposite sides */
-}
-
-/* Pixel corner effect using pseudo-elements */
-.custom-btn::before,
-.custom-btn::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background-color: #1d3dff; /* Match border color */
-  z-index: 2;
-}
-
-/* Position pixel effect on corners */
-.custom-btn::before {
-  top: -6px;
-  left: -6px;
-  box-shadow:
-      0 0 0 1px #1d3dff,
-      2px 0 0 0px #5170fd,
-      0 2px 0 0px #5170fd;
-}
-
-.custom-btn::after {
-  bottom: -6px;
-  right: -6px;
-  box-shadow:
-      0 0 0 1px #1d3dff,
-      -2px 0 0 0px #5170fd,
-      0 -2px 0 0px #5170fd;
+    display: inline-block;
+    background-color: #5170fd;
+    color: white;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-family: 'Minecraft', sans-serif;
+    border-radius: 15px;
+    border: 2px solid #1d3dff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #1d3dff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 2px 2px 0px #1d3dff;
 }
 
 .custom-btn:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 2px 2px 0px #1d3dff;
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0px #1d3dff;
 }
 
 .custom-btn:active {
-  transform: translate(4px, 4px);
-  box-shadow: 2px 2px 0px #1d3dff;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #1d3dff;
 }
-
 
 /* Mobile (below 768px) adjustments */
 @media (max-width: 768px) {
