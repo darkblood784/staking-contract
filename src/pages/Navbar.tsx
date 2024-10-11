@@ -6,6 +6,13 @@ import Web3 from 'web3';
 import '../index.css';
 import '../custom.css';
 
+// Declare global window object
+declare global {
+  interface Window {
+    ethereum?: any; // MetaMask injects this object into the window
+  }
+}
+
 function Navbar() {
     const { t, i18n } = useTranslation();
 
@@ -51,7 +58,7 @@ function Navbar() {
                 setAccount(accounts[0]);
                 setMetaMaskConnected(true);
             } catch (error) {
-                console.error("User rejected the connection");
+                console.error("User rejected the connection", error);
             }
         } else {
             alert('Please install MetaMask!');
