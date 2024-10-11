@@ -102,70 +102,59 @@ body {
     color: yellow;
 }
 
-/* Mobile-specific adjustments */
 @media (max-width: 768px) {
-
   .staking-box {
-      width: 100%; /* Adjust width to fit the screen */
+      width: 90%; /* Ensure the staking box fits within the mobile screen */
       margin: 0 auto; /* Center the staking box */
+      padding: 20px; /* Add padding to avoid content touching the edges */
       position: relative;
-      padding: 20px; /* Add padding for better spacing */
   }
 
-  /* Image inside the staking box */
+  /* Adjust the staking box image */
   .staking-box img {
-      max-height: 150px; /* Reduce image height for small screens */
-      width: 100%; /* Ensure the image fits the box width */
-      object-fit: contain; /* Ensure the image scales properly */
+      max-height: 150px; /* Set max height for the image */
+      width: 100%; /* Make sure the image scales to the box width */
+      object-fit: contain; /* Ensure the image fits well inside the box */
   }
 
-  /* Adjust Total Staked text */
+  /* Adjust text inside the staking box */
   .staking-box h2 {
       font-size: 4vw; /* Responsive font size */
   }
 
   .staking-box p {
-      font-size: 3.5vw; /* Responsive paragraph text */
+      font-size: 3.5vw; /* Adjust paragraph font size */
       margin-bottom: 0.5vw;
   }
 
   /* Adjust dropdown and staking data */
-  .staking-box .coin-dropdown {
-      width: 100%; /* Full-width dropdown */
-      padding: 10px;
-      font-size: 3.5vw;
-  }
-
-  /* Adjust Total Staked and CoinDropdown section */
   .staking-box .absolute {
-      top: 2vw;
+      top: 2vw; 
       right: 2vw;
       padding: 5px;
       font-size: 3.5vw;
-      background-color: white;
-      color: black;
   }
 
-  /* Ensure the Estimated Rewards text is readable */
+  /* Adjust Estimated Rewards section */
   .staking-box .text-yellow-500 {
       font-size: 3.5vw;
   }
 
   .staking-box .text-[3vw] {
-      font-size: 5vw; /* Adjust Estimated Rewards font size */
+      font-size: 5vw; /* Adjust the font size for estimated rewards */
   }
 
   .staking-box .font-bold {
-      font-size: 4vw; /* Responsive font size */
+      font-size: 4vw; /* Adjust the bold font size */
   }
 
-  /* Adjust the CoinDropdown */
+  /* Adjust Coin Dropdown */
   .coin-dropdown {
-      width: 90%;
-      font-size: 3.5vw;
+      width: 100%; /* Make dropdown full-width on mobile */
+      font-size: 3.5vw; /* Adjust font size for the dropdown */
   }
 
-  /* Reduce the margin between sections */
+  /* Adjust margin between sections */
   .staking-box .mt-[10vw] {
       margin-top: 5vw;
   }
