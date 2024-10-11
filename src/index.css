@@ -25,102 +25,19 @@ body {
     color: white;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
-/* Staking Box Styling */
-.staking-box {
-    width: 85%; /* Increase width for larger size */
-    max-width: 600px; /* Ensure it doesn't grow too large */
-    padding: 20px; /* Add padding for spacing */
-    margin: 20px auto; /* Center the box */
-    background-color: #232323; /* Dark background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
-    position: relative;
+/* Custom Text Shadow */
+.text-shadow-customh {
+    text-shadow: 2px 2px 0px #787777;
 }
 
-/* Image inside staking box */
-.staking-box img {
-    width: 100%;
-    height: auto;
-    max-height: 250px; /* Control height */
-    object-fit: contain;
-    border-radius: 8px; /* Rounded corners for image */
+.text-shadow-customp {
+    text-shadow: 1px 1px 0px #787777;
 }
 
-/* Coin Symbol (dropdown) */
-.coin-dropdown img {
-    width: 50px; /* Set fixed size for the coin symbol */
-    height: 50px;
-}
-
-/* Text size for staking values */
-.staking-box h2 {
-    font-size: 1.8rem; /* Increase heading size */
-    text-align: center;
-}
-
-.staking-box p {
-    font-size: 1.4rem; /* Adjust the size of the values */
-    text-align: center;
-}
-
-/* Total Staked and Estimated Rewards */
-.total-staked {
-    font-size: 1.6rem; /* Adjust size for better readability */
-    font-weight: bold;
-    color: #ffd966; /* Bright color for visibility */
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.estimated-rewards {
-    font-size: 1.4rem;
-    color: #ffd966;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.rewards-value {
-    font-size: 2.2rem; /* Larger value size */
-    font-weight: bold;
-    color: #ffffff;
-    text-align: center;
-}
-
-/* Coin dropdown container */
-.coin-dropdown {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Custom adjustments for smaller screens */
-@media (max-width: 768px) {
-    .staking-box {
-        width: 95%; /* Full width on smaller screens */
-        padding: 10px;
-    }
-
-    .staking-box img {
-        max-height: 200px; /* Reduce image size on mobile */
-    }
-
-    .staking-box h2 {
-        font-size: 1.5rem;
-    }
-
-    .staking-box p {
-        font-size: 1.2rem;
-    }
-
-    .coin-dropdown img {
-        width: 40px; /* Smaller coin symbol */
-        height: 40px;
-    }
-}
-
-/* Custom button for Get Started */
+/* Get Started button */
 .custom-btn {
     display: inline-block;
     background-color: #5170fd;
@@ -144,4 +61,77 @@ body {
 .custom-btn:active {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0px #1d3dff;
+}
+
+/* Mobile (below 768px) adjustments */
+@media (max-width: 768px) {
+    .custom-btn {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        top: 10vh;
+        margin: 0 auto;
+    }
+
+    .whale-image {
+        display: none;
+    }
+
+    .staking-box {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .staking-box img {
+        max-width: 80%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Adjust staking box content for mobile */
+    .staking-box h2 {
+        font-size: 1.25rem;
+    }
+
+    .staking-box p {
+        font-size: 1rem;
+    }
+
+    .staking-box .coin-symbol {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+
+    .staking-box .dropdown {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+/* Tablet and Desktop adjustments */
+@media (min-width: 768px) {
+    .whale-image {
+        top: 15vh;
+        left: -5vw;
+        max-height: 80vh;
+    }
+}
+
+@media (min-width: 1024px) {
+    .whale-image {
+        top: 20vh;
+        left: -10vw;
+        max-height: 100vh;
+    }
+}
+
+/* For group hover effects */
+.group:hover .dropdown {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: yellow;
 }
