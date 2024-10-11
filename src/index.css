@@ -105,3 +105,62 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     color: yellow;
 }
+
+/* Mobile adjustments for the staking box */
+@media (max-width: 768px) {
+  /* Full width for the right section (staking box) */
+  .staking-box {
+      width: 90%; /* Ensure some space from the screen edge */
+      margin-top: 10px; /* Adjust margin to prevent content overlap */
+      max-width: 100%; /* Allow full width on mobile */
+      position: relative; /* Ensure text and images stay within the container */
+  }
+
+  /* Image inside the staking box */
+  .staking-box img {
+      max-height: 200px; /* Adjust image height for smaller screens */
+      width: 100%; /* Ensure the image is fully responsive */
+  }
+
+  /* Adjust text sizes and spacing */
+  .staking-box h2 {
+      font-size: 4vw; /* Increase font size to fit mobile screens */
+      line-height: 1.2;
+  }
+
+  .staking-box p {
+      font-size: 3vw; /* Responsive font size for text inside staking box */
+  }
+
+  /* CoinDropdown and staking data adjustments */
+  .staking-box .top-[3vw] {
+      top: 8vw; /* Adjust top position of staking data for mobile */
+  }
+
+  .staking-box .mt-[5vw] {
+      margin-top: 3vw; /* Reduce top margin for better alignment on small screens */
+  }
+
+  .staking-box .text-[1vw], .staking-box .text-[2vw], .staking-box .text-[1.5vw] {
+      font-size: 4vw; /* Responsive font sizes for different text levels */
+  }
+
+  /* Adjust padding and margins for inner text */
+  .staking-box .p-4, .staking-box .p-6 {
+      padding: 2vw; /* Adjust padding for mobile responsiveness */
+  }
+  
+  /* Adjust rewards section */
+  .staking-box .mt-[10vw] {
+      margin-top: 5vw; /* Reduce margin to fit better on mobile */
+  }
+
+  .staking-box .text-[3vw] {
+      font-size: 6vw; /* Adjust for mobile readability */
+  }
+
+  /* Ensure APR and Total Staked are readable */
+  .staking-box .font-bold {
+      font-size: 5vw; /* Adjust font size for mobile */
+  }
+}
