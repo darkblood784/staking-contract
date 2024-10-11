@@ -65,89 +65,62 @@ body {
 
 /* Mobile (below 768px) adjustments */
 @media (max-width: 768px) {
-    /* Full width buttons on mobile */
     .custom-btn {
-        width: 100%;
+        width: 100%; /* Full width for buttons on mobile */
         font-size: 1rem;
-        padding: 10px;
     }
 
-    /* Adjust left and right sections */
-    .left-section, .right-section {
-        width: 100%;
-        top: 10vh;
-        margin: 0 auto;
-    }
-
-    /* Hide whale background image on small screens */
-    .whale-image {
-        display: none;
-    }
-
-    /* Staking box adjustments */
     .staking-box {
-        width: 90%;
-        padding: 15px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        max-width: 100%;
+        width: 90%; /* Ensure staking box is within screen */
+        padding: 10px;
+        margin: 0 auto 10px auto; /* Center and add spacing */
         position: relative;
     }
 
-    /* Staking box image adjustments */
     .staking-box img {
-        width: 100%;
+        width: 100%; /* Image should adapt to the box */
         height: auto;
-        max-height: 200px;
+        max-height: 200px; /* Set a reasonable max height */
         object-fit: contain;
     }
 
-    /* Layer text adjustments for staking box */
+    /* Text size adjustments for staking content */
     .staking-box h2 {
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 1.5rem;
+        text-align: center;
     }
 
-    /* Coin Dropdown */
-    .staking-box .dropdown {
-        width: 100%;
-        font-size: 1rem;
-    }
-
-    /* Adjust total staked and estimated rewards font sizes */
     .staking-box p {
-        font-size: 1rem;
-        margin-bottom: 5px;
-    }
-
-    /* Estimated Rewards section */
-    .staking-box .text-yellow-500 {
         font-size: 1.2rem;
+        text-align: center;
     }
 
-    .staking-box .text-[3vw] {
-        font-size: 1.4rem; /* Adjust the size to fit well */
-    }
-
-    .staking-box .font-bold {
+    /* Dropdown adjustments */
+    .coin-dropdown {
+        width: 100%;
         font-size: 1.2rem;
+        margin-top: 5px;
+        text-align: center;
     }
 
-    /* Adjust for coin dropdown position */
-    .staking-box .coin-dropdown {
-        width: 100%;
-        font-size: 1rem;
+    /* Adjust text positioning for total staked */
+    .staking-box .total-staked {
+        font-size: 1.4rem;
+        text-align: center;
     }
 
-    /* Ensure staking box content is vertically aligned */
-    .staking-box .dropdown-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    /* Keep rewards section within the box */
+    .staking-box .estimated-rewards {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 10px;
     }
 
-    /* Hide background or non-essential decorative elements */
+    .staking-box .rewards-value {
+        font-size: 1.8rem;
+    }
+
+    /* Hide any background elements not necessary on mobile */
     .hide-on-mobile {
         display: none;
     }
@@ -160,6 +133,11 @@ body {
         left: -5vw;
         max-height: 80vh;
     }
+
+    .staking-box {
+        width: 50%; /* Adjust staking box width for tablets */
+        margin: 0 auto;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -167,6 +145,10 @@ body {
         top: 20vh;
         left: -10vw;
         max-height: 100vh;
+    }
+
+    .staking-box {
+        width: 40%; /* Larger width for desktop */
     }
 }
 
