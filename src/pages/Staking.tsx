@@ -127,7 +127,7 @@ const Staking = () => {
     const [duration, setDuration] = useState(durations[0]);
     const [sliderValue, setSliderValue] = useState(0);
     const [stakeAmount, setStakeAmount] = useState('');
-};
+
 
     // Dynamically assign the font class based on the language
     const fontClass = i18n.language === 'en' ? 'font-cubic' : 'font-cubic';
@@ -229,6 +229,21 @@ const Staking = () => {
         return headImages["75-100"];
     };
 
+//new design
+const tokens = [
+    { name: 'USDT', icon: usdtIcon },
+    { name: 'Bitcoin', icon: btcIcon },
+    { name: 'Ethereum', icon: ethIcon }
+];
+
+const durations = ['30 Days', '6 Months', '1 Year'];
+
+const Staking = () => {
+    const { t } = useTranslation();
+    const [selectedToken, setSelectedToken] = useState(tokens[0].name);
+    const [duration, setDuration] = useState(durations[0]);
+    const [sliderValue, setSliderValue] = useState(0);
+    const [stakeAmount, setStakeAmount] = useState('');
 
 
     return (
@@ -282,7 +297,7 @@ const Staking = () => {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            //new design
+            {/*new design */}
             <div className="staking-page flex flex-col items-center text-white w-full px-6">
 
                 <div className="mt-10 w-full max-w-[800px]">
@@ -336,6 +351,8 @@ const Staking = () => {
                         </button>
                     </div>
                 </div>
+            );
+        };
 
                 {/* Whale Background */}
                 <div className="flex flex-col items-center mt-10 w-full h-auto">
