@@ -292,7 +292,7 @@ function Staking() {
             </div>
 
             <div className="container">
-                <div className="staking-box">
+                <div className="lower-staking-box">
                     <div className="token-selection">
                         {tokens.map(token => (
                             <button key={token.name}

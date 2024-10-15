@@ -259,20 +259,82 @@ body {
   .amount-input:focus {
     outline: none;
   }
-  @media (max-width: 768px) {
-    .staking-box {
-      padding: 10px;
-      width: 95%;
-      max-width: 350px;
+  .lower-staking-box {
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px; /* For a max width in the lower section */
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Other styles remain unchanged */
+.stake-btn {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stake-btn:hover {
+    background-color: #1e3a8a;
+}
+
+.token-btn {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.token-btn.active {
+    background-color: white;
+    color: black;
+}
+
+.token-selection, .duration-selection {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.amount-input {
+    font-size: 2rem;
+    text-align: center;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-bottom: 2px solid white;
+    margin-bottom: 10px;
+}
+
+.amount-input:focus {
+    outline: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .lower-staking-box {
+        padding: 10px;
+        width: 95%;
+        max-width: 350px;
     }
-  
+
     .token-btn, .stake-btn {
-      font-size: 1rem;
-      padding: 8px;
+        font-size: 1rem;
+        padding: 8px;
     }
-  
+
     .amount-input {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  }
-  
+}
