@@ -192,112 +192,173 @@ body {
     }
   }
   
-  /* General Staking Box Layout */
-  .staking-box-custom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; /* Ensure even spacing */
-    background-color: #000;
-    border: 2px solid white;
-    border-radius: 12px;
-    padding: 20px;
-    width: 90%; /* Allow some margin for smaller screens */
-    max-width: 100%;
-    margin: 20px auto; /* Add margin for spacing from other elements */
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-}
-
-
-.top-left-custom,
-.top-right-custom,
-.center-left-custom,
-.center-right-custom {
+  /* General container styling */
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    background-color: #1a1a1d;
 }
 
-.top-left-custom {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+/* Lower staking box */
+.lower-staking-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.top-right-custom {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+/* Token selection buttons */
+.token-selection {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
-.center-left-custom {
+.token-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1d;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.token-btn img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.token-btn:hover {
+    background-color: #ffffff;
+    color: #1a1a1d;
+}
+
+.token-btn.active {
+    background-color: #00bfff;
+    color: white;
+}
+
+/* Amount input styling */
+.amount-section {
     position: relative;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 20px;
-}
-
-.center-right-custom {
-    position: relative;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 20px;
-}
-
-/* Whale Slider at the bottom */
-.slider-bottom-custom {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
+    margin-bottom: 20px;
     width: 100%;
 }
 
-/* Adjust size and position of the token buttons */
-.token-btn img {
-    width: 30px;
-    height: 30px;
+.amount-input {
+    background-color: #1a1a1d;
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
 }
 
-/* Button styles */
-.stake-btn-custom {
-    padding: 10px 20px;
-    background-color: #5170fd;
+/* Duration buttons */
+.duration-selection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.duration-btn {
+    background-color: #1a1a1d;
+    border: 2px solid #ffffff;
     border-radius: 8px;
     color: white;
     font-size: 1.2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px 15px;
+    margin-right: 5px;
+    transition: all 0.3s ease;
 }
 
-.stake-btn-custom:hover {
+.duration-btn.active {
+    background-color: #00bfff;
+    color: white;
+}
+
+.duration-btn:hover {
+    background-color: #ffffff;
+    color: #1a1a1d;
+}
+
+/* APR text styling */
+.lower-staking-box p {
+    font-size: 1.5rem;
+    color: #00ff00;
+    margin-bottom: 20px;
+}
+
+/* Stake button styling */
+.stake-btn {
+    background-color: #5170fd;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: 2px solid #1d3dff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.stake-btn:hover {
     background-color: #1e3a8a;
 }
 
-@media (max-width: 768px) {
-    .staking-box-custom {
-        flex-direction: column; /* Stack elements vertically */
-        width: 100%;
-    }
-
-    .top-left-custom,
-    .top-right-custom,
-    .center-left-custom,
-    .center-right-custom {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-
-    .center-left-custom,
-    .center-right-custom {
-        margin: 10px 0; /* Add vertical spacing */
-    }
+/* Whale Slider container */
+.slider-container {
+    margin-bottom: 20px;
 }
 
+/* Whale Slider body and head styling (customize to your slider component) */
+.whale-body {
+    height: 34px;
+    background: repeat-x url('../path/to/whale-body.png');
+}
+
+.whale-head {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.whale-head:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .lower-staking-box {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .token-btn,
+    .duration-btn,
+    .stake-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .amount-input {
+        font-size: 1.2rem;
+    }
+}
