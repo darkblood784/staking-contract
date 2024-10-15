@@ -107,7 +107,7 @@ function Staking() {
     type Coin = 'ETH' | 'USDT' | 'BTC';
 
     // Manage selected coin (ETH, USDT, BTC)
-    const [selectedCoin, setSelectedCoin] = useState<Coin>('ETH');
+    //const [selectedCoin, setSelectedCoin] = useState<Coin>('ETH');
     const [isOpen, setIsOpen] = useState(false); // Move isOpen state here
 
     // Coin-specific staking values
@@ -170,21 +170,9 @@ function Staking() {
     };
 
 
-    // Handle input changes
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
-        const value = e.target.value.replace(/[^0-9.]/g, '');
-        setter(value);
-    };
-
     // Handle slider change
     const handleSliderChange = (value: number) => {
         setSliderValue(value);
-    };
-
-    // Validation logic for prime numbers (not fully used in this demo)
-    const validatePrime = (value: string, setter: (value: string) => void) => {
-        const num = Number(value);
-        if (num !== Math.floor(num)) return;
     };
 
     useEffect(() => {
