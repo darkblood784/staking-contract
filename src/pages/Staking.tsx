@@ -302,17 +302,17 @@ function Staking() {
                 </div>
 
                 
-                <div classname="top-right-custom">
-                    <div classname="token-selection">
-                        <button classname="token-btn">
+                <div className="top-right-custom">
+                    <div className="token-selection">
+                        <button className="token-btn">
                             <img src="usdt.png" alt="USDT" />
                             USDT
                         </button>
-                        <button classname="token-btn">
+                        <button className="token-btn">
                             <img src="btc.png" alt="Bitcoin" />
                             Bitcoin
                         </button>
-                        <button classname="token-btn">
+                        <button className="token-btn">
                             <img src="eth.png" alt="Ethereum" />
                             Ethereum
                         </button>
@@ -320,18 +320,18 @@ function Staking() {
                 </div>
 
             
-                <div classname="center-left-custom">
-                    <input type="text" classname="amount-input" placeholder="Enter Amount" />
+                <div className="center-left-custom">
+                    <input type="text" className="amount-input" placeholder="Enter Amount" />
                     <p>APR: 15%</p>
                 </div>
 
                 
-                <div classname="center-right-custom">
-                    <button classname="stake-btn-custom">Stake</button>
+                <div className="center-right-custom">
+                    <button className="stake-btn-custom">Stake</button>
                 </div>
 
                
-                <div classname="slider-bottom-custom">
+                <div className="slider-bottom-custom">
                    
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                 </div>
