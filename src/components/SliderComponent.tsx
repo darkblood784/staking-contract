@@ -103,12 +103,13 @@ const WhaleSlider: React.FC<WhaleSliderProps> = ({ sliderValue, setSliderValue, 
                     <button
                         key={val}
                         onClick={() => setSliderValue(val)}
-                        className="text-sm font-bold w-[20%] py-1 rounded-full bg-transparent text-white border-2 border-white transition-colors duration-200 hover:bg-white hover:text-black"
-                    >
+                        className={`text-sm font-bold w-[20%] py-2 rounded-full bg-[#1a1a1d] border-2 border-[#00bfff] text-white transition-all duration-200 ease-in-out hover:bg-[#00bfff] hover:text-black ${sliderValue === val ? 'bg-[#00bfff] text-white' : ''}`}>
+                    
                         {val === 100 ? 'All In' : `${val}%`}
                     </button>
                 ))}
             </div>
+
         </div>
     );
 };
