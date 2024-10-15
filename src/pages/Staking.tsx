@@ -351,8 +351,8 @@ const Staking = () => {
                         </button>
                     </div>
                 </div>
-            );
-        };
+            )
+        }
 
                 {/* Whale Background */}
                 <div className="flex flex-col items-center mt-10 w-full h-auto">
