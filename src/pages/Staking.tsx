@@ -309,12 +309,24 @@ function Staking() {
                 <div className="flex justify-around w-full mb-6">
                     {durations.map((dur) => (
                         <button
+                        key={dur}
+                        className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                        onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}
+                    >
+                        {dur}
+                    </button>
+                ))}
+                </div>
+
+                <div className="flex justify-around w-full mb-6">
+                    {durations.map((dur) => (
+                        <button
                             key={dur}
                             className={`duration-btn ${duration === dur ? 'active' : ''}`}
                             onClick={() => handleDurationChange(dur)}
                         >
                             {dur}
-                        </button>
+                        </button>   
                     ))}
                 </div>
                 
