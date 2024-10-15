@@ -108,7 +108,7 @@ function Staking() {
         setApr(percentageMap[duration]);
     }, [duration]);
     
-    const handleTokenSelection = (token: 'USDT' | 'BTC' | 'ETH') => {
+    const handleTokenSelection = (token: 'USDT' | 'Bitcoin' | 'Ethereum') => {
         setSelectedToken(token);
     };
 
