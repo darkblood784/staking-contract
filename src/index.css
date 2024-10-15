@@ -142,6 +142,7 @@ body {
     height: 80px; /* Adjust height based on your design */
     margin-bottom: 20px;
     width: 100%;
+    overflow: hidden;
   }
   
   /* Whale Tail */
@@ -199,20 +200,8 @@ body {
     align-items: center;
   }
   
-  .staking-box {
-    background-color: black;
-    border: 2px solid white;
-    border-radius: 12px;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px; /* For a max width like in Image 1 */
-    margin: auto;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
   .stake-btn {
-    background-color: blue;
+    background-color: #1d3dff;
     color: white;
     padding: 10px 20px;
     font-size: 1.5rem;
@@ -234,6 +223,13 @@ body {
     border: 1px solid white;
     border-radius: 5px;
   }
+
+  .token-btn img {
+    width: 40px; /* Adjust the size of the icons */
+    height: 40px;
+    margin: 0 auto;
+}
+
   
   .token-btn.active {
     background-color: white;
@@ -256,9 +252,6 @@ body {
     margin-bottom: 10px;
   }
   
-  .amount-input:focus {
-    outline: none;
-  }
   .lower-staking-box {
     background-color: black;
     border: 2px solid white;
@@ -269,52 +262,6 @@ body {
     margin: auto;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Other styles remain unchanged */
-.stake-btn {
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    border-radius: 8px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.stake-btn:hover {
-    background-color: #1e3a8a;
-}
-
-.token-btn {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid white;
-    border-radius: 5px;
-}
-
-.token-btn.active {
-    background-color: white;
-    color: black;
-}
-
-.token-selection, .duration-selection {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.amount-input {
-    font-size: 2rem;
-    text-align: center;
-    background-color: #222;
-    color: white;
-    border: none;
-    border-bottom: 2px solid white;
-    margin-bottom: 10px;
 }
 
 .amount-input:focus {
