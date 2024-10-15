@@ -22,6 +22,15 @@ import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
 
+const tokens = [
+    { name: 'USDT', icon: usdt },
+    { name: 'Bitcoin', icon: btc },
+    { name: 'Ethereum', icon: eth },
+];
+
+const durations = ['30 Days', '6 Months', '1 Year'];
+const percentageMap = { '30 Days': 15, '6 Months': 24, '1 Year': 36 };
+
 interface WhaleImagePaths {
     "0-25": string;
     "25-75": string;
@@ -87,6 +96,27 @@ const BlinkingUnderscoreInput: React.FC<BlinkingUnderscoreInputProps> = ({ input
 function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
+
+    const Staking = () => {
+        const { t } = useTranslation();
+        
+        const [selectedToken, setSelectedToken] = useState('USDT');
+        const [stakeAmount, setStakeAmount] = useState('');
+        const [duration, setDuration] = useState('30 Days');
+        const [sliderValue, setSliderValue] = useState(0);
+        const [apr, setApr] = useState(percentageMap[duration]); // Adjust APR based on duration
+        
+        useEffect(() => {
+            setApr(percentageMap[duration]);
+        }, [duration]);
+    
+        const handleTokenSelection = (token: string) => {
+            setSelectedToken(token);
+        };
+    
+        const handleDurationChange = (selectedDuration: string) => {
+            setDuration(selectedDuration);
+        };
 
 
     // Define the type for allowed coin values
@@ -255,6 +285,60 @@ function Staking() {
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
+
+            {/* Token Selection */}
+            <div className="flex justify-around mb-6">
+                {tokens.map((token) => (
+                    <button
+                        key={token.name}
+                        className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
+                        onClick={() => handleTokenSelection(token.name)}
+                    >
+                        <img src={token.icon} alt={token.name} className="w-8 h-8 mr-2" />
+                        {token.name}
+                    </button>
+                ))}
+            </div>
+
+            {/* Staking Plan */}
+            <div className="flex flex-col items-center">
+                <div className="flex justify-around w-full mb-6">
+                    {durations.map((dur) => (
+                        <button
+                            key={dur}
+                            className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                            onClick={() => handleDurationChange(dur)}
+                        >
+                            {dur}
+                        </button>
+                    ))}
+                </div>
+                
+                {/* Staking Amount and Slider */}
+                <div className="flex justify-between mb-4">
+                    <p>{t('Amount')}: {stakeAmount} {selectedToken}</p>
+                    <BlinkingUnderscoreInput
+                        inputValue={stakeAmount}
+                        handleInputChange={(e) => setStakeAmount(e.target.value)}
+                        validatePrime={() => {}}
+                    />
+                </div>
+                <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+                
+                {/* APR Information */}
+                <div className="mt-4">
+                    <p>≈{apr}% APR</p>
+                </div>
+
+                {/* Stake Button */}
+                <div className="flex justify-center mt-6">
+                    <button className="stake-btn">
+                        {t('Stake')}
+                    </button>
+                </div>
+            </div>
+
+
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
