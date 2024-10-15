@@ -192,3 +192,121 @@ body {
     }
   }
   
+  /* Navbar general styling */
+.navbar {
+    padding: 0.5rem 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    height: 4rem; /* Reduced height for mobile */
+    background: rgba(255, 255, 255, 0.5); /* Light backdrop with transparency */
+    backdrop-filter: blur(30px); /* Blur effect for background */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Logo */
+.navbar-logo img {
+    width: 40px; /* Reduced size for mobile */
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Wallet and Language buttons */
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Wallet Button */
+.wallet-button {
+    background-color: #5170fd;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-size: 14px; /* Adjusted size for smaller screens */
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out;
+}
+
+.wallet-button:hover {
+    transform: scale(1.05);
+}
+
+/* Language Dropdown Button */
+.language-button {
+    background-color: #5170fd;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-size: 14px; /* Adjusted size for smaller screens */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #2c2d30;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.language-dropdown-item {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.language-dropdown-item:hover {
+    background-color: #3a3b3e;
+}
+
+/* Adjustments for mobile devices */
+@media (max-width: 768px) {
+    .navbar {
+        height: 3.5rem; /* Reduce the height even further on mobile */
+        padding: 0.25rem 1rem;
+    }
+
+    .navbar-logo img {
+        width: 30px; /* Reduce logo size on mobile */
+        height: 30px;
+    }
+
+    .wallet-button,
+    .language-button {
+        padding: 0.25rem 1rem; /* Smaller padding for buttons */
+        font-size: 12px; /* Smaller text size */
+    }
+
+    .language-dropdown {
+        width: auto; /* Ensure dropdown doesn't overflow on mobile */
+        min-width: 100px;
+    }
+
+    .language-dropdown-item {
+        padding: 0.25rem 0.5rem; /* Compact items in the dropdown */
+    }
+
+    /* Optional: center items vertically if the navbar looks crowded */
+    .navbar-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
