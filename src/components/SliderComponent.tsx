@@ -68,7 +68,7 @@ const WhaleSlider: React.FC<WhaleSliderProps> = ({ sliderValue, setSliderValue, 
         <div className="flex flex-col items-center justify-center w-full">
             <div ref={sliderContainerRef} className="slider-container relative w-full h-[80px] mb-5">
                 {/* Whale Tail */}
-                <img src="./whale/tail.png" alt="Whale Tail" className="absolute left-[-80px] bottom-0 w-[50px] h-[54.5px]" />
+                <img src="./whale/tail.png" alt="Whale Tail" className="absolute left-[80px] bottom-0 w-[50px] h-[54.5px]" />
 
                 {/* Whale Body */}
                 <div
