@@ -267,36 +267,6 @@ function Staking() {
             setSelectedPercentage3(percentage); // Set the selected percentage for Ethereum
         }
     };
-
-    const WhaleSlider = ({ sliderValue, setSliderValue, getWhaleHeadSrc }: { sliderValue: number, setSliderValue: (value: number) => void, getWhaleHeadSrc: () => string }) => {
-        const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            const value = parseInt(e.target.value);
-            setSliderValue(value); // Update whale position
-        };
-    
-        return (
-            <div className="slider-container">
-                {/* Whale Head */}
-                <img
-                    src={getWhaleHeadSrc()}
-                    alt="Whale Head"
-                    style={{ left: `${sliderValue}%` }} // Position whale head based on sliderValue
-                    className="whale-head"
-                />
-                {/* Range Input */}
-                <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={sliderValue}
-                    onChange={handleSliderChange}
-                    className="slider"
-                />
-            </div>
-        );
-    };
-    
-    
     
 
 
@@ -386,9 +356,12 @@ function Staking() {
 
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
 
-                    {/* Percentage indicator */}
-                    <p>{sliderValue}%</p> {/* This will update dynamically as the whale is moved */}
-
+                    <div className="percentage-selection">
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === '25%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('25%')}>25%</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === '50%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('50%')}>50%</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === '75%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('75%')}>75%</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === 'All In' ? 'active' : ''}`} onClick={() => handlePercentageSelect('All In')}>All In</button>
+                    </div>
 
    
                     <div>
