@@ -142,7 +142,6 @@ body {
     height: 80px; /* Adjust height based on your design */
     margin-bottom: 20px;
     width: 100%;
-    overflow: hidden;
   }
   
   /* Whale Tail */
@@ -228,6 +227,7 @@ body {
     width: 40px; /* Adjust the size of the icons */
     height: 40px;
     margin: 0 auto;
+    transform: scale(1.05);
 }
 
   
@@ -258,10 +258,12 @@ body {
     border-radius: 12px;
     padding: 20px;
     width: 90%;
-    max-width: 600px; /* For a max width in the lower section */
+    max-width: 100%; /* For a max width in the lower section */
     margin: auto;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative; /* Ensure children stay inside */
+    overflow: hidden; /* Ensure content doesn't overflow */
 }
 
 .amount-input:focus {
@@ -272,8 +274,8 @@ body {
 @media (max-width: 768px) {
     .lower-staking-box {
         padding: 10px;
-        width: 95%;
-        max-width: 350px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .token-btn, .stake-btn {
