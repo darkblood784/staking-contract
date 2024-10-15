@@ -193,23 +193,24 @@ body {
   }
   
   /* General Staking Box Layout */
-.staking-box-custom {
+  .staking-box-custom {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #000; /* Black background */
+    justify-content: space-between; /* Ensure even spacing */
+    background-color: #000;
     border: 2px solid white;
     border-radius: 12px;
     padding: 20px;
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
+    width: 90%; /* Allow some margin for smaller screens */
+    max-width: 100%;
+    margin: 20px auto; /* Add margin for spacing from other elements */
     text-align: center;
     position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
+
 
 .top-left-custom,
 .top-right-custom,
@@ -233,17 +234,19 @@ body {
 }
 
 .center-left-custom {
-    position: absolute;
+    position: relative;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
+    margin: 20px;
 }
 
 .center-right-custom {
-    position: absolute;
+    position: relative;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    margin: 20px;
 }
 
 /* Whale Slider at the bottom */
@@ -276,14 +279,25 @@ body {
     background-color: #1e3a8a;
 }
 
-/* Make the staking box responsive */
 @media (max-width: 768px) {
     .staking-box-custom {
-        width: 90%;
-        padding: 10px;
+        flex-direction: column; /* Stack elements vertically */
+        width: 100%;
     }
-    .token-btn img {
-        width: 25px;
-        height: 25px;
+
+    .top-left-custom,
+    .top-right-custom,
+    .center-left-custom,
+    .center-right-custom {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .center-left-custom,
+    .center-right-custom {
+        margin: 10px 0; /* Add vertical spacing */
     }
 }
+
