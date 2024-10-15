@@ -460,30 +460,28 @@ body {
 
 /* Duration buttons */
 .staking-duration-selection button {
-    background-color: #1a1a1d;
+    background-color: #00000000;
     color: white;
-    border: 2px solid white;
     padding: 10px;
     font-size: 1rem;
     border-radius: 8px;
 }
 
 .staking-duration-btn.active {
-    background-color: #00bfff;
+    background-color: white;
 }
 
 /* Percentage buttons */
 .staking-percentage-btn {
     background-color: transparent;
     color: white;
-    border: 2px solid white;
     padding: 10px;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .staking-percentage-btn.active {
-    background-color: #00bfff;
+    background-color: white;
 }
 
 /* Token buttons */
@@ -502,8 +500,8 @@ body {
 }
 
 .staking-token-btn.active {
-    background-color: #00bfff;
-    color: white;
+    background-color: white;
+    color: rgb(0, 0, 0);
 }
 
 /* Stake Button */
@@ -517,7 +515,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.staking-stake-btn img {
+.staking-token-btn img {
     width: 25px;
     height: 25px;
     margin-right: 10px;
