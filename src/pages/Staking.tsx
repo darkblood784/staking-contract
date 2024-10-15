@@ -238,6 +238,27 @@ function Staking() {
         return headImages["75-100"];
     };
 
+    const handlePercentageSelect = (percentage: string) => {
+        let value = 0;
+        switch (percentage) {
+            case '25%':
+                value = 25;
+                break;
+            case '50%':
+                value = 50;
+                break;
+            case '75%':
+                value = 75;
+                break;
+            case 'All In':
+                value = 100;
+                break;
+        }
+        setSliderValue(value); // Update the whale head position
+        setSelectedPercentage(percentage); // Set the selected percentage as active
+    };
+    
+
 
 
     return (
@@ -325,7 +346,14 @@ function Staking() {
 
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
 
-    
+                    <div className="percentage-selection">
+                        <button className={`percentage-btn ${selectedPercentage === '25%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('25%')}>25%</button>
+                        <button className={`percentage-btn ${selectedPercentage === '50%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('50%')}>50%</button>
+                        <button className={`percentage-btn ${selectedPercentage === '75%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('75%')}>75%</button>
+                        <button className={`percentage-btn ${selectedPercentage === 'All In' ? 'active' : ''}`} onClick={() => handlePercentageSelect('All In')}>All In</button>
+                    </div>
+
+   
                     <div>
                         <p>≈{apr}% APR</p>
                     </div>

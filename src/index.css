@@ -174,7 +174,6 @@ body {
   @media (max-width: 768px) {
     .slider-container {
       height: 60px; /* Adjust height for smaller screens */
-      width: 90%;
     }
   
     .slider-body {
@@ -190,15 +189,6 @@ body {
     .buttons-container button {
       font-size: 12px;
       padding: 8px;
-      background-color: #000000;
-      border: 2px solid #ffffff;
-      border-radius: 8px;
-      color: white;
-      font-size: 1.2rem;
-      padding: 10px 15px;
-      margin-right: 5px;
-      transition: all 0.3s ease;
-      
     }
   }
   
@@ -353,6 +343,51 @@ body {
 .whale-head:hover {
     transform: scale(1.1);
 }
+
+/* Percentage button container */
+.percentage-selection {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Percentage button styling */
+.percentage-btn {
+    background-color: #000000; /* Black background */
+    border: 2px solid #ffffff; /* White border */
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 20%;
+    cursor: pointer;
+}
+
+/* Active percentage button */
+.percentage-btn.active {
+    background-color: #00bfff; /* Light blue for active state */
+    color: white;
+}
+
+/* Percentage button hover effect */
+.percentage-btn:hover {
+    background-color: #ffffff;
+    color: #000000; /* Black text on hover */
+    border: 2px solid #00bfff; /* Blue border on hover */
+}
+
+/* Make sure the buttons scale well on smaller screens */
+@media (max-width: 768px) {
+    .percentage-btn {
+        font-size: 0.8rem; /* Slightly smaller font for mobile */
+        padding: 8px;
+        width: 23%; /* Adjusted width for better mobile display */
+    }
+}
+
 
 /* Responsive design for mobile */
 @media (max-width: 768px) {
