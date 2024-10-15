@@ -296,7 +296,7 @@ function Staking() {
                         {tokens.map(token => (
                             <button key={token.name}
                             className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
-                            onClick={() => handleTokenSelection(token.name)}>
+                            onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
                                 <img src={token.icon} alt={token.name} />
                                 {token.name}
                             </button>
@@ -304,19 +304,20 @@ function Staking() {
                     </div>
     
                     <div className="amount-section">
-                        <input type="text" className="amount-input" value={stakeAmount} onChange={handleAmountChange} />
+                        <input type="text" className="amount-input" value={stakeAmount} onChange={handleInputChange} />
                     </div>
     
                     <div className="duration-selection">
                         {durations.map(dur => (
                         <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
-                                onClick={() => handleDurationChange(dur)}>
+                                onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
                             {dur}
                         </button>
                         ))}
                     </div>
 
-                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
+
     
                     <div>
                         <p>≈{apr}% APR</p>
