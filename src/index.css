@@ -135,3 +135,60 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     color: yellow;
 }
+
+/* General Whale Slider styling */
+.slider-container {
+    position: relative;
+    height: 80px; /* Adjust height based on your design */
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  /* Whale Tail */
+  .slider-container img {
+    position: absolute;
+    bottom: 0;
+  }
+  
+  /* Whale Body */
+  .slider-body {
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 34px;
+    position: absolute;
+    bottom: 0;
+  }
+  
+  /* Whale Head */
+  .slider-head {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  
+  /* On Hover Scaling */
+  .slider-head:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .slider-container {
+      height: 60px; /* Adjust height for smaller screens */
+    }
+  
+    .slider-body {
+      height: 30px; /* Adjust whale body size for mobile */
+    }
+  
+    .slider-head {
+      width: 50px; /* Make the whale head smaller */
+      height: 40px;
+    }
+  
+    /* Preset buttons */
+    .buttons-container button {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
