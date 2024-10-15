@@ -188,6 +188,7 @@ function Staking() {
             setter(validValue);
         }
     };
+    
 
     useEffect(() => {
         setShowImage1(false);
@@ -304,8 +305,14 @@ function Staking() {
                     </div>
     
                     <div className="amount-section">
-                        <input type="text" className="amount-input" value={stakeAmount} onChange={handleInputChange} />
+                        <input 
+                            type="text" 
+                            className="amount-input" 
+                            value={stakeAmount} 
+                            onChange={(e) => handleInputChange(e, setStakeAmount)} 
+                        />
                     </div>
+
     
                     <div className="duration-selection">
                         {durations.map(dur => (
