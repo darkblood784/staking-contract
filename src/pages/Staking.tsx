@@ -291,28 +291,28 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div class="staking-box-custom">
+            <div classname="staking-box-custom">
     
-                <div class="top-left-custom">
-                    <div class="duration-selection">
-                        <button class="duration-btn">30 Days</button>
-                        <button class="duration-btn">6 Months</button>
-                        <button class="duration-btn">1 Year</button>
+                <div classname="top-left-custom">
+                    <div classname="duration-selection">
+                        <button classname="duration-btn">30 Days</button>
+                        <button classname="duration-btn">6 Months</button>
+                        <button classname="duration-btn">1 Year</button>
                     </div>
                 </div>
 
                 
-                <div class="top-right-custom">
-                    <div class="token-selection">
-                        <button class="token-btn">
+                <div classname="top-right-custom">
+                    <div classname="token-selection">
+                        <button classname="token-btn">
                             <img src="usdt.png" alt="USDT" />
                             USDT
                         </button>
-                        <button class="token-btn">
+                        <button classname="token-btn">
                             <img src="btc.png" alt="Bitcoin" />
                             Bitcoin
                         </button>
-                        <button class="token-btn">
+                        <button classname="token-btn">
                             <img src="eth.png" alt="Ethereum" />
                             Ethereum
                         </button>
@@ -320,18 +320,18 @@ function Staking() {
                 </div>
 
             
-                <div class="center-left-custom">
-                    <input type="text" class="amount-input" placeholder="Enter Amount" />
+                <div classname="center-left-custom">
+                    <input type="text" classname="amount-input" placeholder="Enter Amount" />
                     <p>APR: 15%</p>
                 </div>
 
                 
-                <div class="center-right-custom">
-                    <button class="stake-btn-custom">Stake</button>
+                <div classname="center-right-custom">
+                    <button classname="stake-btn-custom">Stake</button>
                 </div>
 
                
-                <div class="slider-bottom-custom">
+                <div classname="slider-bottom-custom">
                    
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                 </div>
