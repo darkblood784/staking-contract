@@ -113,21 +113,21 @@ function Staking() {
 
 
     //new design
-    const tokens = [
-        { name: 'USDT', icon: usdtIcon },
-        { name: 'Bitcoin', icon: btcIcon },
-        { name: 'Ethereum', icon: ethIcon }
-    ];
+const tokens = [
+    { name: 'USDT', icon: usdtIcon },
+    { name: 'Bitcoin', icon: btcIcon },
+    { name: 'Ethereum', icon: ethIcon }
+];
 
-    const durations = ['30 Days', '6 Months', '1 Year'];
+const durations = ['30 Days', '6 Months', '1 Year'];
 
-    const Staking = () => {
-        const { t } = useTranslation();
-        const [selectedToken, setSelectedToken] = useState(tokens[0].name);
-        const [duration, setDuration] = useState(durations[0]);
-        const [sliderValue, setSliderValue] = useState(0);
-        const [stakeAmount, setStakeAmount] = useState('');
-    };
+const Staking = () => {
+    const { t } = useTranslation();
+    const [selectedToken, setSelectedToken] = useState(tokens[0].name);
+    const [duration, setDuration] = useState(durations[0]);
+    const [sliderValue, setSliderValue] = useState(0);
+    const [stakeAmount, setStakeAmount] = useState('');
+};
 
     // Dynamically assign the font class based on the language
     const fontClass = i18n.language === 'en' ? 'font-cubic' : 'font-cubic';
