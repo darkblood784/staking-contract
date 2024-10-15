@@ -89,7 +89,7 @@ const WhaleSlider: React.FC<WhaleSliderProps> = ({ sliderValue, setSliderValue, 
             {/* Buttons for preset values */}
             <div className="buttons-container flex justify-between w-full">
                 {[25, 50, 75, 100].map((val) => (
-                    <button key={val} onClick={() => setSliderValue(val)} className="text-sm w-[20%] py-1 rounded-full background-transparent transition-colors duration-200 border-2 hover:bg-white hover:text-black">
+                    <button key={val} onClick={() => setSliderValue(val)}>
                         {val === 100 ? 'All In' : `${val}%`}
                     </button>
                 ))}
