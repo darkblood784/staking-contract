@@ -97,26 +97,24 @@ function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
-    const Staking = () => {
-        const { t } = useTranslation();
         
-        const [selectedToken, setSelectedToken] = useState('USDT');
-        const [stakeAmount, setStakeAmount] = useState('');
-        const [duration, setDuration] = useState('30 Days');
-        const [sliderValue, setSliderValue] = useState(0);
-        const [apr, setApr] = useState(percentageMap[duration]); // Adjust APR based on duration
+    const [selectedToken, setSelectedToken] = useState('USDT');
+    const [stakeAmount, setStakeAmount] = useState('');
+    const [duration, setDuration] = useState('30 Days');
+    const [sliderValue, setSliderValue] = useState(0);
+    const [apr, setApr] = useState(percentageMap[duration]); // Adjust APR based on duration
         
-        useEffect(() => {
-            setApr(percentageMap[duration]);
-        }, [duration]);
+    useEffect(() => {
+        setApr(percentageMap[duration]);
+    }, [duration]);
     
-        const handleTokenSelection = (token: string) => {
-            setSelectedToken(token);
-        };
+    const handleTokenSelection = (token: string) => {
+        setSelectedToken(token);
+    };
     
-        const handleDurationChange = (selectedDuration: string) => {
-            setDuration(selectedDuration);
-        };
+    const handleDurationChange = (selectedDuration: string) => {
+        setDuration(selectedDuration);
+    };
 
 
     // Define the type for allowed coin values
