@@ -14,7 +14,7 @@ import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
 import getStartedButton from '../assets/buttons/Get_Started.png';
 import Hover_image from '../assets/buttons/Hover_image.png';
-import WhaleSlider from "../components/SliderComponent";
+import WhaleSlider from '../components/SliderComponent';
 
 import CoinDropdown from '../components/CoinDropdown';
 import ChildComponent1 from '../components/child1';
@@ -96,6 +96,12 @@ function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
+    // States for the unified token staking component
+    const [selectedCoin, setSelectedCoin] = useState('USDT');
+    const [duration, setDuration] = useState('30 Days');
+    const [stakeAmount, setStakeAmount] = useState('');
+    const [sliderValue, setSliderValue] = useState(0);
+
 
     // Define the type for allowed coin values
     type Coin = 'ETH' | 'USDT' | 'BTC';
@@ -161,6 +167,24 @@ function Staking() {
         } else {
             setter(validValue);
         }
+    };
+
+
+    // Handle input changes
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
+        const value = e.target.value.replace(/[^0-9.]/g, '');
+        setter(value);
+    };
+
+    // Handle slider change
+    const handleSliderChange = (value: number) => {
+        setSliderValue(value);
+    };
+
+    // Validation logic for prime numbers (not fully used in this demo)
+    const validatePrime = (value: string, setter: (value: string) => void) => {
+        const num = Number(value);
+        if (num !== Math.floor(num)) return;
     };
 
     useEffect(() => {
@@ -264,7 +288,7 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            {/* Here is the newly added component for token selection, duration, slider, and staking */}
+            {/* New Component: Token Selection, Duration, Slider, and Staking */}
             <div className="flex flex-col items-center mt-10 w-full max-w-[800px]">
                 {/* Token Selector */}
                 <div className="flex justify-around mb-6">
@@ -284,11 +308,10 @@ function Staking() {
                 <div className="whale-slider-section bg-[#2c2d30] p-4 rounded-lg">
                     <div className="flex justify-between mb-4">
                         <p className="text-lg">{t('Amount')}: {stakeAmount} {selectedCoin}</p>
-                        <input
-                            type="text"
-                            className="amount-input text-black p-2 rounded"
-                            value={stakeAmount}
-                            onChange={handleInputChange}
+                        <BlinkingUnderscoreInput
+                            inputValue={stakeAmount}
+                            handleInputChange={(e) => handleInputChange(e, setStakeAmount)}
+                            validatePrime={() => validatePrime(stakeAmount, setStakeAmount)}
                         />
                     </div>
                     <div className="whale-slider">
@@ -316,7 +339,6 @@ function Staking() {
                     </button>
                 </div>
             </div>
-
 
 
             <div className="flex flex-wrap w-full relative mt-10">
