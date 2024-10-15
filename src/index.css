@@ -421,32 +421,44 @@ body {
 }
 
 /*new left right */
-/* Container Styling */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px; /* Adjust this width */
+/* General Container Styling */
+.staking-container {
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #1a1a1d;
+    display: flex;
+    justify-content: center;
 }
 
-/* Box around the staking form */
-.lower-staking-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000000;
+/* Lower Staking Box Styling */
+.staking-box {
+    background-color: #1a1a1d;
     padding: 20px;
     border-radius: 15px;
-    width: 100%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Left Section */
+.staking-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* Right Section */
+.staking-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Duration buttons */
-.duration-selection button {
+.staking-duration-selection button {
     background-color: #1a1a1d;
     color: white;
     border: 2px solid white;
@@ -455,20 +467,12 @@ body {
     border-radius: 8px;
 }
 
-.duration-selection button.active {
+.staking-duration-btn.active {
     background-color: #00bfff;
 }
 
-/* Whale Slider and percentage styling */
-.whale-slider-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-/* Percentage Buttons */
-.percentage-btn {
+/* Percentage buttons */
+.staking-percentage-btn {
     background-color: transparent;
     color: white;
     border: 2px solid white;
@@ -477,18 +481,32 @@ body {
     transition: all 0.3s ease;
 }
 
-.percentage-btn.active {
+.staking-percentage-btn.active {
+    background-color: #00bfff;
+}
+
+/* Token buttons */
+.staking-token-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1d;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.staking-token-btn.active {
     background-color: #00bfff;
     color: white;
 }
 
-.percentage-btn:hover {
-    background-color: #ffffff;
-    color: #1a1a1d;
-}
-
 /* Stake Button */
-.stake-btn {
+.staking-stake-btn {
     background-color: #5170fd;
     color: white;
     font-size: 1.5rem;
@@ -496,4 +514,8 @@ body {
     border-radius: 10px;
     border: 2px solid #1d3dff;
     transition: all 0.3s ease;
+}
+
+.staking-stake-btn:hover {
+    background-color: #1e3a8a;
 }

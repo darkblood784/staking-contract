@@ -364,16 +364,17 @@ function Staking() {
                 </div>
             </div>
 
-            <div className="container mx-auto">
-                <div className="lower-staking-box flex justify-between items-center">
+            <div className="staking-container mx-auto p-4">
+                <div className="staking-box flex justify-between items-center w-full">
+
                     {/* Left Section */}
-                    <div className="left-section w-1/2 flex flex-col items-start">
+                    <div className="staking-left w-1/2 pr-4 flex flex-col items-start">
                         {/* Duration Selection */}
-                        <div className="duration-selection flex mb-4 space-x-4">
+                        <div className="staking-duration-selection flex mb-4 space-x-4">
                             {durations.map(dur => (
-                                <button
+                                <button 
                                     key={dur} 
-                                    className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                                    className={`staking-duration-btn ${duration === dur ? 'active' : ''}`}
                                     onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}
                                 >
                                     {dur}
@@ -382,19 +383,19 @@ function Staking() {
                         </div>
 
                         {/* Whale Slider with Percentage */}
-                        <div className="whale-slider-container mb-4">
+                        <div className="staking-whale-slider mb-4">
                             <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                             <p className="text-lg font-bold text-white">{stakeAmount} USD</p>
                             <p className="text-lg font-bold text-green-400">≈{apr}% APR</p>
                         </div>
 
                         {/* Percentage Buttons */}
-                        <div className="percentage-buttons flex space-x-4">
+                        <div className="staking-percentage-buttons flex space-x-4">
                             {[25, 50, 75, 100].map((val) => (
                                 <button 
                                     key={val}
                                     onClick={() => setSliderValue(val)}
-                                    className={`percentage-btn ${sliderValue === val ? 'active' : ''}`}
+                                    className={`staking-percentage-btn ${sliderValue === val ? 'active' : ''}`}
                                 >
                                     {val === 100 ? 'All In' : `${val}%`}
                                 </button>
@@ -403,13 +404,13 @@ function Staking() {
                     </div>
 
                     {/* Right Section */}
-                    <div className="right-section w-1/2 flex flex-col items-center justify-center">
+                    <div className="staking-right w-1/2 pl-4 flex flex-col items-center justify-center">
                         {/* Token Selection */}
-                        <div className="token-selection flex space-x-4 mb-4">
+                        <div className="staking-token-selection flex space-x-4 mb-4">
                             {tokens.map(token => (
                                 <button 
                                     key={token.name}
-                                    className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
+                                    className={`staking-token-btn ${selectedToken === token.name ? 'active' : ''}`}
                                     onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}
                                 >
                                     <img src={token.icon} alt={token.name} />
@@ -419,12 +420,10 @@ function Staking() {
                         </div>
 
                         {/* Stake Button */}
-                        <button className="stake-btn mt-4">Stake</button>
+                        <button className="staking-stake-btn mt-4">Stake</button>
                     </div>
                 </div>
             </div>
-
-
 
 
             <div className="flex flex-wrap w-full relative mt-10">
