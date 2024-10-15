@@ -291,13 +291,13 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div classname="staking-box-custom">
+            <div className="staking-box-custom">
     
-                <div classname="top-left-custom">
-                    <div classname="duration-selection">
-                        <button classname="duration-btn">30 Days</button>
-                        <button classname="duration-btn">6 Months</button>
-                        <button classname="duration-btn">1 Year</button>
+                <div className="top-left-custom">
+                    <div className="duration-selection">
+                        <button className="duration-btn">30 Days</button>
+                        <button className="duration-btn">6 Months</button>
+                        <button className="duration-btn">1 Year</button>
                     </div>
                 </div>
 
