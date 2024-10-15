@@ -423,7 +423,7 @@ body {
 /*new left right */
 /* General Container Styling */
 .staking-container {
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     display: flex;
