@@ -185,6 +185,24 @@ function Staking() {
         setSelectedPercentage3(percentage);
     };
 
+    const getWhaleHeadSrcusdt = (): string => {
+        if (sliderValueusdt <= 25) return headImages["0-25"];
+        if (sliderValueusdt <= 75) return headImages["25-75"];
+        return headImages["75-100"];
+    };
+
+    const getWhaleHeadSrcbtc = (): string => {
+        if (sliderValuebtc <= 25) return headImages["0-25"];
+        if (sliderValuebtc <= 75) return headImages["25-75"];
+        return headImages["75-100"];
+    };
+
+    const getWhaleHeadSrceth = (): string => {
+        if (sliderValueeth <= 25) return headImages["0-25"];
+        if (sliderValueeth <= 75) return headImages["25-75"];
+        return headImages["75-100"];
+    };
+
 
 
     return (
