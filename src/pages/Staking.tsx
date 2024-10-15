@@ -45,21 +45,7 @@ const headImages: WhaleImagePaths = {
     "75-100": './whale/75-100.png'
 };
 
-//new design
-const tokens = [
-    { name: 'USDT', icon: usdtIcon },
-    { name: 'Bitcoin', icon: btcIcon },
-    { name: 'Ethereum', icon: ethIcon }
-];
 
-const durations = ['30 Days', '6 Months', '1 Year'];
-
-const Staking = () => {
-    const { t } = useTranslation();
-    const [selectedToken, setSelectedToken] = useState(tokens[0].name);
-    const [duration, setDuration] = useState(durations[0]);
-    const [sliderValue, setSliderValue] = useState(0);
-    const [stakeAmount, setStakeAmount] = useState('');
 
 
 // Blinking Underscore Input Component
@@ -123,6 +109,24 @@ function Staking() {
         ETH: { amount: '$91,883' },
         USDT: { amount: '$1.2 M' },
         BTC: { amount: '$50,000' },
+    };
+
+
+    //new design
+    const tokens = [
+        { name: 'USDT', icon: usdtIcon },
+        { name: 'Bitcoin', icon: btcIcon },
+        { name: 'Ethereum', icon: ethIcon }
+    ];
+
+    const durations = ['30 Days', '6 Months', '1 Year'];
+
+    const Staking = () => {
+        const { t } = useTranslation();
+        const [selectedToken, setSelectedToken] = useState(tokens[0].name);
+        const [duration, setDuration] = useState(durations[0]);
+        const [sliderValue, setSliderValue] = useState(0);
+        const [stakeAmount, setStakeAmount] = useState('');
     };
 
     // Dynamically assign the font class based on the language
