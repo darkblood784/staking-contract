@@ -21,6 +21,11 @@ import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
+//new design
+import usdtIcon from '../assets/usdt.png';
+import btcIcon from '../assets/btc.png';
+import ethIcon from '../assets/eth.png';
+
 
 interface WhaleImagePaths {
     "0-25": string;
@@ -39,6 +44,23 @@ const headImages: WhaleImagePaths = {
     "25-75": './whale/25-75.png',
     "75-100": './whale/75-100.png'
 };
+
+//new design
+const tokens = [
+    { name: 'USDT', icon: usdtIcon },
+    { name: 'Bitcoin', icon: btcIcon },
+    { name: 'Ethereum', icon: ethIcon }
+];
+
+const durations = ['30 Days', '6 Months', '1 Year'];
+
+const Staking = () => {
+    const { t } = useTranslation();
+    const [selectedToken, setSelectedToken] = useState(tokens[0].name);
+    const [duration, setDuration] = useState(durations[0]);
+    const [sliderValue, setSliderValue] = useState(0);
+    const [stakeAmount, setStakeAmount] = useState('');
+
 
 // Blinking Underscore Input Component
 const BlinkingUnderscoreInput: React.FC<BlinkingUnderscoreInputProps> = ({ inputValue, handleInputChange, validatePrime }) => {
@@ -254,6 +276,67 @@ function Staking() {
             <div className="flex justify-between w-full">
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
+            </div>
+
+            //new design
+            <div className="staking-page flex flex-col items-center text-white w-full px-6">
+
+                <div className="mt-10 w-full max-w-[800px]">
+                    {/* Token Selector */}
+                    <div className="flex justify-around mb-6">
+                        {tokens.map((token) => (
+                            <button
+                                key={token.name}
+                                className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
+                                onClick={() => setSelectedToken(token.name)}
+                            >
+                                <img src={token.icon} alt={token.name} className="w-8 h-8 mr-2" />
+                                {token.name}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Whale Slider and Amount */}
+                    <div className="whale-slider-section bg-[#2c2d30] p-4 rounded-lg">
+                        <div className="flex justify-between mb-4">
+                            <p className="text-lg">{t('Amount')}: {stakeAmount} {selectedToken}</p>
+                            <input
+                                type="text"
+                                className="amount-input text-black p-2 rounded"
+                                value={stakeAmount}
+                                onChange={(e) => setStakeAmount(e.target.value)}
+                            />
+                        </div>
+                        <div className="whale-slider">
+                            <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+                        </div>
+                    </div>
+
+                    {/* Duration Selector */}
+                    <div className="flex justify-around mt-6">
+                        {durations.map((dur) => (
+                            <button
+                                key={dur}
+                                className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                                onClick={() => setDuration(dur)}
+                            >
+                                {dur}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Stake Button */}
+                    <div className="flex justify-center mt-6">
+                        <button className="stake-btn">
+                            {t('Stake')}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Whale Background */}
+                <div className="flex flex-col items-center mt-10 w-full h-auto">
+                    <img src={bg_whale} className="w-full h-auto" alt="Whale Background" />
+                </div>
             </div>
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="" />

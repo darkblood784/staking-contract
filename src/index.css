@@ -310,3 +310,62 @@ body {
         gap: 0.5rem;
     }
 }
+
+
+/* new design */
+.staking-page {
+    background-color: #1a1a1d;
+    color: white;
+    min-height: 100vh;
+}
+
+.token-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #2c2d30;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.token-btn.active {
+    background-color: #5170fd;
+}
+
+.whale-slider-section {
+    background-color: #2c2d30;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.amount-input {
+    width: 150px;
+    border: 1px solid #ddd;
+}
+
+.duration-btn {
+    padding: 10px;
+    background-color: #2c2d30;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.duration-btn.active {
+    background-color: #5170fd;
+}
+
+.stake-btn {
+    background-color: #5170fd;
+    padding: 10px 30px;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.stake-btn:hover {
+    background-color: #3a5bfa;
+}
