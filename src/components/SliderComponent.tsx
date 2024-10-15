@@ -74,7 +74,7 @@ const WhaleSlider: React.FC<WhaleSliderProps> = ({ sliderValue, setSliderValue, 
                 <div
                     className="slider-body"
                     style={{
-                        left: '-35px',
+                        left: '35px',
                         width: `calc(${sliderValue}% - 0px)`,
                         backgroundImage: 'url(./whale/body1.png)',
                     }}
