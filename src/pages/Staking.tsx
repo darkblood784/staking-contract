@@ -292,7 +292,7 @@ function Staking() {
             </div>
 
             <div class="staking-box-custom">
-                <!-- Top Left: Duration Selection -->
+    
                 <div class="top-left-custom">
                     <div class="duration-selection">
                         <button class="duration-btn">30 Days</button>
@@ -301,7 +301,7 @@ function Staking() {
                     </div>
                 </div>
 
-                <!-- Top Right: Token Selection -->
+                
                 <div class="top-right-custom">
                     <div class="token-selection">
                         <button class="token-btn">
@@ -319,20 +319,20 @@ function Staking() {
                     </div>
                 </div>
 
-                <!-- Center Left: Amount to Stake and APR -->
+            
                 <div class="center-left-custom">
                     <input type="text" class="amount-input" placeholder="Enter Amount" />
                     <p>APR: 15%</p>
                 </div>
 
-                <!-- Center Right: Stake Button -->
+                
                 <div class="center-right-custom">
                     <button class="stake-btn-custom">Stake</button>
                 </div>
 
-                <!-- Bottom: Whale Slider -->
+               
                 <div class="slider-bottom-custom">
-                    <!-- Whale Slider Component -->
+                   
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                 </div>
             </div>
