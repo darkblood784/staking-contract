@@ -14,7 +14,7 @@ import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
 import getStartedButton from '../assets/buttons/Get_Started.png';
 import Hover_image from '../assets/buttons/Hover_image.png';
-import WhaleSlider from '../components/SliderComponent';
+import WhaleSlider from "../components/SliderComponent";
 
 import CoinDropdown from '../components/CoinDropdown';
 import ChildComponent1 from '../components/child1';
@@ -39,14 +39,6 @@ const headImages: WhaleImagePaths = {
     "25-75": './whale/25-75.png',
     "75-100": './whale/75-100.png'
 };
-
-const tokens = [
-    { name: 'USDT', icon: usdt },
-    { name: 'Bitcoin', icon: btc },
-    { name: 'Ethereum', icon: eth }
-];
-
-const durations = ['30 Days', '6 Months', '1 Year'];
 
 // Blinking Underscore Input Component
 const BlinkingUnderscoreInput: React.FC<BlinkingUnderscoreInputProps> = ({ inputValue, handleInputChange, validatePrime }) => {
@@ -96,18 +88,12 @@ function Staking() {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
-    // States for the unified token staking component
-    const [selectedCoin, setSelectedCoin] = useState('USDT');
-    const [duration, setDuration] = useState('30 Days');
-    const [stakeAmount, setStakeAmount] = useState('');
-    const [sliderValue, setSliderValue] = useState(0);
-
 
     // Define the type for allowed coin values
     type Coin = 'ETH' | 'USDT' | 'BTC';
 
     // Manage selected coin (ETH, USDT, BTC)
-    //const [selectedCoin, setSelectedCoin] = useState<Coin>('ETH');
+    const [selectedCoin, setSelectedCoin] = useState<Coin>('ETH');
     const [isOpen, setIsOpen] = useState(false); // Move isOpen state here
 
     // Coin-specific staking values
@@ -167,12 +153,6 @@ function Staking() {
         } else {
             setter(validValue);
         }
-    };
-
-
-    // Handle slider change
-    const handleSliderChange = (value: number) => {
-        setSliderValue(value);
     };
 
     useEffect(() => {
@@ -275,60 +255,6 @@ function Staking() {
                 <h1 className="flex md:text-[60px] text-[30px] font-bold text-shadow-customh">{t('trading')}</h1>
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
-
-            {/* New Component: Token Selection, Duration, Slider, and Staking */}
-            <div className="flex flex-col items-center mt-10 w-full max-w-[800px]">
-                {/* Token Selector */}
-                <div className="flex justify-around mb-6">
-                    {tokens.map((token) => (
-                        <button
-                            key={token.name}
-                            className={`token-btn ${selectedCoin === token.name ? 'active' : ''}`}
-                            onClick={() => setSelectedCoin(token.name)}
-                        >
-                            <img src={token.icon} alt={token.name} className="w-8 h-8 mr-2" />
-                            {token.name}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Whale Slider and Amount */}
-                <div className="whale-slider-section bg-[#2c2d30] p-4 rounded-lg">
-                    <div className="flex justify-between mb-4">
-                        <p className="text-lg">{t('Amount')}: {stakeAmount} {selectedCoin}</p>
-                        <BlinkingUnderscoreInput
-                            inputValue={stakeAmount}
-                            handleInputChange={(e) => handleInputChange(e, setStakeAmount)}
-                            validatePrime={() => validatePrime(stakeAmount, setStakeAmount)}
-                        />
-                    </div>
-                    <div className="whale-slider">
-                        <WhaleSlider sliderValue={sliderValue} setSliderValue={handleSliderChange} />
-                    </div>
-                </div>
-
-                {/* Duration Selector */}
-                <div className="flex justify-around mt-6">
-                    {durations.map((dur) => (
-                        <button
-                            key={dur}
-                            className={`duration-btn ${duration === dur ? 'active' : ''}`}
-                            onClick={() => setDuration(dur)}
-                        >
-                            {dur}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Stake Button */}
-                <div className="flex justify-center mt-6">
-                    <button className="stake-btn">
-                        {t('Stake')}
-                    </button>
-                </div>
-            </div>
-
-
             <div className="flex flex-wrap w-full relative mt-10">
                 <img src={usdtbackground} className="absolute w-full h-full" alt="" />
                 <div className="p-2 flex flex-wrap w-full relative z-10 md:p-0 md:justify-between">
