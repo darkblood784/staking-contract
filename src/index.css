@@ -470,6 +470,7 @@ body {
 .staking-duration-btn.active {
     background-color: white;
     color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 /* Percentage buttons */
@@ -484,6 +485,7 @@ body {
 .staking-percentage-btn.active {
     background-color: white;
     color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 /* Token buttons */
@@ -504,6 +506,8 @@ body {
 .staking-token-btn.active {
     background-color: white;
     color: rgb(0, 0, 0);
+    font-weight: bold;
+
 }
 
 /* Stake Button */
@@ -525,4 +529,9 @@ body {
 
 .staking-stake-btn:hover {
     background-color: #1e3a8a;
+    font-weight: bold;
+    width: 25vh;
+    height: 25vh;
+    margin-right: 10vh;
+
 }
