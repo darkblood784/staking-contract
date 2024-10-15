@@ -14,12 +14,74 @@ import discord from '../assets/social/discord.png';
 import symbol from '../assets/symbol.png';
 import getStartedButton from '../assets/buttons/Get_Started.png';
 import Hover_image from '../assets/buttons/Hover_image.png';
+import WhaleSlider from "../components/SliderComponent";
 
 import CoinDropdown from '../components/CoinDropdown';
 import ChildComponent1 from '../components/child1';
 import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
+
+interface WhaleImagePaths {
+    "0-25": string;
+    "25-75": string;
+    "75-100": string;
+}
+
+interface BlinkingUnderscoreInputProps {
+    inputValue: string;
+    handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    validatePrime: () => void;
+}
+
+const headImages: WhaleImagePaths = {
+    "0-25": './whale/tailwhale.png',
+    "25-75": './whale/25-75.png',
+    "75-100": './whale/75-100.png'
+};
+
+// Blinking Underscore Input Component
+const BlinkingUnderscoreInput: React.FC<BlinkingUnderscoreInputProps> = ({ inputValue, handleInputChange, validatePrime }) => {
+    const [blink, setBlink] = useState(true);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBlink((prevBlink) => !prevBlink);
+        }, 400); // Toggle blink every 500ms
+
+        return () => clearInterval(interval); // Clear the interval on component unmount
+    }, []);
+
+    return (
+        <div className="relative">
+            <input
+                type="text"
+                pattern="[0-9.]*"
+                className="text-white outline-none rounded text-right p-2 text-2xl"
+                value={inputValue}
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                    caretColor: 'transparent',
+                 }}
+                onChange={handleInputChange}
+                onBlur={validatePrime}
+            />
+            {/* Only show blinking underscore when inputValue is empty */}
+            {inputValue === '' && (
+                <span
+                    style={{
+                        visibility: blink ? 'visible' : 'hidden',
+                        fontSize: '2rem',  // Match the font size of the input
+                        position: 'absolute',
+                        bottom: '8px',  // Adjust to vertically align with text
+                        right: '10px',  // Adjust to horizontally align with text
+                    }}
+                >
+                    _
+                </span>
+            )}
+        </div>
+    );
+};
 
 
 function Staking() {
@@ -195,28 +257,23 @@ function Staking() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5 text-shadow-customp">
-                        <div className="flex justify-between ">
+                    <div className="w-full md:w-[30%] lg:pl-10 pt-16 pb-5">
+                        <div className="flex justify-between">
                             <p className="text-[25px] md">{t('stake')}</p>
-                            <input
-                                type="text"
-                                pattern="[0-9.]*"
-                                className="text-black outline-none rounded text-right p-2"
-                                value={inputValue1}
-                                onChange={(e) => handleInputChange(e, setInputValue1)}
-                                onBlur={() => validatePrime(inputValue1, setInputValue1)}
+                            <BlinkingUnderscoreInput
+                                inputValue={inputValue1}
+                                handleInputChange={(e) => handleInputChange(e, setInputValue1)}
+                                validatePrime={() => validatePrime(inputValue1, setInputValue1)}
                             />
-
                         </div>
-                        <div>
-                            <p className="text-[25px] md text-shadow-customp">{usdtduration ? usdtduration : "0 Days"}</p>
-                            <p></p>
+                        <div className="flex w-full justify-between">
+                            <p className="text-[25px] md">{usdtduration ? usdtduration : "0 Days"}</p>
+                            <div className="text-2xl mt-2.5">{`${Math.round(sliderValueusdt)}%`}</div>
                         </div>
-                        <ChildComponent1
-                            percentages={percentages}
-                            selectedPercentage={selectedPercentage1}
-                            handleSelect={handleSelect1}
-                            showImage={showImage1}
+                        <WhaleSlider
+                            sliderValue={sliderValueusdt}
+                            setSliderValue={setSliderValueusdt}
+                            getWhaleHeadSrc={getWhaleHeadSrcusdt}
                         />
                     </div>
 
