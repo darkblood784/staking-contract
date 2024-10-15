@@ -291,49 +291,51 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div className="container">
-                <div className="lower-staking-box">
-                    <div className="token-selection">
-                        {tokens.map(token => (
-                            <button key={token.name}
-                            className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
-                            onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
-                                <img src={token.icon} alt={token.name} />
-                                {token.name}
-                            </button>
-                        ))}
+            <div class="staking-box-custom">
+                <!-- Top Left: Duration Selection -->
+                <div class="top-left-custom">
+                    <div class="duration-selection">
+                        <button class="duration-btn">30 Days</button>
+                        <button class="duration-btn">6 Months</button>
+                        <button class="duration-btn">1 Year</button>
                     </div>
-    
-                    <div className="amount-section">
-                        <input 
-                            type="text" 
-                            className="amount-input" 
-                            value={stakeAmount} 
-                            onChange={(e) => handleInputChange(e, setStakeAmount)} 
-                        />
-                    </div>
+                </div>
 
-    
-                    <div className="duration-selection">
-                        {durations.map(dur => (
-                        <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
-                                onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
-                            {dur}
+                <!-- Top Right: Token Selection -->
+                <div class="top-right-custom">
+                    <div class="token-selection">
+                        <button class="token-btn">
+                            <img src="usdt.png" alt="USDT" />
+                            USDT
                         </button>
-                        ))}
+                        <button class="token-btn">
+                            <img src="btc.png" alt="Bitcoin" />
+                            Bitcoin
+                        </button>
+                        <button class="token-btn">
+                            <img src="eth.png" alt="Ethereum" />
+                            Ethereum
+                        </button>
                     </div>
+                </div>
 
+                <!-- Center Left: Amount to Stake and APR -->
+                <div class="center-left-custom">
+                    <input type="text" class="amount-input" placeholder="Enter Amount" />
+                    <p>APR: 15%</p>
+                </div>
+
+                <!-- Center Right: Stake Button -->
+                <div class="center-right-custom">
+                    <button class="stake-btn-custom">Stake</button>
+                </div>
+
+                <!-- Bottom: Whale Slider -->
+                <div class="slider-bottom-custom">
+                    <!-- Whale Slider Component -->
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
-
-    
-                    <div>
-                        <p>≈{apr}% APR</p>
-                    </div>
-
-                    <button className="stake-btn">Stake</button>
                 </div>
             </div>
-
 
 
             <div className="flex flex-wrap w-full relative mt-10">

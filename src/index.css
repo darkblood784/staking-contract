@@ -192,98 +192,98 @@ body {
     }
   }
   
-  .container {
-    width: 100%;
+  /* General Staking Box Layout */
+.staking-box-custom {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .stake-btn {
-    background-color: #1d3dff;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    border-radius: 8px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .stake-btn:hover {
-    background-color: #1e3a8a; /* Lighter blue on hover */
-  }
-  
-  .token-btn {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid white;
-    border-radius: 5px;
-  }
-
-  .token-btn img {
-    width: 40px; /* Adjust the size of the icons */
-    height: 40px;
-    margin: 0 auto;
-    transform: scale(1.05);
-}
-
-  
-  .token-btn.active {
-    background-color: white;
-    color: black;
-  }
-  
-  .token-selection, .duration-selection {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-  
-  .amount-input {
-    font-size: 2rem;
-    text-align: center;
-    background-color: #222;
-    color: white;
-    border: none;
-    border-bottom: 2px solid white;
-    margin-bottom: 10px;
-  }
-  
-  .lower-staking-box {
-    background-color: black;
+    justify-content: center;
+    background-color: #000; /* Black background */
     border: 2px solid white;
     border-radius: 12px;
     padding: 20px;
-    width: 90%;
-    max-width: 100%; /* For a max width in the lower section */
+    width: 100%;
+    max-width: 1000px;
     margin: auto;
     text-align: center;
+    position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative; /* Ensure children stay inside */
-    overflow: hidden; /* Ensure content doesn't overflow */
+    overflow: hidden;
 }
 
-.amount-input:focus {
-    outline: none;
+.top-left-custom,
+.top-right-custom,
+.center-left-custom,
+.center-right-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Mobile responsiveness */
+.top-left-custom {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.top-right-custom {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.center-left-custom {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center-right-custom {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Whale Slider at the bottom */
+.slider-bottom-custom {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+}
+
+/* Adjust size and position of the token buttons */
+.token-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Button styles */
+.stake-btn-custom {
+    padding: 10px 20px;
+    background-color: #5170fd;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stake-btn-custom:hover {
+    background-color: #1e3a8a;
+}
+
+/* Make the staking box responsive */
 @media (max-width: 768px) {
-    .lower-staking-box {
+    .staking-box-custom {
+        width: 90%;
         padding: 10px;
-        width: 100%;
-        max-width: 100%;
     }
-
-    .token-btn, .stake-btn {
-        font-size: 1rem;
-        padding: 8px;
-    }
-
-    .amount-input {
-        font-size: 1.5rem;
+    .token-btn img {
+        width: 25px;
+        height: 25px;
     }
 }
