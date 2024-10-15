@@ -432,7 +432,8 @@ body {
 
 /* Lower Staking Box Styling */
 .staking-box {
-    background-color: #1a1a1d;
+    background-color: #00000000;
+    border: 2px solid white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -514,6 +515,12 @@ body {
     border-radius: 10px;
     border: 2px solid #1d3dff;
     transition: all 0.3s ease;
+}
+
+.staking-stake-btn img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
 }
 
 .staking-stake-btn:hover {
