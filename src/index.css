@@ -198,7 +198,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #1a1a1d;
 }
 
 /* Lower staking box */
@@ -210,7 +209,7 @@ body {
     background-color: #000000;
     border: 2px solid white;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
 }
 
@@ -381,9 +380,19 @@ body {
 /* Make sure the buttons scale well on smaller screens */
 @media (max-width: 768px) {
     .percentage-btn {
-        font-size: 0.8rem; /* Slightly smaller font for mobile */
         padding: 8px;
         width: 23%; /* Adjusted width for better mobile display */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1a1a1d;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+        color: white;
+        font-size: 1.2rem;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+
     }
 }
 
@@ -396,13 +405,95 @@ body {
     }
 
     .token-btn,
-    .duration-btn,
-    .stake-btn {
+    .duration-btn {
         width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .stake-btn {
+        width: 70%;
         margin-bottom: 10px;
     }
 
     .amount-input {
         font-size: 1.2rem;
     }
+}
+
+/*new left right */
+/* Container Styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px; /* Adjust this width */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1a1d;
+}
+
+/* Box around the staking form */
+.lower-staking-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Duration buttons */
+.duration-selection button {
+    background-color: #1a1a1d;
+    color: white;
+    border: 2px solid white;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+}
+
+.duration-selection button.active {
+    background-color: #00bfff;
+}
+
+/* Whale Slider and percentage styling */
+.whale-slider-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Percentage Buttons */
+.percentage-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.percentage-btn.active {
+    background-color: #00bfff;
+    color: white;
+}
+
+.percentage-btn:hover {
+    background-color: #ffffff;
+    color: #1a1a1d;
+}
+
+/* Stake Button */
+.stake-btn {
+    background-color: #5170fd;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: 2px solid #1d3dff;
+    transition: all 0.3s ease;
 }
