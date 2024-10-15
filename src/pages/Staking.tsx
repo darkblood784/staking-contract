@@ -254,8 +254,18 @@ function Staking() {
                 value = 100;
                 break;
         }
-        setSliderValue(value); // Update the whale head position
-        setSelectedPercentage(percentage); // Set the selected percentage as active
+    
+        // Adjust the slider for the currently selected token
+        if (selectedToken === 'USDT') {
+            setSliderValueusdt(value); // Update USDT whale slider
+            setSelectedPercentage1(percentage); // Set the selected percentage for USDT
+        } else if (selectedToken === 'Bitcoin') {
+            setSliderValuebtc(value); // Update Bitcoin whale slider
+            setSelectedPercentage2(percentage); // Set the selected percentage for Bitcoin
+        } else if (selectedToken === 'Ethereum') {
+            setSliderValueeth(value); // Update Ethereum whale slider
+            setSelectedPercentage3(percentage); // Set the selected percentage for Ethereum
+        }
     };
     
 
