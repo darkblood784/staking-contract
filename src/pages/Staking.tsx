@@ -365,7 +365,7 @@ function Staking() {
             </div>
 
             <div className="staking-container mx-auto p-4">
-                <div className="staking-box flex justify-between items-center w-full">
+                <div className="staking-box2 flex justify-between items-center w-full">
 
                     {/* Left Section */}
                     <div className="staking-left w-1/2 pr-4 flex flex-col items-start">
