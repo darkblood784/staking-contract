@@ -341,11 +341,6 @@ function Staking() {
                             className="amount-input" 
                             value={stakeAmount} 
                             onChange={(e) => handleInputChange(e, setStakeAmount)} 
-                            BlinkingUnderscoreInput
-                                inputValue={inputValue1}
-                                handleInputChange={(e) => handleInputChange(e, setInputValue1)}
-                                validatePrime={() => validatePrime(inputValue1, setInputValue1)}
-                            
                         />
                     </div>
 
@@ -360,7 +355,7 @@ function Staking() {
                     </div>
 
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
-
+                    
                     <div>
                         <p>≈{apr}% APR</p>
                     </div>
