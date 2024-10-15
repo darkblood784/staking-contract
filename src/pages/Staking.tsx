@@ -357,10 +357,10 @@ function Staking() {
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
 
                     <div className="percentage-selection">
-                        <button className={`percentage-btn ${selectedPercentage === '25%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('25%')}>25%</button>
-                        <button className={`percentage-btn ${selectedPercentage === '50%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('50%')}>50%</button>
-                        <button className={`percentage-btn ${selectedPercentage === '75%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('75%')}>75%</button>
-                        <button className={`percentage-btn ${selectedPercentage === 'All In' ? 'active' : ''}`} onClick={() => handlePercentageSelect('All In')}>All In</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === '25%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('25%')}>25%</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === '50%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('50%')}>50%</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === '75%' ? 'active' : ''}`} onClick={() => handlePercentageSelect('75%')}>75%</button>
+                        <button className={`percentage-btn ${selectedToken === 'USDT' && selectedPercentage1 === 'All In' ? 'active' : ''}`} onClick={() => handlePercentageSelect('All In')}>All In</button>
                     </div>
 
    
