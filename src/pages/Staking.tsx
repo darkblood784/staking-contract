@@ -113,6 +113,9 @@ function Staking() {
     const [inputValue2, setInputValue2] = useState('');
     const [inputValue3, setInputValue3] = useState('');
     const [address, setAddress] = useState("");
+    const [sliderValueusdt, setSliderValueusdt] = useState<number>(0);
+    const [sliderValuebtc, setSliderValuebtc] = useState<number>(0);
+    const [sliderValueeth, setSliderValueeth] = useState<number>(0);
 
     const percentages = ['25%', '50%', '75%', 'ALL IN'];
     const [selectedPercentage1, setSelectedPercentage1] = useState("");
