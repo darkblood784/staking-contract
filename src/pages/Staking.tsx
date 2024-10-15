@@ -98,9 +98,9 @@ function Staking() {
     const { t, i18n } = useTranslation();
 
         
-    const [selectedToken, setSelectedToken] = useState('USDT');
+    const [selectedToken, setSelectedToken] = useState<'USDT' | 'Bitcoin' | 'Ethereum'>('USDT');
     const [stakeAmount, setStakeAmount] = useState('');
-    const [duration, setDuration] = useState('30 Days');
+    const [duration, setDuration] = useState<'30 Days' | '6 Months' | '1 Year'>('30 Days');
     const [sliderValue, setSliderValue] = useState(0);
     const [apr, setApr] = useState(percentageMap[duration]); // Adjust APR based on duration
         
@@ -108,12 +108,18 @@ function Staking() {
         setApr(percentageMap[duration]);
     }, [duration]);
     
-    const handleTokenSelection = (token: string) => {
+    const handleTokenSelection = (token: 'USDT' | 'Bitcoin' | 'Ethereum') => {
         setSelectedToken(token);
     };
-    
-    const handleDurationChange = (selectedDuration: string) => {
+
+    const handleDurationChange = (selectedDuration: '30 Days' | '6 Months' | '1 Year') => {
         setDuration(selectedDuration);
+    };
+
+    const getWhaleHeadSrc = (): string => {
+        if (sliderValue <= 25) return headImages["0-25"];
+        if (sliderValue <= 75) return headImages["25-75"];
+        return headImages["75-100"];
     };
 
 
@@ -290,7 +296,7 @@ function Staking() {
                     <button
                         key={token.name}
                         className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
-                        onClick={() => handleTokenSelection(token.name)}
+                        onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}
                     >
                         <img src={token.icon} alt={token.name} className="w-8 h-8 mr-2" />
                         {token.name}
@@ -321,7 +327,7 @@ function Staking() {
                         validatePrime={() => {}}
                     />
                 </div>
-                <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+                <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                 
                 {/* APR Information */}
                 <div className="mt-4">
