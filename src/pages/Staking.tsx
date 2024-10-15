@@ -291,51 +291,49 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div className="staking-box-custom">
-    
-                <div className="top-left-custom">
-                    <div className="duration-selection">
-                        <button className="duration-btn">30 Days</button>
-                        <button className="duration-btn">6 Months</button>
-                        <button className="duration-btn">1 Year</button>
-                    </div>
-                </div>
-
-                
-                <div className="top-right-custom">
+            <div className="container">
+                <div className="lower-staking-box">
                     <div className="token-selection">
-                        <button className="token-btn">
-                            <img src="usdt.png" alt="USDT" />
-                            USDT
-                        </button>
-                        <button className="token-btn">
-                            <img src="btc.png" alt="Bitcoin" />
-                            Bitcoin
-                        </button>
-                        <button className="token-btn">
-                            <img src="eth.png" alt="Ethereum" />
-                            Ethereum
-                        </button>
+                        {tokens.map(token => (
+                            <button key={token.name}
+                            className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
+                            onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
+                                <img src={token.icon} alt={token.name} />
+                                {token.name}
+                            </button>
+                        ))}
                     </div>
-                </div>
+    
+                    <div className="amount-section">
+                        <input 
+                            type="text" 
+                            className="amount-input" 
+                            value={stakeAmount} 
+                            onChange={(e) => handleInputChange(e, setStakeAmount)} 
+                        />
+                    </div>
 
-            
-                <div className="center-left-custom">
-                    <input type="text" className="amount-input" placeholder="Enter Amount" />
-                    <p>APR: 15%</p>
-                </div>
+    
+                    <div className="duration-selection">
+                        {durations.map(dur => (
+                        <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                                onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
+                            {dur}
+                        </button>
+                        ))}
+                    </div>
 
-                
-                <div className="center-right-custom">
-                    <button className="stake-btn-custom">Stake</button>
-                </div>
-
-               
-                <div className="slider-bottom-custom">
-                   
                     <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
+
+    
+                    <div>
+                        <p>≈{apr}% APR</p>
+                    </div>
+
+                    <button className="stake-btn">Stake</button>
                 </div>
             </div>
+
 
 
             <div className="flex flex-wrap w-full relative mt-10">
