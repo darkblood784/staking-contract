@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Web3 from 'web3';
-import StakingContractABI from './abi/StakingContract.json'; // Import ABI
+import StakingContractABI from './StakingContract.json'; // Import ABI
 import type { Adapter, WalletError } from '@tronweb3/tronwallet-abstract-adapter';
 import { WalletDisconnectedError, WalletNotFoundError } from '@tronweb3/tronwallet-abstract-adapter';
 import { WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
