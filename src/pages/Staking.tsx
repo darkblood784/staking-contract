@@ -391,7 +391,8 @@ function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
                         ))}
                     </div>
 
-                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
+
                     <p>≈{apr}% APR</p>
 
                     <button className="stake-btn" onClick={handleStake}>STAKE</button>

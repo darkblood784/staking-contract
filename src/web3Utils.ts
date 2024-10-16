@@ -2,6 +2,14 @@ import Web3 from 'web3';
 import { AbiItem } from 'web3-utils';
 import StakingContractABI from './StakingContract.json'; // ABI of your smart contract
 
+declare global {
+    interface Window {
+        ethereum?: any;
+    }
+}
+
+
+
 let web3: Web3 | null = null;
 
 if (window.ethereum) {
