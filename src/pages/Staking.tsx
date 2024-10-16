@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Web3 from 'web3';
+import { AbiItem } from 'web3-utils'; // Web3 uses ABI format
 
 import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
@@ -41,7 +42,7 @@ const durations = ['30 Days', '6 Months', '1 Year'];
 const percentageMap = { '30 Days': 15, '6 Months': 24, '1 Year': 36 };
 
 // Environment Variables
-const CONTRACT_ABI = JSON.parse(process.env.REACT_APP_ABI!);
+const CONTRACT_ABI = JSON.parse(process.env.VITE_CONTRACT_ABI!);
 
 const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
 const RPC_URL = import.meta.env.VITE_RPC_URL;
@@ -129,43 +130,61 @@ function Staking() {
         setApr(percentageMap[duration]);
     }, [duration]);
 
-    // Initialize Web3 and Connect Wallet
+    // Initialize Web3 and the contract
     useEffect(() => {
-        const initWeb3 = async () => {
-            const provider = new Web3.providers.HttpProvider(RPC_URL);
-            const web3Instance = new Web3(provider);
+        if (window.ethereum) {
+            const web3Instance = new Web3(window.ethereum);
             setWeb3(web3Instance);
-        };
-        initWeb3();
+
+            const contractInstance = new web3Instance.eth.Contract(CONTRACT_ABI as AbiItem[], CONTRACT_ADDRESS);
+            setContract(contractInstance);
+        } else {
+            console.error("MetaMask not detected");
+        }
     }, []);
 
+    // Wallet connection
     const connectWallet = async () => {
-        if (typeof window !== 'undefined' && window.ethereum) { // Check if window and ethereum exist
+        if (window.ethereum) {
             try {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                setWalletAddress(accounts[0]); // Save the connected account
-                setWalletConnected(true); // Update the state to show the wallet is connected
-    
-                // Get the balance of the connected wallet
-                const balance = await window.ethereum.request({
-                    method: 'eth_getBalance',
-                    params: [accounts[0], 'latest'],
-                });
-    
-                // Initialize Web3 to access the balance
-                const web3 = new Web3(window.ethereum);
-                const balanceInEth = web3.utils.fromWei(balance, 'ether');
-                setAvailableBalance(balanceInEth); // Update available balance
-    
-                console.log('Connected account:', accounts[0]);
-            } catch (error) {
-                console.error('Error connecting wallet:', error);
+                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+                setWalletAddress(accounts[0]);
+                setWalletConnected(true);
+                setMessage("Wallet connected successfully");
+            } catch (err) {
+                console.error("Wallet connection failed", err);
+                setMessage("Wallet connection failed");
             }
         } else {
-            console.error('MetaMask not detected');
+            console.error("MetaMask not detected");
         }
     };
     
+    // Get token address based on selection
+    const getTokenAddress = () => {
+        if (selectedToken === 'USDT') return process.env.VITE_USDT_ADDRESS;
+        if (selectedToken === 'Bitcoin') return process.env.VITE_WBTC_ADDRESS;
+        return process.env.VITE_WETH_ADDRESS;
+    };
+
+    // Handle staking
+    const stakeTokens = async () => {
+        if (walletConnected && contract && web3) {
+            try {
+                const tokenAddress = getTokenAddress();
+                const amountInWei = web3.utils.toWei(stakeAmount, "ether");
+                const durationInMonths = duration === '30 Days' ? 1 : duration === '6 Months' ? 6 : 12;
+
+                await contract.methods.stake(tokenAddress, durationInMonths, amountInWei).send({ from: walletAddress });
+                setMessage("Staked successfully!");
+            } catch (err) {
+                console.error("Staking failed", err);
+                setMessage("Staking failed");
+            }
+        } else {
+            setMessage("Please connect your wallet first");
+        }
+    };
       
       
     
@@ -386,48 +405,47 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div className="container">
-                <div className="lower-staking-box">
-                    <div className="token-selection">
-                        {tokens.map(token => (
-                            <button key={token.name}
-                            className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
-                            onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
-                                <img src={token.icon} alt={token.name} />
-                                {token.name}
-                            </button>
-                        ))}
-                    </div>
-    
-                    <div className="amount-section">
-                        <input 
-                            type="text" 
-                            className="amount-input" 
-                            value={stakeAmount} 
-                            onChange={(e) => handleInputChange} 
-                        />
-                    </div>
+            <div className="staking-container">
+                {/* Wallet Connection */}
+                <button onClick={connectWallet}>
+                    {walletConnected ? `Wallet Connected: ${walletAddress}` : "Connect Wallet"}
+                </button>
+                <p>{message}</p>
 
-    
-                    <div className="duration-selection">
-                        {durations.map(dur => (
-                        <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
-                                onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
+                {/* Token Selection */}
+                <div className="token-selection">
+                    {tokens.map(token => (
+                        <button key={token.name} onClick={() => setSelectedToken(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
+                            <img src={token.icon} alt={token.name} />
+                            {token.name}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Stake Amount Input */}
+                <input
+                    type="number"
+                    placeholder="Amount to Stake"
+                    value={stakeAmount}
+                    onChange={(e) => setStakeAmount(e.target.value)}
+                />
+
+                {/* Duration Selection */}
+                <div className="duration-selection">
+                    {durations.map(dur => (
+                        <button key={dur} onClick={() => setDuration(dur as '30 Days' | '6 Months' | '1 Year')}>
                             {dur}
                         </button>
-                        ))}
-                    </div>
-
-                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
-                    
-                    <div>
-                        <p>≈{apr}% APR</p>
-                    </div>
-
-                    <button className="stake-btn">STAKE</button>
+                    ))}
                 </div>
-            </div>
 
+                {/* Stake Button */}
+                <button onClick={stakeTokens}>Stake</button>
+
+                {/* Message display */}
+                <p>{message}</p>
+            </div>
+            
             <div className="staking-container mx-auto p-4">
                 <div className="staking-box2 flex justify-between items-center w-full">
 
