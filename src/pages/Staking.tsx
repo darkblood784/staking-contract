@@ -369,42 +369,6 @@ function Staking() {
 
                     {/* Left Section */}
                     <div className="staking-left w-1/2 pr-4 flex flex-col items-start">
-                        {/* Duration Selection */}
-                        <div className="staking-duration-selection flex mb-4 space-x-4">
-                            {durations.map(dur => (
-                                <button 
-                                    key={dur} 
-                                    className={`staking-duration-btn ${duration === dur ? 'active' : ''}`}
-                                    onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}
-                                >
-                                    {dur}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Whale Slider with Percentage */}
-                        <div className="staking-whale-slider mb-4">
-                            <WhaleSlider sliderValue={sliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
-                            <p className="text-lg font-bold text-white">{stakeAmount} USD</p>
-                            <p className="text-lg font-bold text-green-400">≈{apr}% APR</p>
-                        </div>
-
-                        {/* Percentage Buttons */}
-                        <div className="staking-percentage-buttons flex space-x-4">
-                            {[25, 50, 75, 100].map((val) => (
-                                <button 
-                                    key={val}
-                                    onClick={() => setSliderValue(val)}
-                                    className={`staking-percentage-btn ${sliderValue === val ? 'active' : ''}`}
-                                >
-                                    {val === 100 ? 'All In' : `${val}%`}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Right Section */}
-                    <div className="staking-right w-1/2 pl-4 flex flex-col items-center justify-center">
                         {/* Token Selection */}
                         <div className="staking-token-selection flex space-x-4 mb-4">
                             {tokens.map(token => (
@@ -415,6 +379,30 @@ function Staking() {
                                 >
                                     <img src={token.icon} alt={token.name} />
                                     {token.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Whale Slider with Percentage */}
+                        <div className="staking-whale-slider mb-4">
+                            <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
+                            <p className="text-lg font-bold text-white">{stakeAmount} USD</p>
+                            <p className="text-lg font-bold text-green-400">≈{apr}% APR</p>
+                        </div>
+
+                    </div>
+
+                    {/* Right Section */}
+                    <div className="staking-right w-1/2 pl-4 flex flex-col items-center justify-center">
+                        {/* Duration Selection */}
+                        <div className="staking-duration-selection flex mb-4 space-x-4">
+                            {durations.map(dur => (
+                                <button 
+                                    key={dur} 
+                                    className={`staking-duration-btn ${duration === dur ? 'active' : ''}`}
+                                    onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}
+                                >
+                                    {dur}
                                 </button>
                             ))}
                         </div>
