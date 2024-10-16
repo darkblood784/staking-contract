@@ -96,13 +96,12 @@ const BlinkingUnderscoreInput: React.FC<BlinkingUnderscoreInputProps> = ({ input
 };
 
 interface StakingProps {
-    account: string | null;
-    userStakeInfo: any;
+    account: string;
     contract: any;
     web3: any;
 }
 
-function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
+function Staking({ account, contract, web3 }: StakingProps) {
     const [stakeInfo, setStakeInfo] = useState<any>(null);
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
@@ -137,8 +136,17 @@ function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
         if (!contract || !account) return;
 
         try {
-            const userStakeInfo = await contract.methods.userStakeInfos(account, process.env.REACT_APP_USDT_ADDRESS).call();
-            setStakeInfo(userStakeInfo);
+            // Fetch for all tokens (USDT, BTC, ETH)
+            const usdtStake = await contract.methods.userStakeInfos(account, process.env.REACT_APP_USDT_ADDRESS).call();
+            const btcStake = await contract.methods.userStakeInfos(account, process.env.REACT_APP_BTC_ADDRESS).call();
+            const ethStake = await contract.methods.userStakeInfos(account, process.env.REACT_APP_ETH_ADDRESS).call();
+
+            // Combine stake info from all tokens
+            setStakeInfo({
+                USDT: usdtStake,
+                BTC: btcStake,
+                ETH: ethStake,
+            });
         } catch (error) {
             console.error("Error fetching stake info:", error);
         }
@@ -148,18 +156,7 @@ function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
         fetchStakeInfo();
     }, [contract, account]);
 
-    return (
-        <div>
-            {stakeInfo && stakeInfo.stakedAmount > 0 ? (
-                <div>
-                    <p>Total Staked: {web3.utils.fromWei(stakeInfo.stakedAmount, 'ether')} USDT</p>
-                    {/* Display more stake information */}
-                </div>
-            ) : (
-                <div>No Stakes Yet</div>
-            )}
-        </div>
-    );
+    
 
     const handleStake = async () => {
         if (!account || !contract || !web3) {
@@ -430,50 +427,40 @@ function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
                 </div>
             </div>
 
-            {/* Display Staked Info or No Stakes Yet */}
-            <div className="staking-container mx-auto p-4">
-                {account && userStakeInfo ? (
-                    <>
-                        {userStakeInfo.USDT.stakedAmount > 0 || userStakeInfo.BTC.stakedAmount > 0 || userStakeInfo.ETH.stakedAmount > 0 ? (
-                            <div className="staking-box2 flex justify-between items-center w-full">
-                                <div className="staking-left w-1/2 pr-4 flex flex-col items-start">
-                                    {userStakeInfo.USDT.stakedAmount > 0 && (
-                                        <div className="staking-token-info">
-                                            <h2>USDT</h2>
-                                            <p>Total Staked: {web3.utils.fromWei(userStakeInfo.USDT.stakedAmount, 'ether')} USDT</p>
-                                            <p>Reward: {web3.utils.fromWei(userStakeInfo.USDT.rewards, 'ether')} USDT</p>
-                                            <p>Stake End: {new Date(userStakeInfo.USDT.stakeEnd * 1000).toLocaleString()}</p>
-                                        </div>
-                                    )}
-                                    {userStakeInfo.BTC.stakedAmount > 0 && (
-                                        <div className="staking-token-info">
-                                            <h2>BTC</h2>
-                                            <p>Total Staked: {web3.utils.fromWei(userStakeInfo.BTC.stakedAmount, 'ether')} BTC</p>
-                                            <p>Reward: {web3.utils.fromWei(userStakeInfo.BTC.rewards, 'ether')} BTC</p>
-                                            <p>Stake End: {new Date(userStakeInfo.BTC.stakeEnd * 1000).toLocaleString()}</p>
-                                        </div>
-                                    )}
-                                    {userStakeInfo.ETH.stakedAmount > 0 && (
-                                        <div className="staking-token-info">
-                                            <h2>ETH</h2>
-                                            <p>Total Staked: {web3.utils.fromWei(userStakeInfo.ETH.stakedAmount, 'ether')} ETH</p>
-                                            <p>Reward: {web3.utils.fromWei(userStakeInfo.ETH.rewards, 'ether')} ETH</p>
-                                            <p>Stake End: {new Date(userStakeInfo.ETH.stakeEnd * 1000).toLocaleString()}</p>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="no-stakes">
-                                <h2>No Stakes Yet</h2>
-                                <p>You don’t have any stakes yet. Start your journey as a whale and make your first stake.</p>
-                            </div>
-                        )}
-                    </>
-                ) : (
-                    <p>Please connect your wallet to see your staking information.</p>
-                )}
-            </div>
+            <div>
+            {/* Display staking info for USDT */}
+            {stakeInfo && stakeInfo.USDT.stakedAmount > 0 ? (
+                <div>
+                    <p>Total Staked (USDT): {web3.utils.fromWei(stakeInfo.USDT.stakedAmount, 'ether')} USDT</p>
+                    <p>Rewards: {web3.utils.fromWei(stakeInfo.USDT.rewards, 'ether')} USDT</p>
+                    <p>Stake End Date: {new Date(stakeInfo.USDT.stakeEnd * 1000).toLocaleString()}</p>
+                </div>
+            ) : (
+                <div>No USDT Stake Yet</div>
+            )}
+
+            {/* Display staking info for BTC */}
+            {stakeInfo && stakeInfo.BTC.stakedAmount > 0 ? (
+                <div>
+                    <p>Total Staked (BTC): {web3.utils.fromWei(stakeInfo.BTC.stakedAmount, 'ether')} BTC</p>
+                    <p>Rewards: {web3.utils.fromWei(stakeInfo.BTC.rewards, 'ether')} BTC</p>
+                    <p>Stake End Date: {new Date(stakeInfo.BTC.stakeEnd * 1000).toLocaleString()}</p>
+                </div>
+            ) : (
+                <div>No BTC Stake Yet</div>
+            )}
+
+            {/* Display staking info for ETH */}
+            {stakeInfo && stakeInfo.ETH.stakedAmount > 0 ? (
+                <div>
+                    <p>Total Staked (ETH): {web3.utils.fromWei(stakeInfo.ETH.stakedAmount, 'ether')} ETH</p>
+                    <p>Rewards: {web3.utils.fromWei(stakeInfo.ETH.rewards, 'ether')} ETH</p>
+                    <p>Stake End Date: {new Date(stakeInfo.ETH.stakeEnd * 1000).toLocaleString()}</p>
+                </div>
+            ) : (
+                <div>No ETH Stake Yet</div>
+            )}
+        </div>
 
             <div className="staking-container mx-auto p-4">
                 <div className="staking-box2 flex justify-between items-center w-full">
