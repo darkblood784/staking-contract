@@ -360,7 +360,7 @@ function Staking() {
                         <p>≈{apr}% APR</p>
                     </div>
 
-                    <button className="stake-btn">Stake</button>
+                    <button className="stake-btn">STAKE</button>
                 </div>
             </div>
 
