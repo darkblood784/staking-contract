@@ -458,36 +458,6 @@ body {
     justify-content: center;
 }
 
-/* Duration buttons */
-.staking-duration-selection button {
-    background-color: #00000000;
-    color: white;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 8px;
-}
-
-.staking-duration-btn.active {
-    background-color: white;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-}
-
-/* Percentage buttons */
-.staking-percentage-btn {
-    background-color: transparent;
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.staking-percentage-btn.active {
-    background-color: white;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-}
-
 /* Token buttons */
 .staking-token-btn {
     display: flex;
@@ -507,7 +477,73 @@ body {
     background-color: white;
     color: rgb(0, 0, 0);
     font-weight: bold;
+}
 
+.staking-token-btn img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+/* Amount Section */
+.staking-amount-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.amount-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    width: 100%;
+    color: white;
+    text-align: right;
+}
+
+.staking-amount-section p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Whale Slider */
+.staking-whale-slider {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Whale Slider percentages */
+.staking-percentage-btn {
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.staking-percentage-btn.active {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+/* Duration buttons */
+.staking-duration-selection button {
+    background-color: #00000000;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+}
+
+.staking-duration-btn.active {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
 /* Stake Button */
@@ -520,17 +556,63 @@ body {
     border-radius: 10px;
     border: 2px solid #1d3dff;
     transition: all 0.3s ease;
-    width: 35vh;
-    height: 5vh;
-}
-
-.staking-token-btn img {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
+    width: 100%;
 }
 
 .staking-stake-btn:hover {
     background-color: #1e3a8a;
     font-weight: bold;
+}
+
+/* Wallet Connect Button */
+.staking-connect-btn {
+    background-color: #5170fd;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #1d3dff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.staking-connect-btn:hover {
+    background-color: #1e3a8a;
+}
+
+/* Responsive Styling for smaller devices */
+@media (max-width: 768px) {
+    .staking-box2 {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .staking-left, .staking-right {
+        width: 100%;
+        padding: 0;
+    }
+
+    .staking-stake-btn {
+        width: 100%;
+    }
+
+    .amount-input {
+        font-size: 1.2rem;
+    }
+
+    .staking-token-btn {
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+
+    .staking-duration-selection button {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .staking-connect-btn {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
 }

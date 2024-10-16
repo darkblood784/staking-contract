@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import Web3 from 'web3';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
@@ -30,6 +33,11 @@ const tokens = [
 
 const durations = ['30 Days', '6 Months', '1 Year'];
 const percentageMap = { '30 Days': 15, '6 Months': 24, '1 Year': 36 };
+
+// Environment Variables
+const CONTRACT_ADDRESS = process.env.REACT_APP_BSC_CONTRACT_ADDRESS!;
+const RPC_URL = process.env.REACT_APP_BSC_RPC_URL!;
+const CONTRACT_ABI = JSON.parse(process.env.REACT_APP_ABI!);
 
 interface WhaleImagePaths {
     "0-25": string;
@@ -103,10 +111,44 @@ function Staking() {
     const [duration, setDuration] = useState<'30 Days' | '6 Months' | '1 Year'>('30 Days');
     const [sliderValue, setSliderValue] = useState(0);
     const [apr, setApr] = useState(percentageMap[duration]); // Adjust APR based on duration
+
+    const [web3, setWeb3] = useState<Web3 | null>(null);
+    const [walletAddress, setWalletAddress] = useState('');
+    const [walletConnected, setWalletConnected] = useState(false);
+    const [availableBalance, setAvailableBalance] = useState('0');
         
     useEffect(() => {
         setApr(percentageMap[duration]);
     }, [duration]);
+
+    // Initialize Web3 and Connect Wallet
+    useEffect(() => {
+        const initWeb3 = async () => {
+            const provider = new Web3.providers.HttpProvider(RPC_URL);
+            const web3Instance = new Web3(provider);
+            setWeb3(web3Instance);
+        };
+        initWeb3();
+    }, []);
+
+    const connectWallet = async () => {
+        if (window.ethereum) {
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const account = accounts[0];
+                setWalletAddress(account);
+                setWalletConnected(true);
+
+                // Fetch balance
+                const balance = await web3!.eth.getBalance(account);
+                setAvailableBalance(web3!.utils.fromWei(balance, 'ether'));
+            } catch (error) {
+                console.error('Wallet connection failed', error);
+            }
+        } else {
+            alert('Please install MetaMask or another wallet.');
+        }
+    };
     
     const handleTokenSelection = (token: 'USDT' | 'Bitcoin' | 'Ethereum') => {
         setSelectedToken(token);
@@ -383,13 +425,30 @@ function Staking() {
                             ))}
                         </div>
 
+                        {/* Available Balance and Stake Amount */}
+                        <div className="staking-amount-section">
+                            {walletConnected ? (
+                                <>
+                                    <p>Available Balance: {availableBalance} BNB</p>
+                                    <input
+                                        type="text"
+                                        value={stakeAmount}
+                                        onChange={handleInputChange}
+                                        className="amount-input"
+                                        placeholder="Enter stake amount"
+                                    />
+                                </>
+                            ) : (
+                                <button onClick={connectWallet} className="staking-connect-btn">Connect Wallet</button>
+                            )}
+                        </div>
+
                         {/* Whale Slider with Percentage */}
                         <div className="staking-whale-slider mb-4">
                             <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                             <p className="text-lg font-bold text-white">{stakeAmount} USD</p>
                             <p className="text-lg font-bold text-green-400">≈{apr}% APR</p>
                         </div>
-
                     </div>
 
                     {/* Right Section */}
