@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Web3 from 'web3';
-import dotenv from 'dotenv';
-dotenv.config();
 
 import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
