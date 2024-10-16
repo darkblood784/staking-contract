@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Web3 from 'web3';
-import { AbiItem } from 'web3-utils'; // Web3 uses ABI format
 
 import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
@@ -24,14 +22,6 @@ import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
 
-// Declaring window.ethereum for MetaMask
-declare global {
-    interface Window {
-      ethereum: any;
-    }
-  }
-  
-
 const tokens = [
     { name: 'USDT', icon: usdt },
     { name: 'Bitcoin', icon: btc },
@@ -40,13 +30,6 @@ const tokens = [
 
 const durations = ['30 Days', '6 Months', '1 Year'];
 const percentageMap = { '30 Days': 15, '6 Months': 24, '1 Year': 36 };
-
-// Environment Variables
-const CONTRACT_ABI = JSON.parse(process.env.VITE_CONTRACT_ABI!);
-
-const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
-const RPC_URL = import.meta.env.VITE_RPC_URL;
-
 
 interface WhaleImagePaths {
     "0-25": string;
@@ -120,76 +103,10 @@ function Staking() {
     const [duration, setDuration] = useState<'30 Days' | '6 Months' | '1 Year'>('30 Days');
     const [sliderValue, setSliderValue] = useState(0);
     const [apr, setApr] = useState(percentageMap[duration]); // Adjust APR based on duration
-
-    const [web3, setWeb3] = useState<Web3 | null>(null);
-    const [walletAddress, setWalletAddress] = useState('');
-    const [walletConnected, setWalletConnected] = useState(false);
-    const [availableBalance, setAvailableBalance] = useState('0');
-    const [message, setMessage] = useState(''); // Added missing message state
-    const [contract, setContract] = useState<any>(null); // Added missing contract state
         
     useEffect(() => {
         setApr(percentageMap[duration]);
     }, [duration]);
-
-    // Initialize Web3 and the contract
-    useEffect(() => {
-        if (window.ethereum) {
-            const web3Instance = new Web3(window.ethereum);
-            setWeb3(web3Instance);
-
-            const contractInstance = new web3Instance.eth.Contract(CONTRACT_ABI as AbiItem[], CONTRACT_ADDRESS);
-            setContract(contractInstance);
-        } else {
-            console.error("MetaMask not detected");
-        }
-    }, []);
-
-    // Wallet connection
-    const connectWallet = async () => {
-        if (window.ethereum) {
-            try {
-                const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-                setWalletAddress(accounts[0]);
-                setWalletConnected(true);
-                setMessage("Wallet connected successfully");
-            } catch (err) {
-                console.error("Wallet connection failed", err);
-                setMessage("Wallet connection failed");
-            }
-        } else {
-            console.error("MetaMask not detected");
-            setMessage("MetaMask not detected");
-        }
-    };
-    
-    // Get token address based on selection
-    const getTokenAddress = () => {
-        if (selectedToken === 'USDT') return process.env.VITE_USDT_ADDRESS;
-        if (selectedToken === 'Bitcoin') return process.env.VITE_WBTC_ADDRESS;
-        return process.env.VITE_WETH_ADDRESS;
-    };
-
-    // Handle staking
-    const stakeTokens = async () => {
-        if (walletConnected && contract && web3) {
-            try {
-                const tokenAddress = getTokenAddress();
-                const amountInWei = web3.utils.toWei(stakeAmount, "ether");
-                const durationInMonths = duration === '30 Days' ? 1 : duration === '6 Months' ? 6 : 12;
-
-                await contract.methods.stake(tokenAddress, durationInMonths, amountInWei).send({ from: walletAddress });
-                setMessage("Staked successfully!");
-            } catch (err) {
-                console.error("Staking failed", err);
-                setMessage("Staking failed");
-            }
-        } else {
-            setMessage("Please connect your wallet first");
-        }
-    };
-      
-      
     
     const handleTokenSelection = (token: 'USDT' | 'Bitcoin' | 'Ethereum') => {
         setSelectedToken(token);
@@ -259,21 +176,18 @@ function Staking() {
         }
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
         const value = e.target.value;
         // Allow only digits and a single decimal point
         const validValue = value.replace(/[^0-9.]/g, '');
         const parts = validValue.split('.');
-    
-        if (parts.length > 2) {
-            // If more than one decimal point is present, join the parts to keep only the first decimal
-            setStakeAmount(parts.slice(0, 2).join('.'));
+        if (parts.length > 2) { // More than one decimal point is present
+            // Join the parts to keep only one decimal point and discard the rest
+            setter(parts.slice(0, 2).join('.') + parts.slice(2).join(''));
         } else {
-            setStakeAmount(validValue); // Update the stake amount state
+            setter(validValue);
         }
     };
-    
-    
     
 
     useEffect(() => {
@@ -408,33 +322,47 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div className="token-selection">
-                {tokens.map(token => (
-                    <button key={token.name} onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
-                        <img src={token.icon} alt={token.name} />
-                        {token.name}
-                    </button>
-                ))}
+            <div className="container">
+                <div className="lower-staking-box">
+                    <div className="token-selection">
+                        {tokens.map(token => (
+                            <button key={token.name}
+                            className={`token-btn ${selectedToken === token.name ? 'active' : ''}`}
+                            onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
+                                <img src={token.icon} alt={token.name} />
+                                {token.name}
+                            </button>
+                        ))}
+                    </div>
+    
+                    <div className="amount-section">
+                        <input 
+                            type="text" 
+                            className="amount-input" 
+                            value={stakeAmount} 
+                            onChange={(e) => handleInputChange(e, setStakeAmount)} 
+                        />
+                    </div>
+
+    
+                    <div className="duration-selection">
+                        {durations.map(dur => (
+                        <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                                onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
+                            {dur}
+                        </button>
+                        ))}
+                    </div>
+
+                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
+                    
+                    <div>
+                        <p>≈{apr}% APR</p>
+                    </div>
+
+                    <button className="stake-btn">STAKE</button>
+                </div>
             </div>
-
-            <input
-                type="number"
-                placeholder="Amount to Stake"
-                value={stakeAmount}
-                onChange={(e) => setStakeAmount(e.target.value)}
-            />
-
-            <div className="duration-selection">
-                {durations.map(dur => (
-                    <button key={dur} onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
-                        {dur}
-                    </button>
-                ))}
-            </div>
-
-            <button onClick={stakeTokens}>Stake</button>
-
-            <p>{message}</p> {/* Display messages here */}
 
             <div className="staking-container mx-auto p-4">
                 <div className="staking-box2 flex justify-between items-center w-full">
@@ -455,30 +383,13 @@ function Staking() {
                             ))}
                         </div>
 
-                        {/* Available Balance and Stake Amount */}
-                        <div className="staking-amount-section">
-                            {walletConnected ? (
-                                <>
-                                    <p>Available Balance: {availableBalance} BNB</p>
-                                    <input
-                                        type="text"
-                                        value={stakeAmount}
-                                        onChange={handleInputChange}
-                                        className="amount-input"
-                                        placeholder="Enter stake amount"
-                                    />
-                                </>
-                            ) : (
-                                <button onClick={connectWallet} className="staking-connect-btn">Connect Wallet</button>
-                            )}
-                        </div>
-
                         {/* Whale Slider with Percentage */}
                         <div className="staking-whale-slider mb-4">
                             <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                             <p className="text-lg font-bold text-white">{stakeAmount} USD</p>
                             <p className="text-lg font-bold text-green-400">≈{apr}% APR</p>
                         </div>
+
                     </div>
 
                     {/* Right Section */}
@@ -497,7 +408,7 @@ function Staking() {
                         </div>
 
                         {/* Stake Button */}
-                        <button className="staking-stake-btn mt-4">STAKE</button>
+                        <button className="staking-stake-btn mt-4">STAKEW</button>
                     </div>
                 </div>
             </div>
@@ -531,7 +442,7 @@ function Staking() {
                             <p className="text-[25px] md">{t('stake')}</p>
                             <BlinkingUnderscoreInput
                                 inputValue={inputValue1}
-                                handleInputChange={(e) => handleInputChange}
+                                handleInputChange={(e) => handleInputChange(e, setInputValue1)}
                                 validatePrime={() => validatePrime(inputValue1, setInputValue1)}
                             />
                         </div>
@@ -593,7 +504,7 @@ function Staking() {
                                 pattern="[0-9.]*"
                                 className="text-black outline-none rounded text-right p-2"
                                 value={inputValue2}
-                                onChange={(e) => handleInputChange}
+                                onChange={(e) => handleInputChange(e, setInputValue2)}
                                 onBlur={() => validatePrime(inputValue2, setInputValue2)}
                             />
                         </div>
@@ -655,7 +566,7 @@ function Staking() {
                                 pattern="[0-9.]*"
                                 className="text-black outline-none rounded text-right p-2"
                                 value={inputValue3}
-                                onChange={(e) => handleInputChange}
+                                onChange={(e) => handleInputChange(e, setInputValue3)}
                                 onBlur={() => validatePrime(inputValue3, setInputValue3)}
                             />
                         </div>
