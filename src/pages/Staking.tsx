@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import toast from 'react-hot-toast';
 import Web3 from 'web3';
+import { getStakingContract, getWeb3 } from '../web3Utils';
 
 import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
@@ -102,6 +103,7 @@ interface StakingProps {
 }
 
 function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
+    const [stakeInfo, setStakeInfo] = useState<any>(null);
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
@@ -129,6 +131,35 @@ function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
         if (sliderValue <= 75) return headImages["25-75"];
         return headImages["75-100"];
     };
+
+    // Fetch the stake information for the user
+    const fetchStakeInfo = async () => {
+        if (!contract || !account) return;
+
+        try {
+            const userStakeInfo = await contract.methods.userStakeInfos(account, process.env.REACT_APP_USDT_ADDRESS).call();
+            setStakeInfo(userStakeInfo);
+        } catch (error) {
+            console.error("Error fetching stake info:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchStakeInfo();
+    }, [contract, account]);
+
+    return (
+        <div>
+            {stakeInfo && stakeInfo.stakedAmount > 0 ? (
+                <div>
+                    <p>Total Staked: {web3.utils.fromWei(stakeInfo.stakedAmount, 'ether')} USDT</p>
+                    {/* Display more stake information */}
+                </div>
+            ) : (
+                <div>No Stakes Yet</div>
+            )}
+        </div>
+    );
 
     const handleStake = async () => {
         if (!account || !contract || !web3) {

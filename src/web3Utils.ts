@@ -9,43 +9,25 @@ declare global {
 }
 
 let web3: Web3 | null = null;
-let stakingContract: any = null; // Initialize stakingContract as null initially
 
-// Check if MetaMask or any provider is available and properly initialize web3
+// Check if MetaMask is installed and initialize Web3
 if (window.ethereum) {
-    try {
-        web3 = new Web3(window.ethereum);
-        window.ethereum.request({ method: 'eth_requestAccounts' });
-        
-        // Staking contract address - Load from .env file
-        const stakingContractAddress = process.env.REACT_APP_STAKING_CONTRACT_ADDRESS || '';
-
-        if (stakingContractAddress) {
-            stakingContract = new web3.eth.Contract(StakingContractABI as AbiItem[], stakingContractAddress);
-        } else {
-            console.error("Staking contract address is not defined in .env");
-        }
-
-    } catch (error) {
-        console.error("Error while connecting to MetaMask", error);
-    }
+    web3 = new Web3(window.ethereum);
+    window.ethereum.request({ method: 'eth_requestAccounts' }).catch((error: any) => {
+        console.error("User denied account access or an error occurred:", error);
+    });
 } else {
-    console.log('Please install MetaMask');
+    console.log('MetaMask is not installed.');
+    alert('MetaMask is required to use this app. Please install MetaMask.');
 }
 
-// Utility functions to safely return web3 and stakingContract
-export const getStakingContract = () => {
-    if (!stakingContract) {
-        console.error('Staking contract is not initialized');
-        return null;
-    }
-    return stakingContract;
-};
+// Load environment variables
+const stakingContractAddress = process.env.REACT_APP_STAKING_CONTRACT_ADDRESS;
+const usdtAddress = process.env.REACT_APP_USDT_ADDRESS;
+const btcAddress = process.env.REACT_APP_BTC_ADDRESS;
+const ethAddress = process.env.REACT_APP_ETH_ADDRESS;
 
-export const getWeb3 = () => {
-    if (!web3) {
-        console.error('Web3 instance is not initialized');
-        return null;
-    }
-    return web3;
-};
+const stakingContract = web3 ? new web3.eth.Contract(StakingContractABI as AbiItem[], stakingContractAddress) : null;
+
+export const getStakingContract = () => stakingContract;
+export const getWeb3 = () => web3;
