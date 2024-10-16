@@ -19,6 +19,7 @@
     "@tronweb3/tronwallet-adapter-tronlink": "^1.1.9",
     "@tronweb3/tronwallet-adapter-walletconnect": "^1.0.0",
     "@tronweb3/tronwallet-adapters": "^1.1.1",
+    "@types/web3": "^1.0.20",
     "antd": "^5.20.6",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",

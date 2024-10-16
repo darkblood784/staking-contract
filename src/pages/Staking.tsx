@@ -25,6 +25,14 @@ import ChildComponent2 from '../components/child2';
 import ChildComponent3 from '../components/child3';
 
 
+// Declaring window.ethereum for MetaMask
+declare global {
+    interface Window {
+      ethereum: any;
+    }
+  }
+  
+
 const tokens = [
     { name: 'USDT', icon: usdt },
     { name: 'Bitcoin', icon: btc },
@@ -133,22 +141,31 @@ function Staking() {
 
     const connectWallet = async () => {
         if (window.ethereum) {
-            try {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                const account = accounts[0];
-                setWalletAddress(account);
-                setWalletConnected(true);
-
-                // Fetch balance
-                const balance = await web3!.eth.getBalance(account);
-                setAvailableBalance(web3!.utils.fromWei(balance, 'ether'));
-            } catch (error) {
-                console.error('Wallet connection failed', error);
-            }
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            setAddress(accounts[0]); // Save the connected account
+            setWalletConnected(true); // Update the state to show the wallet is connected
+      
+            // Get the balance of the connected wallet
+            const balance = await window.ethereum.request({
+              method: 'eth_getBalance',
+              params: [accounts[0], 'latest'],
+            });
+            
+            // Convert balance from Wei to Ether (assuming BNB is equivalent to Ether)
+            const balanceInEth = window.web3.utils.fromWei(balance, 'ether');
+            setAvailableBalance(balanceInEth); // Update available balance
+      
+            console.log('Connected account:', accounts[0]);
+          } catch (error) {
+            console.error('Error connecting wallet:', error);
+          }
         } else {
-            alert('Please install MetaMask or another wallet.');
+          console.error('MetaMask not detected');
         }
-    };
+      };
+      
+      
     
     const handleTokenSelection = (token: 'USDT' | 'Bitcoin' | 'Ethereum') => {
         setSelectedToken(token);
@@ -218,18 +235,21 @@ function Staking() {
         }
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setter: (value: string) => void) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const value = e.target.value;
         // Allow only digits and a single decimal point
         const validValue = value.replace(/[^0-9.]/g, '');
         const parts = validValue.split('.');
-        if (parts.length > 2) { // More than one decimal point is present
-            // Join the parts to keep only one decimal point and discard the rest
-            setter(parts.slice(0, 2).join('.') + parts.slice(2).join(''));
+    
+        // Ensure only one decimal point is allowed
+        if (parts.length > 2) {
+            // If more than one decimal point is present, join the parts to keep only the first decimal
+            setStakeAmount(parts.slice(0, 2).join('.'));
         } else {
-            setter(validValue);
+            setStakeAmount(validValue); // Update the stake amount state
         }
     };
+    
     
 
     useEffect(() => {
