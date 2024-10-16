@@ -408,7 +408,7 @@ function Staking() {
                         </div>
 
                         {/* Stake Button */}
-                        <button className="staking-stake-btn mt-4">Stake</button>
+                        <button className="staking-stake-btn mt-4">STAKE</button>
                     </div>
                 </div>
             </div>
