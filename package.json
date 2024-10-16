@@ -24,7 +24,7 @@
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "dotenv": "^16.4.5",
-    "eventemitter3": "^5.0.1",
+    "eventemitter3": "^4.0.7",
     "events": "^3.3.0",
     "i18next": "^23.15.1",
     "i18next-http-backend": "^2.6.1",

@@ -47,6 +47,10 @@ const CONTRACT_ADDRESS = process.env.REACT_APP_BSC_CONTRACT_ADDRESS!;
 const RPC_URL = process.env.REACT_APP_BSC_RPC_URL!;
 const CONTRACT_ABI = JSON.parse(process.env.REACT_APP_ABI!);
 
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
+const RPC_URL = import.meta.env.VITE_RPC_URL;
+
+
 interface WhaleImagePaths {
     "0-25": string;
     "25-75": string;

@@ -15,15 +15,13 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            eventemitter3: 'eventemitter3/umd/eventemitter3.js',
+            // Try removing the eventemitter3 alias and allow Vite to handle it
         },
     },
     build: {
-        // Set false to speed up build process, should change to `true` for production mode.
-        minify: false,
+        minify: false, // Can change to `true` when in production mode
     },
     optimizeDeps: {
-        // Clear the array to optimize the dependencies
         exclude: [
             '@tronweb3/tronwallet-adapters',
             '@tronweb3/tronwallet-adapter-tronlink',
