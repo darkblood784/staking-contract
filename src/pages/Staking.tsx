@@ -125,6 +125,9 @@ function Staking() {
     const [walletAddress, setWalletAddress] = useState('');
     const [walletConnected, setWalletConnected] = useState(false);
     const [availableBalance, setAvailableBalance] = useState('0');
+    const [message, setMessage] = useState(''); // Added missing message state
+    const [web3, setWeb3] = useState<Web3 | null>(null);
+    const [contract, setContract] = useState<any>(null); // Added missing contract state
         
     useEffect(() => {
         setApr(percentageMap[duration]);
@@ -157,6 +160,7 @@ function Staking() {
             }
         } else {
             console.error("MetaMask not detected");
+            setMessage("MetaMask not detected");
         }
     };
     
@@ -405,47 +409,34 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
-            <div className="staking-container">
-                {/* Wallet Connection */}
-                <button onClick={connectWallet}>
-                    {walletConnected ? `Wallet Connected: ${walletAddress}` : "Connect Wallet"}
-                </button>
-                <p>{message}</p>
-
-                {/* Token Selection */}
-                <div className="token-selection">
-                    {tokens.map(token => (
-                        <button key={token.name} onClick={() => setSelectedToken(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
-                            <img src={token.icon} alt={token.name} />
-                            {token.name}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Stake Amount Input */}
-                <input
-                    type="number"
-                    placeholder="Amount to Stake"
-                    value={stakeAmount}
-                    onChange={(e) => setStakeAmount(e.target.value)}
-                />
-
-                {/* Duration Selection */}
-                <div className="duration-selection">
-                    {durations.map(dur => (
-                        <button key={dur} onClick={() => setDuration(dur as '30 Days' | '6 Months' | '1 Year')}>
-                            {dur}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Stake Button */}
-                <button onClick={stakeTokens}>Stake</button>
-
-                {/* Message display */}
-                <p>{message}</p>
+            <div className="token-selection">
+                {tokens.map(token => (
+                    <button key={token.name} onClick={() => handleTokenSelection(token.name as 'USDT' | 'Bitcoin' | 'Ethereum')}>
+                        <img src={token.icon} alt={token.name} />
+                        {token.name}
+                    </button>
+                ))}
             </div>
-            
+
+            <input
+                type="number"
+                placeholder="Amount to Stake"
+                value={stakeAmount}
+                onChange={(e) => setStakeAmount(e.target.value)}
+            />
+
+            <div className="duration-selection">
+                {durations.map(dur => (
+                    <button key={dur} onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
+                        {dur}
+                    </button>
+                ))}
+            </div>
+
+            <button onClick={stakeTokens}>Stake</button>
+
+            <p>{message}</p> {/* Display messages here */}
+
             <div className="staking-container mx-auto p-4">
                 <div className="staking-box2 flex justify-between items-center w-full">
 
