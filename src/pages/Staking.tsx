@@ -382,19 +382,9 @@ function Staking() {
                             ))}
                         </div>
 
-                        <div className="amount-section">
-                            <input 
-                                type="text" 
-                                className="amount-input" 
-                                value={stakeAmount} 
-                                onChange={(e) => handleInputChange(e, setStakeAmount)} 
-                            />
-                            <p>≈{apr}% APR</p>
-                        </div>
-
                         {/* Whale Slider with Percentage */}
                         <div className="staking-whale-slider mb-4">
-                            <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
+                            <WhaleSlider sliderValue={sliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
                             <p className="text-lg font-bold text-white">{stakeAmount} USD</p>
                             <p className="text-lg font-bold text-green-400">≈{apr}% APR</p>
                         </div>
