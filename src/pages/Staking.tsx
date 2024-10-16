@@ -404,7 +404,7 @@ function Staking() {
                             type="text" 
                             className="amount-input" 
                             value={stakeAmount} 
-                            onChange={(e) => handleInputChange(e, setStakeAmount)} 
+                            onChange={(e) => handleInputChange} 
                         />
                     </div>
 
@@ -523,7 +523,7 @@ function Staking() {
                             <p className="text-[25px] md">{t('stake')}</p>
                             <BlinkingUnderscoreInput
                                 inputValue={inputValue1}
-                                handleInputChange={(e) => handleInputChange(e, setInputValue1)}
+                                handleInputChange={(e) => handleInputChange}
                                 validatePrime={() => validatePrime(inputValue1, setInputValue1)}
                             />
                         </div>
@@ -585,7 +585,7 @@ function Staking() {
                                 pattern="[0-9.]*"
                                 className="text-black outline-none rounded text-right p-2"
                                 value={inputValue2}
-                                onChange={(e) => handleInputChange(e, setInputValue2)}
+                                onChange={(e) => handleInputChange}
                                 onBlur={() => validatePrime(inputValue2, setInputValue2)}
                             />
                         </div>
@@ -647,7 +647,7 @@ function Staking() {
                                 pattern="[0-9.]*"
                                 className="text-black outline-none rounded text-right p-2"
                                 value={inputValue3}
-                                onChange={(e) => handleInputChange(e, setInputValue3)}
+                                onChange={(e) => handleInputChange}
                                 onBlur={() => validatePrime(inputValue3, setInputValue3)}
                             />
                         </div>
