@@ -126,7 +126,6 @@ function Staking() {
     const [walletConnected, setWalletConnected] = useState(false);
     const [availableBalance, setAvailableBalance] = useState('0');
     const [message, setMessage] = useState(''); // Added missing message state
-    const [web3, setWeb3] = useState<Web3 | null>(null);
     const [contract, setContract] = useState<any>(null); // Added missing contract state
         
     useEffect(() => {
