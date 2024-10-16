@@ -140,30 +140,32 @@ function Staking() {
     }, []);
 
     const connectWallet = async () => {
-        if (window.ethereum) {
-          try {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            setAddress(accounts[0]); // Save the connected account
-            setWalletConnected(true); // Update the state to show the wallet is connected
-      
-            // Get the balance of the connected wallet
-            const balance = await window.ethereum.request({
-              method: 'eth_getBalance',
-              params: [accounts[0], 'latest'],
-            });
-            
-            // Convert balance from Wei to Ether (assuming BNB is equivalent to Ether)
-            const balanceInEth = window.web3.utils.fromWei(balance, 'ether');
-            setAvailableBalance(balanceInEth); // Update available balance
-      
-            console.log('Connected account:', accounts[0]);
-          } catch (error) {
-            console.error('Error connecting wallet:', error);
-          }
+        if (typeof window !== 'undefined' && window.ethereum) { // Check if window and ethereum exist
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                setWalletAddress(accounts[0]); // Save the connected account
+                setWalletConnected(true); // Update the state to show the wallet is connected
+    
+                // Get the balance of the connected wallet
+                const balance = await window.ethereum.request({
+                    method: 'eth_getBalance',
+                    params: [accounts[0], 'latest'],
+                });
+    
+                // Initialize Web3 to access the balance
+                const web3 = new Web3(window.ethereum);
+                const balanceInEth = web3.utils.fromWei(balance, 'ether');
+                setAvailableBalance(balanceInEth); // Update available balance
+    
+                console.log('Connected account:', accounts[0]);
+            } catch (error) {
+                console.error('Error connecting wallet:', error);
+            }
         } else {
-          console.error('MetaMask not detected');
+            console.error('MetaMask not detected');
         }
-      };
+    };
+    
       
       
     
@@ -235,13 +237,12 @@ function Staking() {
         }
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         // Allow only digits and a single decimal point
         const validValue = value.replace(/[^0-9.]/g, '');
         const parts = validValue.split('.');
     
-        // Ensure only one decimal point is allowed
         if (parts.length > 2) {
             // If more than one decimal point is present, join the parts to keep only the first decimal
             setStakeAmount(parts.slice(0, 2).join('.'));
@@ -249,6 +250,7 @@ function Staking() {
             setStakeAmount(validValue); // Update the stake amount state
         }
     };
+    
     
     
 
