@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import toast from 'react-hot-toast';
+import Web3 from 'web3';
 
 import banner from '../assets/Whale_Strategy.png';
 import usdtbackground from '../assets/usdtplanbackground.png';
@@ -92,8 +94,14 @@ const BlinkingUnderscoreInput: React.FC<BlinkingUnderscoreInputProps> = ({ input
     );
 };
 
+interface StakingProps {
+    account: string | null;
+    userStakeInfo: any;
+    contract: any;
+    web3: any;
+}
 
-function Staking() {
+function Staking({ account, userStakeInfo, contract, web3 }: StakingProps) {
     const [showImage, setShowImage] = useState(false);
     const { t, i18n } = useTranslation();
 
@@ -121,6 +129,35 @@ function Staking() {
         if (sliderValue <= 75) return headImages["25-75"];
         return headImages["75-100"];
     };
+
+    const handleStake = async () => {
+        if (!account || !contract || !web3) {
+            toast.error('Please connect your wallet');
+            return;
+        }
+
+        const amountInWei = web3.utils.toWei(stakeAmount, 'ether');
+        let tokenAddress;
+
+        if (selectedToken === 'USDT') {
+            tokenAddress = process.env.REACT_APP_USDT_ADDRESS;
+        } else if (selectedToken === 'Bitcoin') {
+            tokenAddress = process.env.REACT_APP_BTC_ADDRESS;
+        } else if (selectedToken === 'Ethereum') {
+            tokenAddress = process.env.REACT_APP_ETH_ADDRESS;
+        }
+
+        try {
+            await contract.methods.stake(tokenAddress, durations.indexOf(duration) + 1, amountInWei).send({
+                from: account
+            });
+            toast.success('Staked successfully!');
+        } catch (error) {
+            toast.error('Error during staking.');
+            console.error('Staking error:', error);
+        }
+    };
+
 
 
     // Define the type for allowed coin values
@@ -322,6 +359,7 @@ function Staking() {
                 <p className="md:text-[20px] text-[13px] items-end flex text-shadow-customp">{t('risk')}</p>
             </div>
 
+            {/* Token Selection, Stake Amount, Duration, Slider */}
             <div className="container">
                 <div className="lower-staking-box">
                     <div className="token-selection">
@@ -334,34 +372,75 @@ function Staking() {
                             </button>
                         ))}
                     </div>
-    
+
                     <div className="amount-section">
                         <input 
                             type="text" 
                             className="amount-input" 
                             value={stakeAmount} 
-                            onChange={(e) => handleInputChange(e, setStakeAmount)} 
+                            onChange={(e) => setStakeAmount(e.target.value)} 
                         />
                     </div>
 
-    
                     <div className="duration-selection">
                         {durations.map(dur => (
-                        <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
-                                onClick={() => handleDurationChange(dur as '30 Days' | '6 Months' | '1 Year')}>
-                            {dur}
-                        </button>
+                            <button key={dur} className={`duration-btn ${duration === dur ? 'active' : ''}`}
+                                onClick={() => setDuration(dur as '30 Days' | '6 Months' | '1 Year')}>
+                                {dur}
+                            </button>
                         ))}
                     </div>
 
-                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} getWhaleHeadSrc={getWhaleHeadSrc} />
-                    
-                    <div>
-                        <p>≈{apr}% APR</p>
-                    </div>
+                    <WhaleSlider sliderValue={sliderValue} setSliderValue={setSliderValue} />
+                    <p>≈{apr}% APR</p>
 
-                    <button className="stake-btn">STAKE</button>
+                    <button className="stake-btn" onClick={handleStake}>STAKE</button>
                 </div>
+            </div>
+
+            {/* Display Staked Info or No Stakes Yet */}
+            <div className="staking-container mx-auto p-4">
+                {account && userStakeInfo ? (
+                    <>
+                        {userStakeInfo.USDT.stakedAmount > 0 || userStakeInfo.BTC.stakedAmount > 0 || userStakeInfo.ETH.stakedAmount > 0 ? (
+                            <div className="staking-box2 flex justify-between items-center w-full">
+                                <div className="staking-left w-1/2 pr-4 flex flex-col items-start">
+                                    {userStakeInfo.USDT.stakedAmount > 0 && (
+                                        <div className="staking-token-info">
+                                            <h2>USDT</h2>
+                                            <p>Total Staked: {web3.utils.fromWei(userStakeInfo.USDT.stakedAmount, 'ether')} USDT</p>
+                                            <p>Reward: {web3.utils.fromWei(userStakeInfo.USDT.rewards, 'ether')} USDT</p>
+                                            <p>Stake End: {new Date(userStakeInfo.USDT.stakeEnd * 1000).toLocaleString()}</p>
+                                        </div>
+                                    )}
+                                    {userStakeInfo.BTC.stakedAmount > 0 && (
+                                        <div className="staking-token-info">
+                                            <h2>BTC</h2>
+                                            <p>Total Staked: {web3.utils.fromWei(userStakeInfo.BTC.stakedAmount, 'ether')} BTC</p>
+                                            <p>Reward: {web3.utils.fromWei(userStakeInfo.BTC.rewards, 'ether')} BTC</p>
+                                            <p>Stake End: {new Date(userStakeInfo.BTC.stakeEnd * 1000).toLocaleString()}</p>
+                                        </div>
+                                    )}
+                                    {userStakeInfo.ETH.stakedAmount > 0 && (
+                                        <div className="staking-token-info">
+                                            <h2>ETH</h2>
+                                            <p>Total Staked: {web3.utils.fromWei(userStakeInfo.ETH.stakedAmount, 'ether')} ETH</p>
+                                            <p>Reward: {web3.utils.fromWei(userStakeInfo.ETH.rewards, 'ether')} ETH</p>
+                                            <p>Stake End: {new Date(userStakeInfo.ETH.stakeEnd * 1000).toLocaleString()}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="no-stakes">
+                                <h2>No Stakes Yet</h2>
+                                <p>You don’t have any stakes yet. Start your journey as a whale and make your first stake.</p>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <p>Please connect your wallet to see your staking information.</p>
+                )}
             </div>
 
             <div className="staking-container mx-auto p-4">
@@ -408,7 +487,7 @@ function Staking() {
                         </div>
 
                         {/* Stake Button */}
-                        <button className="staking-stake-btn mt-4">STAKEW</button>
+                        <button className="staking-stake-btn mt-4">STAKE</button>
                     </div>
                 </div>
             </div>
